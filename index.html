@@ -83,9 +83,9 @@ loadRrweb();
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <img src="./logo.png" alt="WoodJoint" class="h-10 w-10 object-contain" />
-                <div class="flex flex-col">
-                    <span class="text-xl font-bold text-brand-900 leading-tight">WoodJoint</span>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-wider">Building Maintenance</span>
+                <div class="flex flex-col items-center justify-center text-center">
+                    <span class="text-2xl font-bold text-brand-900 leading-none tracking-wide">WoodJoint</span>
+                    <span class="text-[9px] font-semibold text-gray-500 uppercase tracking-[0.2em] mt-1">Building Maintenance</span>
                 </div>
             </div>
 
@@ -98,15 +98,19 @@ loadRrweb();
                         <span data-i18n="navServices">Services</span>
                         <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </a>
-                    <div class="absolute top-full start-0 mt-1 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-3 z-50">
-                        <a href="#services" class="px-5 py-2.5 hover:bg-brand-50 text-sm text-gray-700 hover:text-brand-900 transition-colors leading-snug" data-i18n="dropSrv1">Air-Conditioning, Ventilations & Air Filtration Systems Installation & Maintenance</a>
-                        <a href="#services" class="px-5 py-2.5 hover:bg-brand-50 text-sm text-gray-700 hover:text-brand-900 transition-colors leading-snug" data-i18n="dropSrv2">Swimming Pools Maintenance</a>
-                        <a href="#services" class="px-5 py-2.5 hover:bg-brand-50 text-sm text-gray-700 hover:text-brand-900 transition-colors leading-snug" data-i18n="dropSrv3">Floor & Wall Tiling Works</a>
-                        <a href="#services" class="px-5 py-2.5 hover:bg-brand-50 text-sm text-gray-700 hover:text-brand-900 transition-colors leading-snug" data-i18n="dropSrv4">Electrical Fittings & Fixtures Services</a>
+                    <div class="absolute top-full start-0 mt-1 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col p-2 z-50">
+                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv1Title">Villa Joinery</a>
+                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv2Title">Custom Kitchens</a>
+                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv3Title">Doors & Wall Paneling</a>
+                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv4Title">Office Fit-Outs</a>
+                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv5Title">Wardrobes & Walk-In Closets</a>
+                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv6Title">Hotel & Commercial Interiors</a>
+                        <div class="h-px bg-gray-100 my-1"></div>
+                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="act1Title">Maintenance & Restoration</a>
+                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="act2Title">Project Management</a>
                     </div>
                 </div>
 
-                <a href="#projects" class="px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold" data-i18n="navProjects">Projects</a>
                 <a href="#contact" class="px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold" data-i18n="navContact">Contact</a>
                 
                 <button onclick="toggleLanguage()" class="flex items-center gap-2 px-5 py-2 rounded-full bg-brand-900 hover:bg-brand-800 text-white transition-colors font-bold shadow-md">
@@ -137,62 +141,13 @@ loadRrweb();
         </div>
     </section>
 
-    <!-- Projects (Moved Higher) -->
-    <section id="projects" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                <div class="max-w-2xl">
-                    <div class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 font-semibold rounded-full mb-4" data-i18n="navProjects">
-                        Projects
-                    </div>
-                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900" data-i18n="projTitle">
-                        Our Latest Completed Projects
-                    </h2>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group relative overflow-hidden rounded-3xl cursor-pointer">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="./images/hero1.jpg" alt="Project 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div class="text-brand-300 text-sm font-semibold mb-2" data-i18n="proj1Cat">Building Maintenance</div>
-                        <h3 class="text-white text-2xl font-bold" data-i18n="proj1Title">Commercial Tower Maintenance</h3>
-                    </div>
-                </div>
-                <div class="group relative overflow-hidden rounded-3xl cursor-pointer">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="./images/hero3.jpg" alt="Project 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div class="text-brand-300 text-sm font-semibold mb-2" data-i18n="proj2Cat">Pool Maintenance</div>
-                        <h3 class="text-white text-2xl font-bold" data-i18n="proj2Title">Luxury Villa Pool Care</h3>
-                    </div>
-                </div>
-                <div class="group relative overflow-hidden rounded-3xl cursor-pointer">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="./images/service-ac.jpg" alt="Project 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div class="text-brand-300 text-sm font-semibold mb-2" data-i18n="proj3Cat">Air-Conditioning</div>
-                        <h3 class="text-white text-2xl font-bold" data-i18n="proj3Title">Industrial HVAC Upgrade</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- About -->
     <section id="about" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="relative">
                     <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="./images/hero2.jpg" alt="WoodJoint Team" class="w-full h-full object-cover" />
+                        <img src="./images/about-office.jpg" alt="WoodJoint Office" class="w-full h-full object-cover" />
                     </div>
                     <div class="absolute -bottom-8 -end-8 bg-brand-900 text-white p-8 rounded-2xl shadow-xl hidden md:block">
                         <div class="text-4xl font-bold mb-2">15+</div>
@@ -230,70 +185,52 @@ loadRrweb();
                 </h2>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-ac.jpg" alt="AC" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv1Title">Air-Conditioning & Ventilation</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv1Desc">Installation and maintenance of HVAC and air filtration systems.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
+                    <div class="p-8 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv1Title">Villa Joinery</h3>
+                        <p class="text-gray-600 leading-relaxed" data-i18n="srv1Desc">Bespoke wooden staircases, intricate detailing, and premium woodwork tailored for luxury residential villas.</p>
                     </div>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/hero3.jpg" alt="Pools" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv2Title">Swimming Pools Maintenance</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv2Desc">Regular cleaning, chemical balancing, and equipment maintenance.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
+                    <div class="p-8 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv2Title">Custom Kitchens</h3>
+                        <p class="text-gray-600 leading-relaxed" data-i18n="srv2Desc">High-end modular and custom-built kitchens combining functionality with exquisite modern aesthetics.</p>
                     </div>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-tiles.jpg" alt="Tiling" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv3Title">Floor & Wall Tiling Works</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv3Desc">Expert installation and repair of all types of tiles with precision.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
+                    <div class="p-8 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv3Title">Doors & Wall Paneling</h3>
+                        <p class="text-gray-600 leading-relaxed" data-i18n="srv3Desc">Elegant solid wood doors and sophisticated wall paneling that elevate the atmosphere of any room.</p>
                     </div>
                 </div>
                 
                 <!-- Service 4 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-electrical.jpg" alt="Electrical" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv4Title">Electrical Fittings & Fixtures</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv4Desc">Safe and reliable electrical installations, repairs, and maintenance.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
+                    <div class="p-8 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv4Title">Office Fit-Outs</h3>
+                        <p class="text-gray-600 leading-relaxed" data-i18n="srv4Desc">Complete commercial interior joinery, creating professional, inspiring, and productive workspaces.</p>
                     </div>
                 </div>
 
                 <!-- Service 5 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-doors.jpg" alt="Carpentry" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv5Title">Carpentry & Wood Flooring Works</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv5Desc">Custom woodworking, furniture repair, and premium wood flooring.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
+                    <div class="p-8 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv5Title">Wardrobes & Walk-In Closets</h3>
+                        <p class="text-gray-600 leading-relaxed" data-i18n="srv5Desc">Luxurious, custom-designed storage solutions maximizing space without compromising on style.</p>
                     </div>
                 </div>
 
                 <!-- Service 6 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-building.jpg" alt="Building Maintenance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv6Title">Building Maintenance</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv6Desc">Complete facility management covering structural and preventive care.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
+                    <div class="p-8 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv6Title">Hotel & Commercial Interiors</h3>
+                        <p class="text-gray-600 leading-relaxed" data-i18n="srv6Desc">Large-scale premium woodworking and joinery for hospitality venues and retail environments.</p>
                     </div>
                 </div>
 
@@ -360,55 +297,6 @@ loadRrweb();
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv12Title">Swimming Pools Installation</h3>
                         <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv12Desc">Complete design, construction, and installation of custom swimming pools.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                <div class="max-w-2xl">
-                    <div class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 font-semibold rounded-full mb-4" data-i18n="navProjects">
-                        Projects
-                    </div>
-                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900" data-i18n="projTitle">
-                        Our Latest Completed Projects
-                    </h2>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group relative overflow-hidden rounded-3xl cursor-pointer">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="./images/hero1.jpg" alt="Project 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div class="text-brand-300 text-sm font-semibold mb-2" data-i18n="proj1Cat">Building Maintenance</div>
-                        <h3 class="text-white text-2xl font-bold" data-i18n="proj1Title">Commercial Tower Maintenance</h3>
-                    </div>
-                </div>
-                <div class="group relative overflow-hidden rounded-3xl cursor-pointer">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="./images/hero3.jpg" alt="Project 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div class="text-brand-300 text-sm font-semibold mb-2" data-i18n="proj2Cat">Pool Maintenance</div>
-                        <h3 class="text-white text-2xl font-bold" data-i18n="proj2Title">Luxury Villa Pool Care</h3>
-                    </div>
-                </div>
-                <div class="group relative overflow-hidden rounded-3xl cursor-pointer">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="./images/service-ac.jpg" alt="Project 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div class="text-brand-300 text-sm font-semibold mb-2" data-i18n="proj3Cat">Air-Conditioning</div>
-                        <h3 class="text-white text-2xl font-bold" data-i18n="proj3Title">Industrial HVAC Upgrade</h3>
                     </div>
                 </div>
             </div>
@@ -589,8 +477,8 @@ loadRrweb();
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 
-                <!-- Map & Info Side (Now on the Left) -->
-                <div class="relative rounded-3xl overflow-hidden h-full min-h-[600px] shadow-2xl lg:order-first">
+                <!-- Map & Info Side (Left Side) -->
+                <div class="relative rounded-3xl overflow-hidden h-full min-h-[600px] shadow-2xl">
                     <!-- Google Map -->
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115408.09799709214!2d55.19525164999999!3d25.0750095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
@@ -637,8 +525,8 @@ loadRrweb();
                     </div>
                 </div>
 
-                <!-- Form Side (Now on the Right) -->
-                <div class="bg-white p-6 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-2 border-brand-900/20 relative lg:order-last">
+                <!-- Form Side (Right Side) -->
+                <div class="bg-white p-6 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-2 border-brand-900/20 relative">
                     <!-- Subtle Glow Behind Form -->
                     <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-900 to-brand-600 rounded-3xl opacity-20 blur-sm -z-10"></div>
                     
@@ -722,10 +610,11 @@ loadRrweb();
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <div class="md:col-span-1">
-                    <div class="flex items-center gap-3 mb-6 bg-white p-2 rounded-lg inline-block w-fit">
+                    <div class="flex items-center gap-3 mb-6 bg-white p-3 rounded-xl inline-block w-fit shadow-sm">
                         <img src="./logo.png" alt="WoodJoint" class="h-10 w-10 object-contain" />
-                        <div class="flex flex-col">
-                            <span class="text-xl font-bold text-brand-900 leading-tight">WoodJoint</span>
+                        <div class="flex flex-col items-center justify-center text-center">
+                            <span class="text-2xl font-bold text-brand-900 leading-none tracking-wide">WoodJoint</span>
+                            <span class="text-[9px] font-semibold text-gray-500 uppercase tracking-[0.2em] mt-1">Building Maintenance</span>
                         </div>
                     </div>
                     <p class="text-gray-400 leading-relaxed max-w-sm mb-6" data-i18n="footerDesc">
@@ -756,7 +645,6 @@ loadRrweb();
                         <li><a href="#home" class="hover:text-brand-400 transition-colors" data-i18n="navHome">Home</a></li>
                         <li><a href="#about" class="hover:text-brand-400 transition-colors" data-i18n="navAbout">About Us</a></li>
                         <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="navServices">Services</a></li>
-                        <li><a href="#projects" class="hover:text-brand-400 transition-colors" data-i18n="navProjects">Projects</a></li>
                         <li><a href="#contact" class="hover:text-brand-400 transition-colors" data-i18n="navContact">Contact</a></li>
                     </ul>
                 </div>
@@ -805,6 +693,7 @@ loadRrweb();
                 navProjects: "Projects",
                 navContact: "Contact",
                 navLang: "العربية",
+                dropComingSoon: "More services coming soon...",
                 heroTitle: "Excellence in Building Maintenance",
                 heroSub: "Delivering world-class facility management and maintenance services across the UAE.",
                 heroCta: "Discover Our Services",
@@ -827,13 +716,6 @@ loadRrweb();
                 srv5Desc: "Luxurious, custom-designed storage solutions maximizing space without compromising on style.",
                 srv6Title: "Hotel & Commercial Interiors",
                 srv6Desc: "Large-scale premium woodworking and joinery for hospitality venues and retail environments.",
-                projTitle: "Our Latest Completed Projects",
-                proj1Cat: "Building Maintenance",
-                proj1Title: "Commercial Tower Maintenance",
-                proj2Cat: "Pool Maintenance",
-                proj2Title: "Luxury Villa Pool Care",
-                proj3Cat: "Air-Conditioning",
-                proj3Title: "Industrial HVAC Upgrade",
                 whyUsTitle: "Why Choose Us",
                 whyUsSub: "Setting the standard for excellence in the UAE.",
                 why1Title: "Certified Experts",
@@ -887,13 +769,10 @@ loadRrweb();
                 navHome: "الرئيسية",
                 navAbout: "من نحن",
                 navServices: "خدماتنا",
-                dropSrv1: "تركيب أنظمة التكييف والتهوية وتنقية الهواء وصيانتها",
-                dropSrv2: "صيانة أحواض السباحة",
-                dropSrv3: "أعمال تبليط الأرضيات والجدران",
-                dropSrv4: "خدمات التركيبات والتجهيزات الكهربائية",
                 navProjects: "مشاريعنا",
                 navContact: "اتصل بنا",
                 navLang: "English",
+                dropComingSoon: "المزيد من الخدمات قريباً...",
                 heroTitle: "التميز في صيانة المباني",
                 heroSub: "نقدم خدمات إدارة وصيانة مرافق عالمية المستوى في جميع أنحاء دولة الإمارات العربية المتحدة.",
                 heroCta: "اكتشف خدماتنا",
@@ -916,13 +795,6 @@ loadRrweb();
                 srv5Desc: "حلول تخزين فاخرة مصممة خصيصاً لزيادة المساحة دون المساومة على الأناقة.",
                 srv6Title: "الديكورات الداخلية للفنادق والمباني التجارية",
                 srv6Desc: "أعمال نجارة خشبية فاخرة على نطاق واسع لأماكن الضيافة وبيئات البيع بالتجزئة.",
-                projTitle: "أحدث مشاريعنا المنجزة",
-                proj1Cat: "صيانة المباني",
-                proj1Title: "صيانة برج تجاري",
-                proj2Cat: "صيانة المسابح",
-                proj2Title: "العناية بمسبح فيلا فاخرة",
-                proj3Cat: "تكييف الهواء",
-                proj3Title: "ترقية نظام التكييف الصناعي",
                 whyUsTitle: "لماذا تختارنا",
                 whyUsSub: "نضع معايير التميز في دولة الإمارات.",
                 why1Title: "خبراء معتمدون",
