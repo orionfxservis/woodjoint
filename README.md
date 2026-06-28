@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# WOODJOINT Building Maintenance L.L.C.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, modern, bilingual (English & Arabic) corporate website for **WOODJOINT Building Maintenance L.L.C.**, a UAE-based company providing professional facility management and property maintenance solutions.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📂 Project Folder Structure
 
-## React Compiler
+The project follows a modular, organized web directory architecture:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+WOODJOINT/
+│
+├── index.html                   # Main entry point (Landing Page)
+├── README.md                    # Project documentation
+├── robots.txt                   # Search engine crawler instructions
+├── sitemap.xml                  # Website sitemap for SEO
+├── vercel.json                  # Hosting configuration
+│
+├── assets/                      # Application assets
+│   ├── css/                     # Custom stylesheet assets (reserved)
+│   ├── js/                      # Custom Javascript scripts (reserved)
+│   ├── images/                  # Site images, icons, and logos
+│   ├── fonts/                   # Typography files (reserved)
+│   └── vendor/                  # Third-party vendor libraries (reserved)
+│
+├── pages/                       # Secondary pages
+│   ├── privacy-policy.html      # Privacy Policy (English & Arabic)
+│   └── terms-of-service.html    # Terms of Service (English & Arabic)
+│
+├── data/                        # Static JSON data / assets (reserved)
+└── docs/                        # Project documentation resources
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠️ Technology Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Structure**: Semantic HTML5 tags.
+2. **Styling**: Tailwind CSS CDN with a customized color theme configuration matching the official logo colors (wood brown and navy blue).
+3. **Typography**: Google Fonts integration:
+   - **English font**: `Outfit`
+   - **Arabic font**: `Cairo`
+4. **Behavior**: Lightweight Vanilla JavaScript implementing dynamic translations, responsive menus, slider cards, and tab filtering.
+
+---
+
+## ✨ Features
+
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop views.
+- **Bilingual Interface**: Seamlessly switch between English and Arabic with a single toggle button. Fully supports RTL (Right-to-Left) layouts.
+- **Dynamic Services & Sections**:
+  - Full range of 12 licensed building maintenance services list.
+  - Interactive Before/After image comparison sliders.
+  - Quick contact links for WhatsApp and Email.
+
+---
+
+## 🚀 Running the Project
+
+Since this is a static website, you can run it directly:
+
+1. Double-click `index.html` to open it in any modern browser.
+2. Alternatively, serve it locally using a simple HTTP server:
+   ```bash
+   # Python 3
+   python -m http.server 8000
+   
+   # Node.js (via serve)
+   npx serve .
+   ```
+
+---
+
+## 📄 License & Legal
+
+All terms, conditions, and privacy policies are published under `/pages/`. 
+© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved.

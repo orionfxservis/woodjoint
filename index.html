@@ -17,11 +17,16 @@
                     },
                     colors: {
                         brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#1e3a8a',
+                            50: '#faf5f0',
+                            100: '#f6ebdc',
+                            200: '#ebd2bc',
+                            300: '#deba9b',
+                            400: '#c58f62',
+                            500: '#ab6d41',
+                            600: '#935227',
+                            700: '#7e411c',
+                            800: '#693212',
+                            900: '#0d233a',
                         }
                     }
                 }
@@ -81,14 +86,17 @@ loadRrweb();
     <!-- Navbar -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <img src="./logo.png" alt="WoodJoint" class="h-10 w-10 object-contain" />
+            <div class="flex items-center gap-4">
+                <img src="assets/images/logo.png" alt="WoodJoint" class="h-10 w-10 object-contain" />
                 <div class="flex flex-col items-center justify-center text-center">
-                    <span class="text-2xl font-bold text-brand-900 leading-none tracking-wide">WoodJoint</span>
-                    <span class="text-[9px] font-semibold text-gray-500 uppercase tracking-[0.2em] mt-1">Building Maintenance</span>
+                    <div class="text-xl font-extrabold tracking-wide uppercase leading-none font-sans">
+                        <span class="text-[#935227]">WOOD</span> <span class="text-[#0d233a]">JOINT</span>
+                    </div>
+                    <span class="text-[8px] font-bold text-gray-500 uppercase tracking-[0.1em] mt-1 hidden xs:block">— CONSTRUCTION & MAINTENANCE —</span>
                 </div>
             </div>
 
+            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-3">
                 <a href="#home" class="px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold" data-i18n="navHome">Home</a>
                 <a href="#about" class="px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold" data-i18n="navAbout">About Us</a>
@@ -98,16 +106,19 @@ loadRrweb();
                         <span data-i18n="navServices">Services</span>
                         <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </a>
-                    <div class="absolute top-full start-0 mt-1 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col p-2 z-50">
-                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv1Title">Villa Joinery</a>
-                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv2Title">Custom Kitchens</a>
-                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv3Title">Doors & Wall Paneling</a>
-                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv4Title">Office Fit-Outs</a>
-                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv5Title">Wardrobes & Walk-In Closets</a>
-                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv6Title">Hotel & Commercial Interiors</a>
-                        <div class="h-px bg-gray-100 my-1"></div>
-                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="act1Title">Maintenance & Restoration</a>
-                        <a href="#services" class="px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="act2Title">Project Management</a>
+                    <div class="absolute top-full start-0 mt-1 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col p-2 z-50">
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv1Title">Floor & Wall Tiling Works</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv2Title">Concrete Works</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv3Title">Plumbing & Sanitary Installation</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv4Title">Plaster Works</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv5Title">Steel Products Installation & Maint.</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv6Title">Carpentry & wood Flooring Works</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv7Title">Building Maintenance</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv8Title">Swimming Pools Installation Works</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv9Title">Electrical Fittings & Fixtures</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv10Title">Electromechanical Equipment</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv11Title">Swimming Pools Maintenance</a>
+                        <a href="#services" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-brand-50 hover:text-brand-900 rounded-xl transition-colors" data-i18n="srv12Title">Air-Conditioning & HVAC Systems</a>
                     </div>
                 </div>
 
@@ -118,6 +129,24 @@ loadRrweb();
                     <span data-i18n="navLang">العربية</span>
                 </button>
             </div>
+
+            <!-- Mobile Buttons -->
+            <div class="flex md:hidden items-center gap-2">
+                <button onclick="toggleLanguage()" class="flex items-center justify-center p-2 rounded-full bg-brand-900 text-white hover:bg-brand-800 transition-colors shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </button>
+                <button onclick="toggleMobileMenu()" class="p-2 rounded-full bg-brand-50 text-brand-900 hover:bg-brand-100 transition-colors">
+                    <svg id="hamburgerIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 py-3 px-4 flex flex-col gap-2 shadow-lg transition-all duration-300">
+            <a href="#home" onclick="closeMobileMenu()" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-900 font-semibold text-sm" data-i18n="navHome">Home</a>
+            <a href="#about" onclick="closeMobileMenu()" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-900 font-semibold text-sm" data-i18n="navAbout">About Us</a>
+            <a href="#services" onclick="closeMobileMenu()" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-900 font-semibold text-sm" data-i18n="navServices">Services</a>
+            <a href="#contact" onclick="closeMobileMenu()" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-900 font-semibold text-sm" data-i18n="navContact">Contact</a>
         </div>
     </nav>
 
@@ -125,7 +154,7 @@ loadRrweb();
     <section id="home" class="relative h-screen w-full overflow-hidden bg-gray-900 flex items-center justify-center text-center">
         <div class="absolute inset-0">
             <div class="absolute inset-0 bg-black/50 z-10"></div>
-            <img src="./images/hero1.jpg" alt="Hero background" class="w-full h-full object-cover opacity-80" />
+            <img src="assets/images/hero1.jpg" alt="Hero background" class="w-full h-full object-cover opacity-80" />
         </div>
 
         <div class="relative z-20 px-4 max-w-5xl mx-auto fade-in">
@@ -147,27 +176,43 @@ loadRrweb();
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="relative">
                     <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="./images/about-office.jpg" alt="WoodJoint Office" class="w-full h-full object-cover" />
+                        <img src="assets/images/about-office.jpg" alt="WoodJoint Office" class="w-full h-full object-cover" />
                     </div>
-                    <div class="absolute -bottom-8 -end-8 bg-brand-900 text-white p-8 rounded-2xl shadow-xl hidden md:block">
-                        <div class="text-4xl font-bold mb-2">15+</div>
-                        <div class="text-brand-100" data-i18n="aboutExpBadge">Years of Excellence<br/>in the UAE</div>
+                    <div class="absolute -bottom-8 -end-8 bg-brand-900 text-white p-6 rounded-2xl shadow-xl hidden md:block text-center max-w-[220px]" data-i18n="aboutExpBadge">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-300 block mb-1">Professional</span>
+                        <span class="text-lg font-extrabold leading-tight block mb-1">Building Maintenance</span>
+                        <span class="text-xs text-brand-100 block">Across the UAE</span>
                     </div>
                 </div>
 
                 <div>
                     <div class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 font-semibold rounded-full mb-6" data-i18n="aboutLabel">
-                        About WoodJoint
+                        About WOODJOINT Building Maintenance L.L.C.
                     </div>
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight" data-i18n="aboutTitle">
                         Your Trusted Partner in Building Maintenance
                     </h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed" data-i18n="aboutDesc1">
-                        WoodJoint Building Maintenance is a premier facility management and maintenance company operating in the UAE. We specialize in providing comprehensive, high-quality technical services for residential, commercial, and industrial properties.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-10 leading-relaxed" data-i18n="aboutDesc2">
-                        With a commitment to excellence, international standards, and a customer-centric approach, our team of skilled engineers and technicians ensures that your property is maintained to the highest standards of safety, functionality, and aesthetics.
-                    </p>
+                    <div class="text-lg text-gray-600 mb-6 leading-relaxed" data-i18n="aboutDesc1">
+                        <p class="mb-4">WOODJOINT Building Maintenance L.L.C. is a UAE-based company providing professional building maintenance, technical services, and property improvement solutions for residential, commercial, and industrial clients across the Emirates.</p>
+                        <p class="mb-4">We specialize in delivering reliable, safe, and cost-effective maintenance services with a strong commitment to quality, customer satisfaction, and timely project execution. Our experienced team of qualified technicians and skilled professionals is equipped to handle projects of all sizes, from routine maintenance to complete property renovations.</p>
+                        <p class="font-bold text-gray-900 mb-3">Our expertise covers a wide range of licensed services including:</p>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-600 font-medium mb-6">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Building Maintenance</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Air Conditioning, Ventilation & HVAC</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Electrical Fittings & Fixtures Care</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Plumbing & Sanitary Installation</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Electromechanical Equipment</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Floor & Wall Tiling Works</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Concrete & Plaster Works</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Carpentry & Wood Flooring Works</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Steel Products Installation</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Swimming Pool Installation & Care</li>
+                        </ul>
+                    </div>
+                    <div class="text-lg text-gray-600 mb-10 leading-relaxed" data-i18n="aboutDesc2">
+                        <p class="mb-4">Every project is completed with precision, using quality materials, modern equipment, and industry best practices to ensure long-lasting performance and complete client satisfaction.</p>
+                        <p class="leading-relaxed text-gray-600">Whether you require emergency repairs, preventive maintenance, renovation works, or an Annual Maintenance Contract (AMC), WOODJOINT Building Maintenance L.L.C. is committed to delivering dependable solutions that protect and enhance the value of your property.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -187,116 +232,158 @@ loadRrweb();
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
-                    <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv1Title">Villa Joinery</h3>
-                        <p class="text-gray-600 leading-relaxed" data-i18n="srv1Desc">Bespoke wooden staircases, intricate detailing, and premium woodwork tailored for luxury residential villas.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-tiles.jpg" alt="Floor & Wall Tiling" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv1Title">Floor & Wall Tiling Works</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv1Desc">Professional tiling installation and repair for floors and walls with high-quality finishes.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
-                    <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv2Title">Custom Kitchens</h3>
-                        <p class="text-gray-600 leading-relaxed" data-i18n="srv2Desc">High-end modular and custom-built kitchens combining functionality with exquisite modern aesthetics.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-concrete.jpg" alt="Concrete Works" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv2Title">Concrete Works</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv2Desc">Strong and durable concrete pouring, foundations, repair, and structural works.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
-                    <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv3Title">Doors & Wall Paneling</h3>
-                        <p class="text-gray-600 leading-relaxed" data-i18n="srv3Desc">Elegant solid wood doors and sophisticated wall paneling that elevate the atmosphere of any room.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-plumbing.jpg" alt="Plumbing & Sanitary" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv3Title">Plumbing & Sanitary Installation</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv3Desc">Comprehensive plumbing contracting, pipe installations, leak detection, and sanitary fixtures.</p>
+                        </div>
                     </div>
                 </div>
-                
+
                 <!-- Service 4 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
-                    <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv4Title">Office Fit-Outs</h3>
-                        <p class="text-gray-600 leading-relaxed" data-i18n="srv4Desc">Complete commercial interior joinery, creating professional, inspiring, and productive workspaces.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-plaster.jpg" alt="Plaster Works" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv4Title">Plaster Works</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv4Desc">High-quality internal and external plastering for smooth, flawless, and durable wall finishes.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 5 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
-                    <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv5Title">Wardrobes & Walk-In Closets</h3>
-                        <p class="text-gray-600 leading-relaxed" data-i18n="srv5Desc">Luxurious, custom-designed storage solutions maximizing space without compromising on style.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-steel.jpg" alt="Steel Products" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv5Title">Steel Products Installation & Maintenance</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv5Desc">Precision fabrication, installation, and maintenance of steel structures, gates, and handrails.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 6 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group h-full flex flex-col">
-                    <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="srv6Title">Hotel & Commercial Interiors</h3>
-                        <p class="text-gray-600 leading-relaxed" data-i18n="srv6Desc">Large-scale premium woodworking and joinery for hospitality venues and retail environments.</p>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-carpentry.jpg" alt="Carpentry & Wood Flooring" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv6Title">Carpentry & wood Flooring Works</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv6Desc">Premium joinery, custom woodwork, cabinetry, and elegant wood flooring installation.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 7 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-plaster.jpg" alt="Plaster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-building.jpg" alt="Building Maintenance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv7Title">Plaster Works</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv7Desc">High-quality plastering for smooth, durable, and flawless wall finishes.</p>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv7Title">Building Maintenance</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv7Desc">Full-scale facility management, preventive maintenance, and building refurbishment.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 8 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-electro.jpg" alt="Electromechanical" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-pool-install.jpg" alt="Swimming Pools Installation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv8Title">Electromechanical Equipment</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv8Desc">Installation and maintenance of complex electromechanical systems.</p>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv8Title">Swimming Pools Installation Works</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv8Desc">Complete design, excavation, construction, and equipment setup of modern swimming pools.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 9 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-steel.jpg" alt="Steel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-electrical.jpg" alt="Electrical Fittings" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv9Title">Steel Products Installation</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv9Desc">Precision steel fabrication, installation, and structural maintenance.</p>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv9Title">Electrical Fittings & Fixtures Repairing & Maintenance</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv9Desc">Safe installation, diagnostic repairing, and regular maintenance of electrical panels and fixtures.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 10 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-concrete.jpg" alt="Concrete" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-electromechanical.jpg" alt="Electromechanical Equipment" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv10Title">Concrete Works</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv10Desc">Durable concrete pouring, repair, and structural foundation works.</p>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv10Title">Electromechanical Equipment Installation and Maintenance</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv10Desc">Professional integration, commissioning, and servicing of electromechanical systems.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 11 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-plumbing.jpg" alt="Plumbing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/before-pool.jpg" alt="Swimming Pools Maintenance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv11Title">Plumbing & Sanitary</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv11Desc">Efficient plumbing contracting, leak repairs, and sanitary fixtures.</p>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv11Title">Swimming Pools Maintenance</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv11Desc">Regular cleaning, water treatment, chemical balancing, and pool filtration system servicing.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 12 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="./images/service-pool-install.jpg" alt="Pool Install" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="assets/images/service-ac.jpg" alt="Air Conditioning" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="srv12Title">Swimming Pools Installation</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv12Desc">Complete design, construction, and installation of custom swimming pools.</p>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="srv12Title">Air-Conditioning, Ventilations & Air Filtration Systems Installation & Maintenance</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="srv12Desc">Installation, duct cleaning, filter replacement, and preventive maintenance for all HVAC systems.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -304,7 +391,7 @@ loadRrweb();
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-24 bg-brand-900 text-white relative overflow-hidden">
+    <section id="why-us" class="py-24 bg-brand-900 text-white relative overflow-hidden">
         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -360,11 +447,11 @@ loadRrweb();
                     </div>
                     <div class="grid grid-cols-2 relative">
                         <div class="relative aspect-square">
-                            <img src="./images/before-renovation.jpg" alt="Before" class="w-full h-full object-cover grayscale-[30%]" />
+                            <img src="assets/images/before-renovation.jpg" alt="Before" class="w-full h-full object-cover grayscale-[30%]" />
                             <div class="absolute top-4 start-4 bg-black/70 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase" data-i18n="transBefore">Before</div>
                         </div>
                         <div class="relative aspect-square">
-                            <img src="./images/after-renovation.jpg" alt="After" class="w-full h-full object-cover" />
+                            <img src="assets/images/after-renovation.jpg" alt="After" class="w-full h-full object-cover" />
                             <div class="absolute top-4 end-4 bg-brand-600 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase" data-i18n="transAfter">After</div>
                         </div>
                         <!-- Arrow Divider -->
@@ -382,11 +469,11 @@ loadRrweb();
                     </div>
                     <div class="grid grid-cols-2 relative">
                         <div class="relative aspect-square">
-                            <img src="./images/before-pool.jpg" alt="Before" class="w-full h-full object-cover grayscale-[30%]" />
+                            <img src="assets/images/before-pool.jpg" alt="Before" class="w-full h-full object-cover grayscale-[30%]" />
                             <div class="absolute top-4 start-4 bg-black/70 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase" data-i18n="transBefore">Before</div>
                         </div>
                         <div class="relative aspect-square">
-                            <img src="./images/hero3.jpg" alt="After" class="w-full h-full object-cover" />
+                            <img src="assets/images/hero3.jpg" alt="After" class="w-full h-full object-cover" />
                             <div class="absolute top-4 end-4 bg-brand-600 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase" data-i18n="transAfter">After</div>
                         </div>
                         <!-- Arrow Divider -->
@@ -610,15 +697,17 @@ loadRrweb();
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <div class="md:col-span-1">
-                    <div class="flex items-center gap-3 mb-6 bg-white p-3 rounded-xl inline-block w-fit shadow-sm">
-                        <img src="./logo.png" alt="WoodJoint" class="h-10 w-10 object-contain" />
-                        <div class="flex flex-col items-center justify-center text-center">
-                            <span class="text-2xl font-bold text-brand-900 leading-none tracking-wide">WoodJoint</span>
-                            <span class="text-[9px] font-semibold text-gray-500 uppercase tracking-[0.2em] mt-1">Building Maintenance</span>
+                    <div class="flex items-center gap-4 mb-6 bg-white p-3 rounded-xl inline-block w-fit shadow-sm">
+                        <img src="assets/images/logo.png" alt="WoodJoint" class="h-10 w-10 object-contain" />
+                        <div class="flex flex-col items-start justify-center">
+                            <div class="text-xl font-extrabold tracking-wide uppercase leading-none font-sans">
+                                <span class="text-[#935227]">WOOD</span><span class="text-[#0d233a]">JOINT</span>
+                            </div>
+                            <span class="text-[9px] font-bold text-gray-500 uppercase tracking-[0.05em] mt-1">Building Maintenance L.L.C.</span>
                         </div>
                     </div>
                     <p class="text-gray-400 leading-relaxed max-w-sm mb-6" data-i18n="footerDesc">
-                        Premium building maintenance and facility management services across the United Arab Emirates.
+                        Providing reliable building maintenance and technical solutions across the UAE with professionalism, quality, and a commitment to excellence.
                     </p>
                     <div class="flex gap-4">
                         <!-- Facebook -->
@@ -644,25 +733,33 @@ loadRrweb();
                     <ul class="space-y-3">
                         <li><a href="#home" class="hover:text-brand-400 transition-colors" data-i18n="navHome">Home</a></li>
                         <li><a href="#about" class="hover:text-brand-400 transition-colors" data-i18n="navAbout">About Us</a></li>
-                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="navServices">Services</a></li>
+                        <li><a href="#why-us" class="hover:text-brand-400 transition-colors" data-i18n="whyUsTitle">Why Choose Us</a></li>
                         <li><a href="#contact" class="hover:text-brand-400 transition-colors" data-i18n="navContact">Contact</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white font-bold text-lg mb-6" data-i18n="footerServices">Our Services</h4>
                     <ul class="space-y-3">
-                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv1Title">Air-Conditioning, Ventilations & Air Filtration</a></li>
-                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv6Title">Building Maintenance</a></li>
-                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv8Title">Electromechanical Equipment</a></li>
-                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv11Title">Plumbing & Sanitary Contracting</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv1Title">Floor & Wall Tiling Works</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv2Title">Concrete Works</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv3Title">Plumbing & Sanitary Installation</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv4Title">Plaster Works</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv5Title">Steel Products Installation & Maintenance</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv6Title">Carpentry & wood Flooring Works</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv7Title">Building Maintenance</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv8Title">Swimming Pools Installation Works</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv9Title">Electrical Fittings & Fixtures</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv10Title">Electromechanical Equipment</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv11Title">Swimming Pools Maintenance</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors" data-i18n="srv12Title">Air-Conditioning & HVAC</a></li>
                     </ul>
                 </div>
             </div>
             <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
-                <div data-i18n="footerRights">© 2024 WoodJoint Building Maintenance. All rights reserved.</div>
+                <div data-i18n="footerRights">© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved.</div>
                 <div class="flex gap-4">
-                    <a href="#" class="hover:text-white transition-colors" data-i18n="privacyPolicy">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors" data-i18n="termsOfService">Terms of Service</a>
+                    <a href="pages/privacy-policy.html" class="hover:text-white transition-colors" data-i18n="privacyPolicy">Privacy Policy</a>
+                    <a href="pages/terms-of-service.html" class="hover:text-white transition-colors" data-i18n="termsOfService">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -697,25 +794,54 @@ loadRrweb();
                 heroTitle: "Excellence in Building Maintenance",
                 heroSub: "Delivering world-class facility management and maintenance services across the UAE.",
                 heroCta: "Discover Our Services",
-                aboutExpBadge: "Years of Excellence<br/>in the UAE",
-                aboutLabel: "About WoodJoint",
+                aboutExpBadge: `<span class="text-xs font-bold uppercase tracking-widest text-brand-300 block mb-1">Professional</span>
+                        <span class="text-lg font-extrabold leading-tight block mb-1">Building Maintenance</span>
+                        <span class="text-xs text-brand-100 block">Across the UAE</span>`,
+                aboutLabel: "About WOODJOINT Building Maintenance L.L.C.",
                 aboutTitle: "Your Trusted Partner in Building Maintenance",
-                aboutDesc1: "WoodJoint Building Maintenance is a premier facility management and maintenance company operating in the UAE. We specialize in providing comprehensive, high-quality technical services for residential, commercial, and industrial properties.",
-                aboutDesc2: "With a commitment to excellence, international standards, and a customer-centric approach, our team of skilled engineers and technicians ensures that your property is maintained to the highest standards of safety, functionality, and aesthetics.",
+                aboutDesc1: `<p class="mb-4">WOODJOINT Building Maintenance L.L.C. is a UAE-based company providing professional building maintenance, technical services, and property improvement solutions for residential, commercial, and industrial clients across the Emirates.</p>
+<p class="mb-4">We specialize in delivering reliable, safe, and cost-effective maintenance services with a strong commitment to quality, customer satisfaction, and timely project execution. Our experienced team of qualified technicians and skilled professionals is equipped to handle projects of all sizes, from routine maintenance to complete property renovations.</p>
+<p class="font-bold text-gray-900 mb-3">Our expertise covers a wide range of licensed services including:</p>
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-600 font-medium mb-6">
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Building Maintenance</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Air Conditioning, Ventilation & HVAC</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Electrical Fittings & Fixtures Care</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Plumbing & Sanitary Installation</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Electromechanical Equipment</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Floor & Wall Tiling Works</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Concrete & Plaster Works</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Carpentry & Wood Flooring Works</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Steel Products Installation</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Swimming Pool Installation & Care</li>
+</ul>`,
+                aboutDesc2: `<p class="mb-4">Every project is completed with precision, using quality materials, modern equipment, and industry best practices to ensure long-lasting performance and complete client satisfaction.</p>
+<p class="leading-relaxed text-gray-600">Whether you require emergency repairs, preventive maintenance, renovation works, or an Annual Maintenance Contract (AMC), WOODJOINT Building Maintenance L.L.C. is committed to delivering dependable solutions that protect and enhance the value of your property.</p>`,
                 servicesLabel: "Our Premium Services",
                 servicesTitle: "Comprehensive maintenance solutions tailored to your needs.",
-                srv1Title: "Villa Joinery",
-                srv1Desc: "Bespoke wooden staircases, intricate detailing, and premium woodwork tailored for luxury residential villas.",
-                srv2Title: "Custom Kitchens",
-                srv2Desc: "High-end modular and custom-built kitchens combining functionality with exquisite modern aesthetics.",
-                srv3Title: "Doors & Wall Paneling",
-                srv3Desc: "Elegant solid wood doors and sophisticated wall paneling that elevate the atmosphere of any room.",
-                srv4Title: "Office Fit-Outs",
-                srv4Desc: "Complete commercial interior joinery, creating professional, inspiring, and productive workspaces.",
-                srv5Title: "Wardrobes & Walk-In Closets",
-                srv5Desc: "Luxurious, custom-designed storage solutions maximizing space without compromising on style.",
-                srv6Title: "Hotel & Commercial Interiors",
-                srv6Desc: "Large-scale premium woodworking and joinery for hospitality venues and retail environments.",
+                srv1Title: "Floor & Wall Tiling Works",
+                srv1Desc: "Professional tiling installation and repair for floors and walls with high-quality finishes.",
+                srv2Title: "Concrete Works",
+                srv2Desc: "Strong and durable concrete pouring, foundations, repair, and structural works.",
+                srv3Title: "Plumbing & Sanitary Installation",
+                srv3Desc: "Comprehensive plumbing contracting, pipe installations, leak detection, and sanitary fixtures.",
+                srv4Title: "Plaster Works",
+                srv4Desc: "High-quality internal and external plastering for smooth, flawless, and durable wall finishes.",
+                srv5Title: "Steel Products Installation & Maintenance",
+                srv5Desc: "Precision fabrication, installation, and maintenance of steel structures, gates, and handrails.",
+                srv6Title: "Carpentry & wood Flooring Works",
+                srv6Desc: "Premium joinery, custom woodwork, cabinetry, and elegant wood flooring installation.",
+                srv7Title: "Building Maintenance",
+                srv7Desc: "Full-scale facility management, preventive maintenance, and building refurbishment.",
+                srv8Title: "Swimming Pools Installation Works",
+                srv8Desc: "Complete design, excavation, construction, and equipment setup of modern swimming pools.",
+                srv9Title: "Electrical Fittings & Fixtures Repairing & Maintenance",
+                srv9Desc: "Safe installation, diagnostic repairing, and regular maintenance of electrical panels and fixtures.",
+                srv10Title: "Electromechanical Equipment Installation and Maintenance",
+                srv10Desc: "Professional integration, commissioning, and servicing of electromechanical systems.",
+                srv11Title: "Swimming Pools Maintenance",
+                srv11Desc: "Regular cleaning, water treatment, chemical balancing, and pool filtration system servicing.",
+                srv12Title: "Air-Conditioning, Ventilations & Air Filtration Systems Installation & Maintenance",
+                srv12Desc: "Installation, duct cleaning, filter replacement, and preventive maintenance for all HVAC systems.",
                 whyUsTitle: "Why Choose Us",
                 whyUsSub: "Setting the standard for excellence in the UAE.",
                 why1Title: "Certified Experts",
@@ -758,12 +884,12 @@ loadRrweb();
                 contactSubject: "Subject",
                 contactMessage: "Your Message",
                 contactSubmit: "Send Message",
-                footerDesc: "Premium building maintenance and facility management services across the United Arab Emirates.",
+                footerDesc: "Providing reliable building maintenance and technical solutions across the UAE with professionalism, quality, and a commitment to excellence.",
                 footerLinks: "Quick Links",
                 footerServices: "Our Services",
                 privacyPolicy: "Privacy Policy",
                 termsOfService: "Terms of Service",
-                footerRights: "© 2024 WoodJoint Building Maintenance. All rights reserved."
+                footerRights: "© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved."
             },
             ar: {
                 navHome: "الرئيسية",
@@ -776,25 +902,54 @@ loadRrweb();
                 heroTitle: "التميز في صيانة المباني",
                 heroSub: "نقدم خدمات إدارة وصيانة مرافق عالمية المستوى في جميع أنحاء دولة الإمارات العربية المتحدة.",
                 heroCta: "اكتشف خدماتنا",
-                aboutExpBadge: "سنوات من التميز<br/>في الإمارات",
-                aboutLabel: "عن وود جوينت",
-                aboutTitle: "شريكك الموثوق في صيانة المباني",
-                aboutDesc1: "وود جوينت لصيانة المباني هي شركة رائدة في إدارة وصيانة المرافق تعمل في دولة الإمارات العربية المتحدة. نحن متخصصون في تقديم خدمات فنية شاملة وعالية الجودة للعقارات السكنية والتجارية والصناعية.",
-                aboutDesc2: "مع الالتزام بالتميز والمعايير الدولية ونهج يركز على العملاء، يضمن فريقنا من المهندسين والفنيين المهرة صيانة الممتلكات الخاصة بك وفقًا لأعلى معايير السلامة والوظائف والجماليات.",
+                aboutExpBadge: `<span class="text-xs font-bold uppercase tracking-widest text-brand-300 block mb-1">خدمات احترافية</span>
+                        <span class="text-lg font-extrabold leading-tight block mb-1">صيانة المباني</span>
+                        <span class="text-xs text-brand-100 block">في جميع أنحاء الإمارات</span>`,
+                aboutLabel: "من نحن",
+                aboutTitle: "WOODJOINT لصيانة المباني ذ.م.م",
+                aboutDesc1: `<p class="mb-4">تُعد WOODJOINT Building Maintenance L.L.C. شركة إماراتية متخصصة في أعمال صيانة المباني والخدمات الفنية والحلول الهندسية، حيث نقدم خدماتنا للقطاع السكني والتجاري والصناعي في جميع أنحاء دولة الإمارات العربية المتحدة.</p>
+<p class="mb-4">نلتزم بتقديم خدمات احترافية تعتمد على الجودة، والسلامة، والدقة في التنفيذ، مع الحرص على إنجاز المشاريع في الوقت المحدد وتحقيق أعلى مستويات رضا العملاء. ويضم فريقنا نخبة من الفنيين والمهندسين المؤهلين والقادرين على تنفيذ مختلف أعمال الصيانة والتجديد بكفاءة عالية.</p>
+<p class="font-bold text-gray-900 mb-3">تشمل خدماتنا المرخصة:</p>
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-600 font-medium mb-6">
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> صيانة المباني</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> تركيب وصيانة أنظمة التكييف والتهوية وتصفية الهواء</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> أعمال الكهرباء والتركيبات الكهربائية وصيانتها</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> أعمال السباكة والتمديدات الصحية</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> تركيب وصيانة المعدات الكهروميكانيكية</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> أعمال تبليط الأرضيات والجدران</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> أعمال الخرسانة والبلاستر</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> أعمال النجارة وتركيب الأرضيات الخشبية</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> تركيب وصيانة الأعمال الحديدية</li>
+    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> تركيب وصيانة أحواض السباحة</li>
+</ul>`,
+                aboutDesc2: `<p class="mb-4">نعتمد في جميع مشاريعنا على أفضل المواد، وأحدث المعدات، وأعلى معايير الجودة لضمان نتائج تدوم طويلاً وتلبي تطلعات عملائنا.</p>
+<p class="leading-relaxed text-gray-600">سواء كنتم بحاجة إلى صيانة دورية، أو إصلاحات طارئة، أو أعمال تجديد، أو عقود صيانة سنوية (AMC)، فإن WOODJOINT Building Maintenance L.L.C. هو شريككم الموثوق لتقديم حلول متكاملة تسهم في الحفاظ على سلامة وكفاءة وقيمة ممتلكاتكم.</p>`,
                 servicesLabel: "خدماتنا المتميزة",
                 servicesTitle: "حلول صيانة شاملة مصممة خصيصاً لتلبية احتياجاتك.",
-                srv1Title: "أعمال نجارة الفلل",
-                srv1Desc: "سلالم خشبية مخصصة، وتفاصيل دقيقة، وأعمال خشبية فاخرة مصممة خصيصاً للفلل السكنية الراقية.",
-                srv2Title: "مطابخ مخصصة",
-                srv2Desc: "مطابخ معيارية ومبنية خصيصاً عالية الجودة تجمع بين الوظائف والجماليات الحديثة الرائعة.",
-                srv3Title: "الأبواب وتلبيس الجدران",
-                srv3Desc: "أبواب خشبية صلبة أنيقة وتلبيس جدران متطور يضفي جواً من الفخامة على أي غرفة.",
-                srv4Title: "تجهيز المكاتب",
-                srv4Desc: "أعمال نجارة داخلية تجارية متكاملة لإنشاء مساحات عمل احترافية وملهمة ومنتجة.",
-                srv5Title: "خزائن وغرف ملابس",
-                srv5Desc: "حلول تخزين فاخرة مصممة خصيصاً لزيادة المساحة دون المساومة على الأناقة.",
-                srv6Title: "الديكورات الداخلية للفنادق والمباني التجارية",
-                srv6Desc: "أعمال نجارة خشبية فاخرة على نطاق واسع لأماكن الضيافة وبيئات البيع بالتجزئة.",
+                srv1Title: "أعمال تبليط الأرضيات والجدران",
+                srv1Desc: "أعمال تركيب وصيانة بلاط الأرضيات والجدران بلمسات نهائية عالية الجودة.",
+                srv2Title: "الاعمال الخرسانية",
+                srv2Desc: "أعمال صب وتأسيس وإصلاح الخرسانة لضمان بنية تحتية قوية ومتينة.",
+                srv3Title: "تركيب الأدوات والتمديدات الصحية",
+                srv3Desc: "خدمات السباكة الشاملة، تركيب الأنابيب، كشف التسريبات، وتركيب الأدوات الصحية.",
+                srv4Title: "اعمال البلاستر",
+                srv4Desc: "أعمال اللياسة (البلاستر) الداخلية والخارجية لتهيئة الجدران وتنعيمها بجودة عالية.",
+                srv5Title: "تركيب الأشغال الحديدية في المباني وصيانتها",
+                srv5Desc: "تركيب وصيانة الأشغال الحديدية والهياكل المعدنية والشبك والدرابزين بدقة وأمان.",
+                srv6Title: "أعمال النجارة و تركيب الأرضيات الخشبية",
+                srv6Desc: "أعمال النجارة المخصصة، وتركيب الأرضيات الخشبية والباركيه بلمسات فنية راقية.",
+                srv7Title: "صيانة المباني",
+                srv7Desc: "خدمات إدارة وصيانة المباني الشاملة والصيانة الوقائية لجميع أنواع العقارات.",
+                srv8Title: "أعمال تركيب أحواض السباحة",
+                srv8Desc: "تصميم وإنشاء وتركيب أحواض السباحة الحديثة وتجهيزها بكافة الأنظمة والملحقات.",
+                srv9Title: "إصلاح وصيانة التمديدات والتركيبات الكهربائية",
+                srv9Desc: "تركيب وإصلاح وصيانة التمديدات الكهربائية، لوحات التوزيع، ووحدات الإضاءة بكفاءة عالية.",
+                srv10Title: "اعمال تركيب المعدات الكهروميكانيكية وصيانتها",
+                srv10Desc: "تركيب وتشغيل وصيانة المعدات الكهروميكانيكية والأنظمة الصناعية والمنزلية المتكاملة.",
+                srv11Title: "صيانة احواض السباحة",
+                srv11Desc: "صيانة دورية لأحواض السباحة تشمل التنظيف، معالجة المياه، وصيانة الفلاتر والمضخات.",
+                srv12Title: "تركيب انظمة التكييف والتهوية وتنقية الهواء وصيانتها",
+                srv12Desc: "تركيب وصيانة أنظمة التكييف والتهوية وتصفية الهواء لضمان هواء نقي وبيئة مريحة.",
                 whyUsTitle: "لماذا تختارنا",
                 whyUsSub: "نضع معايير التميز في دولة الإمارات.",
                 why1Title: "خبراء معتمدون",
@@ -837,12 +992,12 @@ loadRrweb();
                 contactSubject: "الموضوع",
                 contactMessage: "رسالتك",
                 contactSubmit: "إرسال الرسالة",
-                footerDesc: "خدمات متميزة في صيانة المباني وإدارة المرافق في جميع أنحاء الإمارات العربية المتحدة.",
+                footerDesc: "نقدم خدمات صيانة المباني والحلول الفنية الموثوقة في جميع أنحاء دولة الإمارات، ملتزمين بالاحترافية والجودة والتميز في كل ما نقوم به.",
                 footerLinks: "روابط سريعة",
                 footerServices: "خدماتنا",
                 privacyPolicy: "سياسة الخصوصية",
                 termsOfService: "شروط الخدمة",
-                footerRights: "© 2024 وود جوينت لصيانة المباني. جميع الحقوق محفوظة."
+                footerRights: "© 2026 WOODJOINT لصيانة المباني ذ.م.م. جميع الحقوق محفوظة."
             }
         };
 
@@ -862,6 +1017,14 @@ loadRrweb();
                     el.innerHTML = translations[currentLang][key];
                 }
             });
+        }
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.add('hidden');
         }
         // Go to Top Button visibility
         const goToTopBtn = document.getElementById('goToTopBtn');

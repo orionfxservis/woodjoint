@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | WOODJOINT Building Maintenance L.L.C.</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#faf5f0',
+                            100: '#f6ebdc',
+                            200: '#ebd2bc',
+                            300: '#deba9b',
+                            400: '#c58f62',
+                            500: '#ab6d41',
+                            600: '#935227',
+                            700: '#7e411c',
+                            800: '#693212',
+                            900: '#0d233a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        html[dir='ltr'] { font-family: 'Outfit', sans-serif; }
+        html[dir='rtl'] { font-family: 'Cairo', sans-serif; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4">
+                <img src="../assets/images/logo.png" alt="WoodJoint Logo" class="h-10 w-10 object-contain" />
+                <div class="flex flex-col items-center justify-center text-center">
+                    <div class="text-xl font-extrabold tracking-wide uppercase leading-none font-sans">
+                        <span class="text-[#935227]">WOOD</span><span class="text-[#0d233a]">JOINT</span>
+                    </div>
+                    <span class="text-[8px] font-bold text-gray-500 uppercase tracking-[0.1em] mt-1 hidden xs:block">— CONSTRUCTION & MAINTENANCE —</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="../index.html" class="px-3 sm:px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold text-xs sm:text-sm">
+                    <span class="hidden sm:inline" data-i18n="navHome">Back to Home</span>
+                    <span class="inline sm:hidden">Home</span>
+                </a>
+                
+                <button onclick="toggleLanguage()" class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-brand-900 hover:bg-brand-800 text-white transition-colors font-bold text-xs sm:text-sm shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="hidden xs:inline" data-i18n="navLang">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-brand-900 text-white pt-32 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4" data-i18n="pageTitle">Privacy Policy</h1>
+            <p class="text-brand-200 text-lg md:text-xl font-medium" data-i18n="pageSub">WOODJOINT Building Maintenance L.L.C.</p>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-12 w-full">
+        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 leading-relaxed text-gray-700" id="policyContent" data-i18n="policyBody">
+            <!-- Content loaded dynamically via JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8 border-t border-gray-800 text-center">
+        <div class="max-w-7xl mx-auto px-4 text-sm text-gray-500">
+            <div data-i18n="footerRights">© 2024 WOODJOINT Building Maintenance L.L.C. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Script block -->
+    <script>
+        const translations = {
+            en: {
+                navHome: "Back to Home",
+                navLang: "العربية",
+                pageTitle: "Privacy Policy",
+                pageSub: "WOODJOINT Building Maintenance L.L.C.",
+                footerRights: "© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved.",
+                policyBody: `
+                    <div class="space-y-8">
+                        <div class="border-b border-gray-100 pb-6 text-sm text-gray-500">
+                            <strong>Effective Date:</strong> January 1, 2026
+                        </div>
+                        
+                        <p class="text-lg text-gray-600">WOODJOINT Building Maintenance L.L.C. ("WOODJOINT", "we", "our", or "us") values your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and safeguard your information when you visit our website or use our building maintenance and technical services within the United Arab Emirates.</p>
+                        
+                        <p class="text-sm bg-brand-50 text-brand-700 p-4 rounded-xl font-medium border-l-4 border-brand-600">This policy is intended to align with applicable laws and regulations of the United Arab Emirates regarding personal data protection.</p>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">1. Information We Collect</h2>
+                            <p>We may collect the following information:</p>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm font-semibold text-gray-600 bg-gray-50 p-6 rounded-2xl">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Full Name</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Company Name</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Email Address</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Mobile Number</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Property Address</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Emirate/Location</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Requested Services</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Project Details</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Uploaded Photos or Documents</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Communication History</li>
+                                <li class="flex items-center gap-2 md:col-span-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Website Usage Information (Cookies, IP Address, Browser Type)</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">2. How We Use Your Information</h2>
+                            <p>Your information is used to:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-gray-600">
+                                <li>Respond to inquiries and quotation requests</li>
+                                <li>Schedule site inspections and maintenance visits</li>
+                                <li>Deliver requested services</li>
+                                <li>Prepare quotations and invoices</li>
+                                <li>Improve our customer service</li>
+                                <li>Communicate project updates</li>
+                                <li>Send maintenance reminders (where applicable)</li>
+                                <li>Improve website performance and user experience</li>
+                                <li>Comply with legal and regulatory obligations</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">3. Sharing of Information</h2>
+                            <p>We do not sell, rent, or trade your personal information.</p>
+                            <p>Your information may only be shared with:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-gray-600">
+                                <li>Authorized employees</li>
+                                <li>Approved subcontractors working on your project</li>
+                                <li>Government authorities when legally required</li>
+                                <li>Technology providers supporting our website and business operations</li>
+                            </ul>
+                            <p class="text-sm font-semibold text-gray-500 mt-2">All third parties are expected to protect your information appropriately.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">4. Data Security</h2>
+                            <p>We implement appropriate administrative, technical, and organizational measures to protect your information against unauthorized access, loss, misuse, alteration, or disclosure.</p>
+                            <p>Although we strive to maintain the highest level of security, no internet transmission or electronic storage system can be guaranteed to be completely secure.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">5. Cookies</h2>
+                            <p>Our website may use cookies and similar technologies to:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-gray-600">
+                                <li>Improve website functionality</li>
+                                <li>Analyze website traffic</li>
+                                <li>Remember user preferences</li>
+                                <li>Enhance browsing experience</li>
+                            </ul>
+                            <p class="text-sm text-gray-500">You may disable cookies through your browser settings; however, some website features may not function properly.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">6. Third-Party Services</h2>
+                            <p>Our website may contain links to third-party websites such as Google Maps, WhatsApp, social media platforms, or other external services.</p>
+                            <p>We are not responsible for the privacy practices or content of these third-party websites.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">7. Your Rights</h2>
+                            <p>Subject to applicable UAE laws, you may have the right to:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-gray-600">
+                                <li>Request access to your personal information</li>
+                                <li>Request correction of inaccurate information</li>
+                                <li>Request deletion of your personal information where applicable</li>
+                                <li>Withdraw consent where processing is based on consent</li>
+                                <li>Contact us regarding any privacy concerns</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">8. Data Retention</h2>
+                            <p>We retain personal information only for as long as necessary to:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-gray-600">
+                                <li>Provide our services</li>
+                                <li>Fulfill contractual obligations</li>
+                                <li>Meet legal, accounting, and regulatory requirements</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">9. Children's Privacy</h2>
+                            <p>Our services are intended for individuals aged 18 years or older.</p>
+                            <p>We do not knowingly collect personal information from children.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">10. Changes to this Privacy Policy</h2>
+                            <p>WOODJOINT Building Maintenance L.L.C. reserves the right to update this Privacy Policy at any time.</p>
+                            <p>Any changes will become effective immediately upon publication on this website.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">11. Contact Us</h2>
+                            <p>If you have any questions regarding this Privacy Policy or your personal information, please contact us.</p>
+                            <div class="mt-4 p-6 bg-brand-50 rounded-2xl border border-brand-100 text-brand-900 font-semibold">
+                                WOODJOINT Building Maintenance L.L.C.<br/>
+                                United Arab Emirates
+                            </div>
+                        </section>
+                    </div>
+                `
+            },
+            ar: {
+                navHome: "العودة للرئيسية",
+                navLang: "English",
+                pageTitle: "سياسة الخصوصية",
+                pageSub: "شركة WOODJOINT Building Maintenance L.L.C.",
+                footerRights: "© 2026 WOODJOINT لصيانة المباني ذ.م.م. جميع الحقوق محفوظة.",
+                policyBody: `
+                    <div class="space-y-8" dir="rtl">
+                        <div class="border-b border-gray-100 pb-6 text-sm text-gray-500">
+                            <strong>تاريخ السريان:</strong> 1 يناير 2026
+                        </div>
+                        
+                        <p class="text-lg text-gray-600">تحترم شركة WOODJOINT Building Maintenance L.L.C. ("WOODJOINT" أو "نحن" أو "الشركة") خصوصية عملائها وتلتزم بحماية بياناتهم الشخصية. توضح هذه السياسة كيفية جمع المعلومات الشخصية واستخدامها وتخزينها وحمايتها عند زيارة موقعنا الإلكتروني أو الاستفادة من خدماتنا لصيانة المباني والخدمات الفنية داخل دولة الإمارات العربية المتحدة.</p>
+                        
+                        <p class="text-sm bg-brand-50 text-brand-700 p-4 rounded-xl font-medium border-r-4 border-brand-600">تم إعداد هذه السياسة بما يتوافق مع القوانين واللوائح المعمول بها في دولة الإمارات العربية المتحدة المتعلقة بحماية البيانات الشخصية.</p>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">1. المعلومات التي نقوم بجمعها</h2>
+                            <p>قد نقوم بجمع المعلومات التالية:</p>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm font-semibold text-gray-600 bg-gray-50 p-6 rounded-2xl">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> الاسم الكامل</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> اسم الشركة</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> البريد الإلكتروني</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> رقم الهاتف المتحرك</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> عنوان العقار</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> الإمارة/الموقع</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> الخدمات المطلوبة</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> تفاصيل المشروع</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> الصور أو المستندات المرفقة</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> سجل التواصل المتبادل</li>
+                                <li class="flex items-center gap-2 md:col-span-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> بيانات استخدام الموقع (ملفات تعريف الارتباط، عنوان IP، نوع المتصفح)</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">2. كيفية استخدام المعلومات</h2>
+                            <p>نستخدم المعلومات الشخصية لغايات:</p>
+                            <ul class="list-disc pr-5 space-y-1.5 text-gray-600">
+                                <li>الرد على الاستفسارات وطلبات عروض الأسعار</li>
+                                <li>جدولة الزيارات الميدانية وأعمال فحص المواقع والصيانة</li>
+                                <li>تقديم وتوصيل الخدمات المطلوبة</li>
+                                <li>إعداد الفواتير وعروض الأسعار والوثائق المالية</li>
+                                <li>تحسين مستوى جودة خدمات العملاء وتجربتهم</li>
+                                <li>إطلاعكم على مستجدات وسير العمل في المشاريع</li>
+                                <li>إرسال تذكيرات الصيانة الوقائية والدورية (عند الاقتضاء)</li>
+                                <li>تحسين أداء وسرعة الموقع الإلكتروني وتجربة المستخدم</li>
+                                <li>الالتزام التام بالمتطلبات والقوانين السارية</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">3. مشاركة المعلومات</h2>
+                            <p>نحن لا نبيع أو نؤجر أو نتاجر ببياناتكم الشخصية مع أي طرف ثالث.</p>
+                            <p>قد تتم مشاركة معلوماتكم فقط مع الجهات التالية:</p>
+                            <ul class="list-disc pr-5 space-y-1.5 text-gray-600">
+                                <li>الموظفين المخولين والتابعين للشركة</li>
+                                <li>المقاولين المعتمدين والمشرفين على تنفيذ المشروع</li>
+                                <li>الجهات الحكومية والرقابية عند وجود متطلبات قانونية</li>
+                                <li>مزودي الخدمات التقنية المساندة لأعمال وتشغيل موقع الشركة</li>
+                            </ul>
+                            <p class="text-sm font-semibold text-gray-500 mt-2">نلزم جميع الأطراف المعنية بحماية بياناتكم الشخصية والسرية بالمعايير المطلوبة.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">4. حماية البيانات وأمنها</h2>
+                            <p>نتخذ التدابير الإدارية، الفنية، والتنظيمية المناسبة لحماية بياناتكم ضد أي وصول غير مصرح به، أو فقدان، أو تعديل، أو إفصاح غير قانوني.</p>
+                            <p>ورغم تطبيق معايير الأمان العالية، يرجى العلم أنه لا يوجد نظام نقل بيانات عبر الإنترنت أو تخزين إلكتروني آمن بنسبة 100٪.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">5. ملفات تعريف الارتباط (Cookies)</h2>
+                            <p>قد يستخدم موقعنا ملفات تعريف الارتباط وتقنيات التتبع من أجل:</p>
+                            <ul class="list-disc pr-5 space-y-1.5 text-gray-600">
+                                <li>تحسين أداء ووظائف الموقع</li>
+                                <li>تحليل حركة الزوار والزيارات بشكل عام</li>
+                                <li>حفظ تفضيلات وإعدادات المستخدم</li>
+                                <li>تحسين تجربة تصفح المستخدم</li>
+                            </ul>
+                            <p class="text-sm text-gray-500">بإمكانكم تعطيل ملفات تعريف الارتباط من خلال إعدادات متصفحكم الخاص، لكن ذلك قد يؤثر على عمل بعض مزايا الموقع.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">6. خدمات الجهات الخارجية</h2>
+                            <p>قد يحتوي موقعنا على روابط خارجية تحول لجهات ومواقع أخرى (مثل Google Maps، WhatsApp، ومنصات التواصل الاجتماعي).</p>
+                            <p>ولا تتحمل الشركة مسؤولية سياسات الخصوصية الخاصة بهذه الجهات والمواقع الخارجية.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">7. حقوق المستخدم</h2>
+                            <p>بموجب قوانين حماية البيانات السارية في دولة الإمارات، قد يحق لكم:</p>
+                            <ul class="list-disc pr-5 space-y-1.5 text-gray-600">
+                                <li>طلب الوصول أو الاطلاع على بياناتكم الشخصية</li>
+                                <li>طلب تصحيح أو تعديل أي بيانات غير دقيقة</li>
+                                <li>طلب حذف بياناتكم الشخصية في الحالات المسموح بها قانونياً</li>
+                                <li>سحب موافقتكم على معالجة البيانات بأي وقت</li>
+                                <li>التواصل معنا بشأن أي استفسارات تتعلق بخصوصية بياناتكم</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">8. الاحتفاظ بالبيانات</h2>
+                            <p>نحتفظ ببياناتكم الشخصية فقط للمدة الزمنية اللازمة لـ:</p>
+                            <ul class="list-disc pr-5 space-y-1.5 text-gray-600">
+                                <li>تقديم وتأدية خدماتنا</li>
+                                <li>الوفاء بالالتزامات التعاقدية المشتركة</li>
+                                <li>تلبية المتطلبات القانونية والضريبية والتنظيمية</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">9. خصوصية الأطفال</h2>
+                            <p>لا تستهدف خدماتنا الأشخاص الذين تقل أعمارهم عن 18 عاماً، ولا نقوم بجمع بيانات الأطفال عن قصد.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">10. تعديل سياسة الخصوصية</h2>
+                            <p>تحتفظ شركة WOODJOINT Building Maintenance L.L.C. بالحق في تحديث سياسة الخصوصية هذه بأي وقت.</p>
+                            <p>وتصبح أي تعديلات سارية وملزمة فور نشرها بشكل مباشر على هذا الموقع.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">11. تواصل معنا</h2>
+                            <p>إذا كانت لديكم أي أسئلة أو استفسارات تتعلق بسياسة الخصوصية هذه، يرجى التواصل معنا.</p>
+                            <div class="mt-4 p-6 bg-brand-50 rounded-2xl border border-brand-100 text-brand-900 font-semibold">
+                                WOODJOINT Building Maintenance L.L.C.<br/>
+                                دولة الإمارات العربية المتحدة
+                            </div>
+                        </section>
+                    </div>
+                `
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            
+            // Toggle HTML direction & language
+            document.documentElement.dir = currentLang === 'en' ? 'ltr' : 'rtl';
+            document.documentElement.lang = currentLang;
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Initialize translations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Read all default English translations into elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations['en'][key]) {
+                    el.innerHTML = translations['en'][key];
+                }
+            });
+        });
+    </script>
+</body>
+</html>

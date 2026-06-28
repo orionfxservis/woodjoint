@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | WOODJOINT Building Maintenance L.L.C.</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#faf5f0',
+                            100: '#f6ebdc',
+                            200: '#ebd2bc',
+                            300: '#deba9b',
+                            400: '#c58f62',
+                            500: '#ab6d41',
+                            600: '#935227',
+                            700: '#7e411c',
+                            800: '#693212',
+                            900: '#0d233a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        html[dir='ltr'] { font-family: 'Outfit', sans-serif; }
+        html[dir='rtl'] { font-family: 'Cairo', sans-serif; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4">
+                <img src="../assets/images/logo.png" alt="WoodJoint Logo" class="h-10 w-10 object-contain" />
+                <div class="flex flex-col items-center justify-center text-center">
+                    <div class="text-xl font-extrabold tracking-wide uppercase leading-none font-sans">
+                        <span class="text-[#935227]">WOOD</span><span class="text-[#0d233a]">JOINT</span>
+                    </div>
+                    <span class="text-[8px] font-bold text-gray-500 uppercase tracking-[0.1em] mt-1 hidden xs:block">— CONSTRUCTION & MAINTENANCE —</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="../index.html" class="px-3 sm:px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold text-xs sm:text-sm">
+                    <span class="hidden sm:inline" data-i18n="navHome">Back to Home</span>
+                    <span class="inline sm:hidden">Home</span>
+                </a>
+                
+                <button onclick="toggleLanguage()" class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-brand-900 hover:bg-brand-800 text-white transition-colors font-bold text-xs sm:text-sm shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="hidden xs:inline" data-i18n="navLang">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-brand-900 text-white pt-32 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4" data-i18n="pageTitle">Terms of Service</h1>
+            <p class="text-brand-200 text-lg md:text-xl font-medium" data-i18n="pageSub">WOODJOINT Building Maintenance L.L.C.</p>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-12 w-full">
+        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 leading-relaxed text-gray-700" id="termsContent" data-i18n="termsBody">
+            <!-- Content loaded dynamically via JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8 border-t border-gray-800 text-center">
+        <div class="max-w-7xl mx-auto px-4 text-sm text-gray-500">
+            <div data-i18n="footerRights">© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Script block -->
+    <script>
+        const translations = {
+            en: {
+                navHome: "Back to Home",
+                navLang: "العربية",
+                pageTitle: "Terms of Service",
+                pageSub: "WOODJOINT Building Maintenance L.L.C.",
+                footerRights: "© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved.",
+                termsBody: `
+                    <div class="space-y-8">
+                        <div class="border-b border-gray-100 pb-6 text-sm text-gray-500">
+                            <strong>Effective Date:</strong> January 1, 2026
+                        </div>
+                        
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">1. Introduction</h2>
+                            <p>Welcome to the website of WOODJOINT Building Maintenance L.L.C. By accessing or using this website, requesting our services, or communicating with us through our website, email, telephone, or WhatsApp, you agree to comply with these Terms of Service.</p>
+                            <p>If you do not agree with these Terms, please discontinue use of our website and services.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">2. Company Information</h2>
+                            <p>WOODJOINT Building Maintenance L.L.C. provides professional building maintenance and technical services throughout the United Arab Emirates, including residential, commercial, and industrial properties.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">3. Scope of Services</h2>
+                            <p>Our services may include, but are not limited to:</p>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm font-semibold text-gray-600 bg-gray-50 p-6 rounded-2xl">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Building Maintenance</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Air Conditioning & Ventilation Systems</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Electrical Installation & Maintenance</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Plumbing & Sanitary Works</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Carpentry & Wood Flooring</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Concrete & Plaster Works</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Floor & Wall Tiling</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Steel Installation Works</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Swimming Pool Installation & Maint.</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Electromechanical Equipment</li>
+                                <li class="flex items-center gap-2 md:col-span-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Annual Maintenance Contracts (AMC)</li>
+                            </ul>
+                            <p class="text-sm text-gray-500 mt-2">Services are subject to site inspection, technical evaluation, and written quotation.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">4. Quotations</h2>
+                            <p>All quotations provided by WOODJOINT are:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-gray-600">
+                                <li>Free unless otherwise specified.</li>
+                                <li>Valid only for the stated validity period.</li>
+                                <li>Subject to site inspection and material availability.</li>
+                                <li>Subject to revision if project requirements change.</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">5. Customer Responsibilities</h2>
+                            <p>Customers agree to:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-gray-600">
+                                <li>Provide accurate information regarding the property and required services.</li>
+                                <li>Ensure safe access to the work site.</li>
+                                <li>Obtain any approvals required from landlords, developers, or government authorities where applicable.</li>
+                                <li>Make payments according to agreed terms.</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">6. Pricing & Payments</h2>
+                            <p>Project pricing will be specified in the official quotation or agreement.</p>
+                            <p>Payments shall be made according to the agreed schedule.</p>
+                            <p class="text-sm text-red-600 font-medium">Late payments may result in suspension of services until outstanding balances are settled.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">7. Scheduling</h2>
+                            <p>Service appointments are scheduled according to technician availability.</p>
+                            <p>While every effort is made to arrive on time, delays caused by traffic, weather, emergencies, or circumstances beyond our control may occur.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">8. Warranty</h2>
+                            <p>Where applicable, workmanship warranties apply only to services specifically covered in the quotation or agreement.</p>
+                            <p>Warranty does not cover:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-gray-600">
+                                <li>Customer misuse</li>
+                                <li>Unauthorized modifications</li>
+                                <li>Normal wear and tear</li>
+                                <li>Damage caused by third parties</li>
+                                <li>Force majeure events</li>
+                            </ul>
+                            <p class="text-sm text-gray-500">Manufacturer warranties remain subject to their respective manufacturers.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">9. Cancellation</h2>
+                            <p>Customers should notify us as early as possible if they need to cancel or reschedule an appointment.</p>
+                            <p>Cancellation policies may vary depending on the project scope and contractual agreement.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">10. Intellectual Property</h2>
+                            <p>All website content, including text, graphics, logos, images, layouts, and design elements, is the property of WOODJOINT Building Maintenance L.L.C. and may not be copied, reproduced, or distributed without prior written permission.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">11. Website Usage</h2>
+                            <p>Users agree not to:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-gray-600">
+                                <li>Misuse the website.</li>
+                                <li>Attempt unauthorized access.</li>
+                                <li>Introduce malicious software.</li>
+                                <li>Submit false or misleading information.</li>
+                                <li>Interfere with website functionality.</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">12. Limitation of Liability</h2>
+                            <p>To the maximum extent permitted by applicable law, WOODJOINT Building Maintenance L.L.C. shall not be liable for indirect, incidental, special, or consequential damages arising from the use of this website or our services.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">13. Force Majeure</h2>
+                            <p>The Company shall not be liable for delays or failure to perform obligations caused by circumstances beyond its reasonable control, including natural disasters, government actions, pandemics, labor disputes, or utility failures.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">14. Privacy</h2>
+                            <p>Your use of this website is also governed by our <a href="privacy-policy.html" class="text-brand-600 hover:underline">Privacy Policy</a>.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">15. Amendments</h2>
+                            <p>WOODJOINT Building Maintenance L.L.C. reserves the right to update or modify these Terms of Service at any time without prior notice.</p>
+                            <p>The latest version will always be published on this website.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">16. Governing Law</h2>
+                            <p>These Terms shall be governed by and interpreted in accordance with the applicable laws of the United Arab Emirates.</p>
+                            <p>Any disputes shall be subject to the jurisdiction of the competent courts within the UAE.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">17. Contact Information</h2>
+                            <div class="mt-4 p-6 bg-brand-50 rounded-2xl border border-brand-100 text-brand-900 font-semibold">
+                                WOODJOINT Building Maintenance L.L.C.<br/>
+                                United Arab Emirates
+                            </div>
+                        </section>
+                    </div>
+                `
+            },
+            ar: {
+                navHome: "العودة للرئيسية",
+                navLang: "English",
+                pageTitle: "شروط الخدمة",
+                pageSub: "شركة WOODJOINT Building Maintenance L.L.C.",
+                footerRights: "© 2026 WOODJOINT لصيانة المباني ذ.م.م. جميع الحقوق محفوظة.",
+                termsBody: `
+                    <div class="space-y-8" dir="rtl">
+                        <div class="border-b border-gray-100 pb-6 text-sm text-gray-500">
+                            <strong>تاريخ السريان:</strong> 1 يناير 2026
+                        </div>
+                        
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">1. مقدمة</h2>
+                            <p>مرحبًا بكم في الموقع الإلكتروني لشركة <strong>WOODJOINT Building Maintenance L.L.C.</strong> يُعد دخولكم إلى هذا الموقع أو استخدامه أو طلب أي من خدماتنا أو التواصل معنا عبر الموقع الإلكتروني أو البريد الإلكتروني أو الهاتف أو تطبيق واتساب موافقةً منكم على الالتزام بشروط الخدمة الواردة في هذه الصفحة.</p>
+                            <p>إذا كنتم لا توافقون على هذه الشروط، يُرجى عدم استخدام الموقع أو خدمات الشركة.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">2. معلومات الشركة</h2>
+                            <p>تقدم <strong>WOODJOINT Building Maintenance L.L.C.</strong> خدمات احترافية في مجال صيانة المباني والخدمات الفنية للمباني السكنية والتجارية والصناعية في جميع أنحاء دولة الإمارات العربية المتحدة.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">3. نطاق الخدمات</h2>
+                            <p>تشمل خدماتنا، على سبيل المثال لا الحصر:</p>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm font-semibold text-gray-600 bg-gray-50 p-6 rounded-2xl">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> صيانة المباني</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> تركيب وصيانة أنظمة التكييف والتهوية وتنقية الهواء</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> أعمال الكهرباء والتركيبات الكهربائية وصيانتها</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> أعمال السباكة والتمديدات الصحية</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> أعمال النجارة وتركيب الأرضيات الخشبية</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> أعمال الخرسانة والبلاستر</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> أعمال تبليط الأرضيات والجدران</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> تركيب وصيانة الأعمال الحديدية</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> تركيب وصيانة أحواض السباحة</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> تركيب وصيانة المعدات الكهروميكانيكية</li>
+                                <li class="flex items-center gap-2 md:col-span-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-2"></span> عقود الصيانة السنوية (AMC)</li>
+                            </ul>
+                            <p class="text-sm text-gray-500 mt-2">تخضع جميع الخدمات للمعاينة الفنية وإصدار عرض سعر رسمي قبل بدء التنفيذ.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">4. عروض الأسعار</h2>
+                            <p>جميع عروض الأسعار المقدمة من الشركة:</p>
+                            <ul class="list-disc pr-5 space-y-1.5 text-gray-600">
+                                <li>مجانية ما لم يُذكر خلاف ذلك.</li>
+                                <li>صالحة فقط خلال فترة الصلاحية المحددة.</li>
+                                <li>تعتمد على نتائج المعاينة الميدانية.</li>
+                                <li>قد يتم تعديلها في حال تغيير نطاق العمل أو المتطلبات الفنية.</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">5. مسؤوليات العميل</h2>
+                            <p>يلتزم العميل بما يلي:</p>
+                            <ul class="list-disc pr-5 space-y-1.5 text-gray-600">
+                                <li>تقديم معلومات صحيحة ودقيقة عن المشروع.</li>
+                                <li>توفير إمكانية الوصول الآمن إلى موقع العمل.</li>
+                                <li>الحصول على أي موافقات لازمة من المالك أو المطور العقاري أو الجهات الحكومية عند الحاجة.</li>
+                                <li>الالتزام بسداد المستحقات وفقًا للاتفاق.</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">6. الأسعار والدفع</h2>
+                            <p>يتم تحديد أسعار الخدمات ضمن عرض السعر أو العقد الرسمي.</p>
+                            <p>يلتزم العميل بسداد الدفعات وفق الجدول المتفق عليه.</p>
+                            <p class="text-sm text-red-600 font-medium">ويحق للشركة تعليق الخدمات في حال التأخر في السداد حتى تتم تسوية المستحقات المالية.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">7. المواعيد والتنفيذ</h2>
+                            <p>تُحدد مواعيد تنفيذ الأعمال وفقًا لتوفر الفرق الفنية.</p>
+                            <p>تبذل الشركة قصارى جهدها للالتزام بالمواعيد، إلا أن بعض الظروف الخارجة عن الإرادة مثل الازدحام المروري أو الأحوال الجوية أو الحالات الطارئة قد تؤدي إلى حدوث تأخير.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">8. الضمان</h2>
+                            <p>عند تطبيق الضمان، فإنه يغطي فقط الأعمال والخدمات الموضحة في عرض السعر أو العقد.</p>
+                            <p>ولا يشمل الضمان:</p>
+                            <ul class="list-disc pr-5 space-y-1.5 text-gray-600">
+                                <li>سوء الاستخدام.</li>
+                                <li>أي تعديلات أو إصلاحات تمت بواسطة أطراف أخرى.</li>
+                                <li>الاستهلاك الطبيعي.</li>
+                                <li>الأضرار الناتجة عن الكوارث الطبيعية أو الظروف القاهرة.</li>
+                                <li>الأعطال الناتجة عن سوء التشغيل.</li>
+                            </ul>
+                            <p class="text-sm text-gray-500">أما ضمانات المنتجات المصنعة فتخضع لشروط الشركات المصنعة.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">9. الإلغاء أو إعادة الجدولة</h2>
+                            <p>يُرجى إبلاغ الشركة في أقرب وقت ممكن في حال الرغبة في إلغاء أو إعادة جدولة موعد الخدمة.</p>
+                            <p>وقد تختلف سياسة الإلغاء حسب نوع المشروع أو العقد المبرم بين الطرفين.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">10. حقوق الملكية الفكرية</h2>
+                            <p>جميع محتويات هذا الموقع، بما في ذلك النصوص، والشعارات، والصور، والتصاميم، والرسومات، والهوية البصرية، هي ملك لشركة <strong>WOODJOINT Building Maintenance L.L.C.</strong> ولا يجوز نسخها أو إعادة استخدامها أو نشرها أو توزيعها دون موافقة كتابية مسبقة من الشركة.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">11. استخدام الموقع الإلكتروني</h2>
+                            <p>يوافق المستخدم على عدم:</p>
+                            <ul class="list-disc pr-5 space-y-1.5 text-gray-600">
+                                <li>إساءة استخدام الموقع.</li>
+                                <li>محاولة الوصول غير المصرح به إلى الأنظمة.</li>
+                                <li>إدخال أي برامج ضارة أو فيروسات.</li>
+                                <li>تقديم معلومات مضللة أو غير صحيحة.</li>
+                                <li>تعطيل أو التأثير على أداء الموقع.</li>
+                            </ul>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">12. تحديد المسؤولية</h2>
+                            <p>في الحدود التي يسمح بها القانون، لا تتحمل <strong>WOODJOINT Building Maintenance L.L.C.</strong> أي مسؤولية عن الأضرار غير المباشرة أو العرضية أو التبعية الناتجة عن استخدام الموقع الإلكتروني أو الخدمات المقدمة.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">13. القوة القاهرة</h2>
+                            <p>لا تتحمل الشركة أي مسؤولية عن التأخير أو عدم تنفيذ الالتزامات إذا كان ذلك نتيجة ظروف خارجة عن إرادتها، بما في ذلك الكوارث الطبيعية، أو القرارات الحكومية، أو الجوائح، أو النزاعات العمالية، أو انقطاع الخدمات العامة.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">14. الخصوصية</h2>
+                            <p>يخضع استخدامكم لهذا الموقع أيضًا لأحكام <strong>سياسة الخصوصية</strong> الخاصة بالشركة، والتي تُعد جزءًا من شروط الخدمة.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">15. تعديل شروط الخدمة</h2>
+                            <p>تحتفظ <strong>WOODJOINT Building Maintenance L.L.C.</strong> بحق تعديل أو تحديث شروط الخدمة في أي وقت دون إشعار مسبق.</p>
+                            <p>ويُعد استمرار استخدام الموقع بعد نشر التعديلات موافقةً على الشروط المحدثة.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">16. القانون الواجب التطبيق</h2>
+                            <p>تخضع هذه الشروط وتُفسر وفقًا للقوانين والأنظمة المعمول بها في <strong>دولة الإمارات العربية المتحدة</strong>.</p>
+                            <p>وتختص المحاكم المختصة في دولة الإمارات العربية المتحدة بالنظر في أي نزاع ينشأ عن استخدام الموقع أو الخدمات.</p>
+                        </section>
+
+                        <section class="space-y-3">
+                            <h2 class="text-xl font-bold text-brand-900">17. معلومات التواصل</h2>
+                            <div class="mt-4 p-6 bg-brand-50 rounded-2xl border border-brand-100 text-brand-900 font-semibold space-y-1">
+                                <p><strong>WOODJOINT Building Maintenance L.L.C.</strong></p>
+                                <p>دولة الإمارات العربية المتحدة</p>
+                                <p><strong>البريد الإلكتروني:</strong> <a href="mailto:info@woodjoint.ae" class="text-brand-600 hover:underline">info@woodjoint.ae</a></p>
+                                <p><strong>الهاتف:</strong> <span dir="ltr">+971 50 123 4567</span></p>
+                                <p><strong>الموقع الإلكتروني:</strong> <a href="http://www.woodjoint.ae" class="text-brand-600 hover:underline">www.woodjoint.ae</a></p>
+                            </div>
+                        </section>
+                    </div>
+                `
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            
+            // Toggle HTML direction & language
+            document.documentElement.dir = currentLang === 'en' ? 'ltr' : 'rtl';
+            document.documentElement.lang = currentLang;
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Initialize translations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Read all default English translations into elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations['en'][key]) {
+                    el.innerHTML = translations['en'][key];
+                }
+            });
+        });
+    </script>
+</body>
+</html>
