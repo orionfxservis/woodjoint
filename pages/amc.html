@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Maintenance Contract (AMC) | WOODJOINT Building Maintenance L.L.C.</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f2f7fc',
+                            100: '#e1eef7',
+                            200: '#e3d7c5',
+                            300: '#d2c2ad',
+                            400: '#a38f75',
+                            500: '#3288d0',
+                            600: '#1c75bc',
+                            700: '#165c94',
+                            800: '#0f4470',
+                            900: '#0d2c4e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        html[dir='ltr'] { font-family: 'Outfit', sans-serif; }
+        html[dir='rtl'] { font-family: 'Cairo', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        /* Before/After Slider Styles */
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            user-select: none;
+        }
+        .image-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .image-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        }
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: white;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            pointer-events: none;
+            color: #1c75bc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4">
+                <img src="../assets/images/logo.png" alt="WoodJoint Logo" class="h-10 w-10 object-contain" />
+                <div class="flex flex-col items-center justify-center text-center">
+                    <div class="text-xl font-extrabold tracking-wide uppercase leading-none font-sans">
+                        <span class="text-[#1c75bc]">WOOD</span><span class="text-[#0d2c4e]">JOINT</span>
+                    </div>
+                    <span class="text-[8px] font-bold text-gray-500 uppercase tracking-[0.1em] mt-1 hidden xs:block">— CONSTRUCTION & MAINTENANCE —</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="../index.html" class="px-3 sm:px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold text-xs sm:text-sm">
+                    <span class="hidden sm:inline" data-i18n="navHome">Back to Home</span>
+                    <span class="inline sm:hidden">Home</span>
+                </a>
+                
+                <button onclick="toggleLanguage()" class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-brand-900 hover:bg-brand-800 text-white transition-colors font-bold text-xs sm:text-sm shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="hidden xs:inline" data-i18n="navLang">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="bg-gradient-to-br from-brand-900 via-brand-800 to-brand-950 text-white pt-36 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-block px-4 py-1.5 bg-brand-600/30 text-brand-200 border border-brand-500/30 font-semibold rounded-full mb-6 text-sm" data-i18n="heroBadge">
+                Worry-Free Property Care
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight max-w-4xl mx-auto" data-i18n="heroTitle">
+                Annual Maintenance Contracts (AMC)
+            </h1>
+            <p class="text-brand-100 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10" data-i18n="heroSub">
+                Protect your home or business with custom maintenance plans. Reliable support, routine checks, and peace of mind 365 days a year.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#quote-form" class="bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-full transition-transform hover:scale-105 shadow-lg" data-i18n="heroCta1">
+                    Request AMC Quote
+                </a>
+                <a href="#packages" class="bg-white/10 hover:bg-white/20 text-white border border-white/25 font-bold px-8 py-4 rounded-full transition-all" data-i18n="heroCta2">
+                    View Plans
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Benefits of AMC -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-4" data-i18n="benefitsTitle">Benefits of having an AMC</h2>
+                <p class="text-gray-600 text-lg" data-i18n="benefitsSub">Why our contracts are the smart choice for smart property owners.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-700 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="benefit1Title">Save Money</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="benefit1Desc">Preventive care prevents costly emergency replacements. Save up to 40% on overall repair costs over time.</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-700 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="benefit2Title">Peace of Mind</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="benefit2Desc">Know that certified professionals are always just a call away. Safe, reliable, and guaranteed quality of service.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-700 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="benefit3Title">Priority Support</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="benefit3Desc">AMC holders receive top priority queue scheduling during peak times and emergencies with rapid response times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="py-24 bg-brand-50/50 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-brand-100 text-brand-800 rounded-full font-bold text-xs uppercase mb-4" data-i18n="baTag">Visible Results</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-brand-900 mb-6 leading-tight" data-i18n="baTitle">Experience the WoodJoint Standard</h2>
+                    <p class="text-gray-600 text-lg mb-6" data-i18n="baDesc">See the transformation yourself. Regular professional maintenance preserves material integrity, prevents leaks, decay, and discoloration, ensuring your property looks pristine year after year.</p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 font-semibold text-gray-700">
+                            <span class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs">✓</span>
+                            <span data-i18n="baPoint1">Prevention of heavy dust and mold buildups</span>
+                        </li>
+                        <li class="flex items-center gap-3 font-semibold text-gray-700">
+                            <span class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs">✓</span>
+                            <span data-i18n="baPoint2">Restores aesthetic value and durability</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Interactive Slider -->
+                <div class="slider-container aspect-video shadow-2xl relative" id="beforeAfterSlider">
+                    <!-- After Image -->
+                    <img src="../assets/images/after-renovation.jpg" alt="After Maintenance" class="image-after object-cover w-full h-full" />
+                    <!-- Before Image -->
+                    <div class="image-before">
+                        <img src="../assets/images/before-renovation.jpg" alt="Before Maintenance" class="object-cover w-full h-full" style="width: 100%; height: 100%; max-width: none;" />
+                    </div>
+                    <!-- Handle -->
+                    <div class="slider-handle">
+                        <div class="slider-button">↔</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMC Packages -->
+    <section id="packages" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-4" data-i18n="pkgTitle">Flexible Maintenance Packages</h2>
+                <p class="text-gray-600 text-lg" data-i18n="pkgSub">Choose the package that aligns with your property scale and requirements.</p>
+            </div>
+
+            <!-- Tabs/Toggles for Residential / Commercial -->
+            <div class="flex justify-center gap-4 mb-12">
+                <button onclick="switchTab('residential')" id="btn-res" class="px-6 py-3 rounded-full font-bold transition-all bg-brand-900 text-white shadow-md" data-i18n="tabRes">Residential AMC</button>
+                <button onclick="switchTab('commercial')" id="btn-comm" class="px-6 py-3 rounded-full font-bold transition-all bg-gray-100 text-gray-600 hover:bg-gray-200" data-i18n="tabComm">Commercial AMC</button>
+            </div>
+
+            <!-- Residential Packages Grid -->
+            <div id="residential-pkg" class="grid md:grid-cols-3 gap-8">
+                <!-- Basic -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div>
+                        <span class="text-sm font-extrabold uppercase text-gray-500 tracking-wider" data-i18n="pkgBasicTitle">Basic Plan</span>
+                        <h3 class="text-2xl font-bold text-brand-900 mt-2 mb-4" data-i18n="pkgBasicDesc">Essential Care</h3>
+                        <p class="text-gray-600 text-sm mb-6" data-i18n="pkgBasicIntro">Perfect for apartments and small properties needing core maintenance checks.</p>
+                        <ul class="space-y-3 border-t border-gray-200/50 pt-6 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgBasicP1">2 Planned Preventive Visits/Year</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgBasicP2">A/C Filter Cleaning</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgBasicP3">Basic Plumbing Checkup</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgBasicP4">Basic Electrical Inspection</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgBasicP5">Emergency Support (24h turnaround)</span></li>
+                        </ul>
+                    </div>
+                    <a href="#quote-form" onclick="selectPackageFromPlans('Residential AMC', 'Basic')" class="block text-center bg-brand-900 hover:bg-brand-800 text-white font-bold py-3 px-6 rounded-xl transition-all" data-i18n="selectPlan">Select Plan</a>
+                </div>
+
+                <!-- Standard -->
+                <div class="bg-white border-2 border-brand-600 rounded-3xl p-8 shadow-xl relative flex flex-col justify-between">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-600 text-white font-extrabold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full" data-i18n="pkgPopular">Most Popular</div>
+                    <div>
+                        <span class="text-sm font-extrabold uppercase text-brand-600 tracking-wider" data-i18n="pkgStandardTitle">Standard Plan</span>
+                        <h3 class="text-2xl font-bold text-brand-900 mt-2 mb-4" data-i18n="pkgStandardDesc">Complete Comfort</h3>
+                        <p class="text-gray-600 text-sm mb-6" data-i18n="pkgStandardIntro">Ideal for villas and standard residential apartments.</p>
+                        <ul class="space-y-3 border-t border-gray-200/50 pt-6 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgStdP1">4 Planned Preventive Visits/Year</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgStdP2">A/C Complete Coil & Filter Wash</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgStdP3">Full Plumbing & Sanitary Checkup</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgStdP4">Complete Electrical System Safety</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgStdP5">Carpentry, Doors & Locks Check</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgStdP6">24/7 Emergency Support (2h response)</span></li>
+                        </ul>
+                    </div>
+                    <a href="#quote-form" onclick="selectPackageFromPlans('Residential AMC', 'Standard')" class="block text-center bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-6 rounded-xl transition-all" data-i18n="selectPlan">Select Plan</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div>
+                        <span class="text-sm font-extrabold uppercase text-gray-500 tracking-wider" data-i18n="pkgPremiumTitle">Premium Plan</span>
+                        <h3 class="text-2xl font-bold text-brand-900 mt-2 mb-4" data-i18n="pkgPremiumDesc">Elite Care</h3>
+                        <p class="text-gray-600 text-sm mb-6" data-i18n="pkgPremiumIntro">Maximum protection including pool care, wall tiling checks, and zero service call charges.</p>
+                        <ul class="space-y-3 border-t border-gray-200/50 pt-6 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPreP1">Unlimited Emergency Callouts</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPreP2">6 Planned Preventive Visits/Year</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPreP3">HVAC, Plumbing, Electrical, Handyman</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPreP4">Swimming Pool Inspection & Cleaning</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPreP5">Painting touchups & Floor Grout Care</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPreP6">Priority 24/7 Hotline (<1h response)</span></li>
+                        </ul>
+                    </div>
+                    <a href="#quote-form" onclick="selectPackageFromPlans('Residential AMC', 'Premium')" class="block text-center bg-brand-900 hover:bg-brand-800 text-white font-bold py-3 px-6 rounded-xl transition-all" data-i18n="selectPlan">Select Plan</a>
+                </div>
+            </div>
+
+            <!-- Commercial Packages Grid (Hidden by default) -->
+            <div id="commercial-pkg" class="grid md:grid-cols-3 gap-8 hidden">
+                <!-- Silver -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div>
+                        <span class="text-sm font-extrabold uppercase text-gray-500 tracking-wider" data-i18n="pkgSilverTitle">Silver Plan</span>
+                        <h3 class="text-2xl font-bold text-brand-900 mt-2 mb-4" data-i18n="pkgSilverDesc">Commercial Starter</h3>
+                        <p class="text-gray-600 text-sm mb-6" data-i18n="pkgSilverIntro">Perfect for offices and light retail setups requiring scheduled inspections.</p>
+                        <ul class="space-y-3 border-t border-gray-200/50 pt-6 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgSilP1">Quarterly Scheduled System Inspections</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgSilP2">HVAC Filter Cleaning & Checks</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgSilP3">Distribution Board & DB Checks</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgSilP4">Plumbing Maintenance</span></li>
+                        </ul>
+                    </div>
+                    <a href="#quote-form" onclick="selectPackageFromPlans('Commercial AMC', 'Silver')" class="block text-center bg-brand-900 hover:bg-brand-800 text-white font-bold py-3 px-6 rounded-xl transition-all" data-i18n="selectPlan">Select Plan</a>
+                </div>
+
+                <!-- Gold -->
+                <div class="bg-white border-2 border-brand-600 rounded-3xl p-8 shadow-xl relative flex flex-col justify-between">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-600 text-white font-extrabold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full" data-i18n="pkgPopular">Most Popular</div>
+                    <div>
+                        <span class="text-sm font-extrabold uppercase text-brand-600 tracking-wider" data-i18n="pkgGoldTitle">Gold Plan</span>
+                        <h3 class="text-2xl font-bold text-brand-900 mt-2 mb-4" data-i18n="pkgGoldDesc">Premium Corporate</h3>
+                        <p class="text-gray-600 text-sm mb-6" data-i18n="pkgGoldIntro">Designed for large corporate offices, warehouses, clinics, and restaurants.</p>
+                        <ul class="space-y-3 border-t border-gray-200/50 pt-6 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgGoldP1">Monthly System Diagnostics & Reports</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgGoldP2">Comprehensive HVAC Maintenance</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgGoldP3">Thermal Imaging on Electrical Boards</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgGoldP4">Plumbing pressure test & Valve checks</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgGoldP5">24/7 Priority Emergency Dispatch</span></li>
+                        </ul>
+                    </div>
+                    <a href="#quote-form" onclick="selectPackageFromPlans('Commercial AMC', 'Gold')" class="block text-center bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-6 rounded-xl transition-all" data-i18n="selectPlan">Select Plan</a>
+                </div>
+
+                <!-- Platinum -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div>
+                        <span class="text-sm font-extrabold uppercase text-gray-500 tracking-wider" data-i18n="pkgPlatinumTitle">Platinum Plan</span>
+                        <h3 class="text-2xl font-bold text-brand-900 mt-2 mb-4" data-i18n="pkgPlatinumDesc">Commercial Enterprise</h3>
+                        <p class="text-gray-600 text-sm mb-6" data-i18n="pkgPlatinumIntro">Full-suite coverage for hotels, schools, and large retail outlets with dedicated technicians.</p>
+                        <ul class="space-y-3 border-t border-gray-200/50 pt-6 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPlatP1">Dedicated Key Account Manager</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPlatP2">Bi-weekly Inspections & Custom Audits</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPlatP3">Complete Electromechanical diagnostics</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPlatP4">Building Fabric & Carpentry updates</span></li>
+                            <li class="flex items-center gap-2"><span class="text-brand-600 font-bold">✔</span> <span data-i18n="pkgPlatP5">Guaranteed Response under 1 Hour</span></li>
+                        </ul>
+                    </div>
+                    <a href="#quote-form" onclick="selectPackageFromPlans('Commercial AMC', 'Platinum')" class="block text-center bg-brand-900 hover:bg-brand-800 text-white font-bold py-3 px-6 rounded-xl transition-all" data-i18n="selectPlan">Select Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="py-24 bg-brand-50/50 border-t border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-4" data-i18n="incTitle">What's Included in our Contracts?</h2>
+                <p class="text-gray-600 text-lg" data-i18n="incSub">A transparent, modular approach covering every element of property preservation.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center">
+                    <div class="text-3xl mb-3">❄️</div>
+                    <h4 class="font-bold text-gray-900 mb-1" data-i18n="incA/C">A/C & HVAC</h4>
+                    <p class="text-xs text-gray-500" data-i18n="incA/CDesc">Filter cleaning, gas checking, thermostat calibrations, coil washing</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center">
+                    <div class="text-3xl mb-3">🚰</div>
+                    <h4 class="font-bold text-gray-900 mb-1" data-i18n="incPlumbing">Plumbing</h4>
+                    <p class="text-xs text-gray-500" data-i18n="incPlumbingDesc">Leak detections, pressure testing, tap fixes, drain declogging</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center">
+                    <div class="text-3xl mb-3">⚡</div>
+                    <h4 class="font-bold text-gray-900 mb-1" data-i18n="incElec">Electrical</h4>
+                    <p class="text-xs text-gray-500" data-i18n="incElecDesc">Inspecting breaker boards, lighting, switches, voltage balancing</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center">
+                    <div class="text-3xl mb-3">🪵</div>
+                    <h4 class="font-bold text-gray-900 mb-1" data-i18n="incCarp">Carpentry</h4>
+                    <p class="text-xs text-gray-500" data-i18n="incCarpDesc">Door alignment, cupboard handles, hinges, door lock repairs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-bold text-brand-900 mb-6 leading-tight" data-i18n="whyTitle">Why Choose WoodJoint?</h2>
+                    <p class="text-gray-600 text-lg mb-8" data-i18n="whyDesc">We set a benchmark of accountability, modern diagnostic tooling, and licensed professional standard operations in the UAE.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="text-2xl">🏆</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900" data-i18n="whyPoint1Title">Fully Licensed & Certified</h4>
+                                <p class="text-sm text-gray-500" data-i18n="whyPoint1Desc">Operating strictly under regulatory approvals across all Emirates.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="text-2xl">⏱️</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900" data-i18n="whyPoint2Title">Guaranteed Response Times</h4>
+                                <p class="text-sm text-gray-500" data-i18n="whyPoint2Desc">No waiting for hours. We honor committed service windows.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-brand-900 rounded-3xl p-10 text-white relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-brand-800 rounded-full opacity-50"></div>
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="badgeTitle">WoodJoint Guarantee</h3>
+                    <p class="text-brand-100 text-sm leading-relaxed mb-6" data-i18n="badgeDesc">Our contracts come with fully transparent service logging. Every customer receives digital completion reports right after visits.</p>
+                    <div class="text-4xl font-extrabold text-brand-200">100%</div>
+                    <div class="text-xs uppercase font-semibold text-brand-300" data-i18n="badgeStat">Quality & Safety Compliant</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-gray-50 border-t border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-4" data-i18n="testTitle">Client Reviews</h2>
+                <p class="text-gray-600 text-lg" data-i18n="testSub">What our active AMC corporate & residential customers say.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <p class="text-gray-600 italic mb-6">"Since signing up for WoodJoint's Commercial Gold AMC for our corporate office in Dubai, we have faced zero A/C issues. Their team is extremely professional and always on time."</p>
+                    <div class="font-bold text-gray-900">Ahmed Al-Mansoori</div>
+                    <div class="text-xs text-gray-500">Business Owner, Dubai</div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <p class="text-gray-600 italic mb-6">"Having their Residential Standard package has been a lifesaver. We had a plumbing leak at midnight, and their emergency technician arrived in less than an hour."</p>
+                    <div class="font-bold text-gray-900">Sarah Jenkins</div>
+                    <div class="text-xs text-gray-500">Villa Owner, Abu Dhabi</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request AMC Quote Form -->
+    <section id="quote-form" class="py-24 bg-white scroll-mt-24">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-brand-900 mb-4" data-i18n="formTitle">Request AMC Quote</h2>
+                <p class="text-gray-600 text-lg" data-i18n="formSub">Fill out the form below, and our property managers will design a tailored plan for you.</p>
+            </div>
+
+            <form id="amcForm" class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-100 space-y-8" onsubmit="handleFormSubmit(event)">
+                
+                <!-- Customer Information -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="secCustInfo">Customer Information</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelName">Full Name *</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelCompany">Company Name (Optional)</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelPhone">Mobile Number *</label>
+                            <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" placeholder="+971 XX XXX XXXX" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelEmail">Email Address *</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" />
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-3" data-i18n="labelContactMethod">Preferred Contact Method</label>
+                        <div class="flex gap-6">
+                            <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                                <input type="radio" name="contactMethod" value="Phone" checked class="text-brand-600 focus:ring-brand-500" />
+                                <span data-i18n="optPhone">Phone</span>
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                                <input type="radio" name="contactMethod" value="WhatsApp" class="text-brand-600 focus:ring-brand-500" />
+                                <span data-i18n="optWA">WhatsApp</span>
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                                <input type="radio" name="contactMethod" value="Email" class="text-brand-600 focus:ring-brand-500" />
+                                <span data-i18n="optEmail">Email</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Information -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="secPropInfo">Property Information</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelPropType">Property Type *</label>
+                            <select id="amcPropType" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all">
+                                <option value="" disabled selected data-i18n="selPropType">▼ Select Property Type</option>
+                                <option value="Apartment" data-i18n="optApart">Apartment</option>
+                                <option value="Villa" data-i18n="optVilla">Villa</option>
+                                <option value="Office" data-i18n="optOffice">Office</option>
+                                <option value="Retail Shop" data-i18n="optRetail">Retail Shop</option>
+                                <option value="Restaurant" data-i18n="optRest">Restaurant</option>
+                                <option value="Warehouse" data-i18n="optWare">Warehouse</option>
+                                <option value="Hotel" data-i18n="optHotel">Hotel</option>
+                                <option value="Clinic" data-i18n="optClinic">Clinic</option>
+                                <option value="School" data-i18n="optSchool">School</option>
+                                <option value="Other" data-i18n="optOther">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelPropSize">Property Size</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all">
+                                <option value="Studio" data-i18n="optStudio">Studio</option>
+                                <option value="1 Bedroom" data-i18n="opt1B">1 Bedroom</option>
+                                <option value="2 Bedroom" data-i18n="opt2B">2 Bedroom</option>
+                                <option value="3 Bedroom" data-i18n="opt3B">3 Bedroom</option>
+                                <option value="Villa" data-i18n="optVillaSize">Villa</option>
+                                <option value="Office" data-i18n="optOfficeSize">Office</option>
+                                <option value="Warehouse" data-i18n="optWareSize">Warehouse</option>
+                                <option value="Other" data-i18n="optOtherSize">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AMC Configuration -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="secAmcType">AMC Type</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelAmcCat">AMC Category *</label>
+                            <select id="amcCategory" required onchange="handleCategoryChange()" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all">
+                                <option value="" disabled selected data-i18n="selAmcCat">▼ Select</option>
+                                <option value="Residential AMC" data-i18n="optResAMC">Residential AMC</option>
+                                <option value="Commercial AMC" data-i18n="optCommAMC">Commercial AMC</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelPkg">Package</label>
+                            <select id="amcPackage" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all">
+                                <option value="" disabled selected data-i18n="selPkg">▼ Select Package</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Required -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="secSrvReq">Services Required</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Building Maintenance" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvMaint">Building Maintenance</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="AC" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvAC">Air Conditioning (HVAC)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Electrical" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvElec">Electrical</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Plumbing" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvPlumb">Plumbing</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Carpentry" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvCarp">Carpentry</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Painting" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvPaint">Painting</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Tiling" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvTile">Floor & Wall Tiling</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Pool" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvPool">Swimming Pool</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Steel" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvSteel">Steel Works</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Electromechanical" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvElectro">Electromechanical</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Inspection" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvInsp">Annual Inspection</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:bg-brand-50 hover:border-brand-100 transition-all cursor-pointer">
+                            <input type="checkbox" name="services" value="Emergency" class="rounded text-brand-600 focus:ring-brand-500" />
+                            <span class="text-sm font-medium text-gray-700" data-i18n="srvEmerg">Emergency Support</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Logistics -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="secLogistics">Logistics</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelEmirate">Emirate *</label>
+                            <select id="amcEmirate" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all">
+                                <option value="Dubai">Dubai</option>
+                                <option value="Abu Dhabi">Abu Dhabi</option>
+                                <option value="Sharjah">Sharjah</option>
+                                <option value="Ajman">Ajman</option>
+                                <option value="RAK">Ras Al Khaimah</option>
+                                <option value="UAQ">Umm Al Quwain</option>
+                                <option value="Fujairah">Fujairah</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelDate">Preferred Visit Date</label>
+                            <input type="date" id="amcDate" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Images -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="secUpload">Upload Images</h3>
+                    <div class="border-2 border-dashed border-gray-200 rounded-3xl p-8 text-center bg-gray-50 hover:bg-brand-50/20 hover:border-brand-400 transition-all cursor-pointer relative" id="dragDropArea" onclick="document.getElementById('fileInput').click()">
+                        <input type="file" id="fileInput" multiple accept="image/*" class="hidden" onchange="handleFileSelect(event)" />
+                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <p class="font-bold text-gray-700 text-sm mb-1" data-i18n="uploadPhotos">Upload Photos</p>
+                        <p class="text-xs text-gray-400 mb-2" data-i18n="dragDrop">Drag & Drop</p>
+                        <span class="inline-block px-4 py-1.5 bg-white border border-gray-200 rounded-lg text-xs font-bold text-gray-600 hover:bg-gray-50 mb-2" data-i18n="chooseFiles">Choose Files</span>
+                        <p class="text-[10px] text-gray-400" data-i18n="maxImages">(Max 10 Images)</p>
+                        <div id="fileList" class="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-2 pointer-events-none"></div>
+                    </div>
+                </div>
+
+                <!-- Additional Requirements -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="secRequirements">Additional Requirements</h3>
+                    <textarea id="amcRequirements" rows="5" class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" placeholder="Tell us about your maintenance requirements..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-[#1c75bc] hover:bg-[#165c94] text-white font-extrabold py-5 rounded-2xl shadow-xl transition-all hover:scale-[1.01] active:scale-[0.99] text-center text-lg uppercase tracking-wider" data-i18n="btnSubmit">
+                    REQUEST FREE AMC QUOTATION
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800 text-center mt-auto">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col items-center gap-4 mb-6">
+                <div class="text-2xl font-extrabold tracking-wide uppercase leading-none font-sans text-white">
+                    <span class="text-[#1c75bc]">WOOD</span>JOINT
+                </div>
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="../index.html" class="hover:text-white transition-colors" data-i18n="navHome">Home</a>
+                    <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+            <div class="text-xs text-gray-500" data-i18n="footerRights">© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Translations & Interactivity Script -->
+    <script>
+        const translations = {
+            en: {
+                navHome: "Back to Home",
+                navLang: "العربية",
+                heroBadge: "Worry-Free Property Care",
+                heroTitle: "Annual Maintenance Contracts (AMC)",
+                heroSub: "Protect your home or business with custom maintenance plans. Reliable support, routine checks, and peace of mind 365 days a year.",
+                heroCta1: "Request AMC Quote",
+                heroCta2: "View Plans",
+                benefitsTitle: "Benefits of having an AMC",
+                benefitsSub: "Why our contracts are the smart choice for smart property owners.",
+                benefit1Title: "Save Money",
+                benefit1Desc: "Preventive care prevents costly emergency replacements. Save up to 40% on overall repair costs over time.",
+                benefit2Title: "Peace of Mind",
+                benefit2Desc: "Know that certified professionals are always just a call away. Safe, reliable, and guaranteed quality of service.",
+                benefit3Title: "Priority Support",
+                benefit3Desc: "AMC holders receive top priority queue scheduling during peak times and emergencies with rapid response times.",
+                baTag: "Visible Results",
+                baTitle: "Experience the WoodJoint Standard",
+                baDesc: "See the transformation yourself. Regular professional maintenance preserves material integrity, prevents leaks, decay, and discoloration, ensuring your property looks pristine year after year.",
+                baPoint1: "Prevention of heavy dust and mold buildups",
+                baPoint2: "Restores aesthetic value and durability",
+                pkgTitle: "Flexible Maintenance Packages",
+                pkgSub: "Choose the package that aligns with your property scale and requirements.",
+                tabRes: "Residential AMC",
+                tabComm: "Commercial AMC",
+                pkgBasicTitle: "Basic Plan",
+                pkgBasicDesc: "Essential Care",
+                pkgBasicIntro: "Perfect for apartments and small properties needing core maintenance checks.",
+                pkgBasicP1: "2 Planned Preventive Visits/Year",
+                pkgBasicP2: "A/C Filter Cleaning",
+                pkgBasicP3: "Basic Plumbing Checkup",
+                pkgBasicP4: "Basic Electrical Inspection",
+                pkgBasicP5: "Emergency Support (24h turnaround)",
+                pkgPopular: "Most Popular",
+                pkgStandardTitle: "Standard Plan",
+                pkgStandardDesc: "Complete Comfort",
+                pkgStandardIntro: "Ideal for villas and standard residential apartments.",
+                pkgStdP1: "4 Planned Preventive Visits/Year",
+                pkgStdP2: "A/C Complete Coil & Filter Wash",
+                pkgStdP3: "Full Plumbing & Sanitary Checkup",
+                pkgStdP4: "Complete Electrical System Safety",
+                pkgStdP5: "Carpentry, Doors & Locks Check",
+                pkgStdP6: "24/7 Emergency Support (2h response)",
+                pkgPremiumTitle: "Premium Plan",
+                pkgPremiumDesc: "Elite Care",
+                pkgPremiumIntro: "Maximum protection including pool care, wall tiling checks, and zero service call charges.",
+                pkgPreP1: "Unlimited Emergency Callouts",
+                pkgPreP2: "6 Planned Preventive Visits/Year",
+                pkgPreP3: "HVAC, Plumbing, Electrical, Handyman",
+                pkgPreP4: "Swimming Pool Inspection & Cleaning",
+                pkgPreP5: "Painting touchups & Floor Grout Care",
+                pkgPreP6: "Priority 24/7 Hotline (<1h response)",
+                pkgSilverTitle: "Silver Plan",
+                pkgSilverDesc: "Commercial Starter",
+                pkgSilverIntro: "Perfect for offices and light retail setups requiring scheduled inspections.",
+                pkgSilP1: "Quarterly Scheduled System Inspections",
+                pkgSilP2: "HVAC Filter Cleaning & Checks",
+                pkgSilP3: "Distribution Board & DB Checks",
+                pkgSilP4: "Plumbing Maintenance",
+                pkgGoldTitle: "Gold Plan",
+                pkgGoldDesc: "Premium Corporate",
+                pkgGoldIntro: "Designed for large corporate offices, warehouses, clinics, and restaurants.",
+                pkgGoldP1: "Monthly System Diagnostics & Reports",
+                pkgGoldP2: "Comprehensive HVAC Maintenance",
+                pkgGoldP3: "Thermal Imaging on Electrical Boards",
+                pkgGoldP4: "Plumbing pressure test & Valve checks",
+                pkgGoldP5: "24/7 Priority Emergency Dispatch",
+                pkgPlatinumTitle: "Platinum Plan",
+                pkgPlatinumDesc: "Commercial Enterprise",
+                pkgPlatinumIntro: "Full-suite coverage for hotels, schools, and large retail outlets with dedicated technicians.",
+                pkgPlatP1: "Dedicated Key Account Manager",
+                pkgPlatP2: "Bi-weekly Inspections & Custom Audits",
+                pkgPlatP3: "Complete Electromechanical diagnostics",
+                pkgPlatP4: "Building Fabric & Carpentry updates",
+                pkgPlatP5: "Guaranteed Response under 1 Hour",
+                selectPlan: "Select Plan",
+                incTitle: "What's Included in our Contracts?",
+                incSub: "A transparent, modular approach covering every element of property preservation.",
+                "incA/C": "A/C & HVAC",
+                "incA/CDesc": "Filter cleaning, gas checking, thermostat calibrations, coil washing",
+                incPlumbing: "Plumbing",
+                incPlumbingDesc: "Leak detections, pressure testing, tap fixes, drain declogging",
+                incElec: "Electrical",
+                incElecDesc: "Inspecting breaker boards, lighting, switches, voltage balancing",
+                incCarp: "Carpentry",
+                incCarpDesc: "Door alignment, cupboard handles, hinges, door lock repairs",
+                whyTitle: "Why Choose WoodJoint?",
+                whyDesc: "We set a benchmark of accountability, modern diagnostic tooling, and licensed professional standard operations in the UAE.",
+                whyPoint1Title: "Fully Licensed & Certified",
+                whyPoint1Desc: "Operating strictly under regulatory approvals across all Emirates.",
+                whyPoint2Title: "Guaranteed Response Times",
+                whyPoint2Desc: "No waiting for hours. We honor committed service windows.",
+                badgeTitle: "WoodJoint Guarantee",
+                badgeDesc: "Our contracts come with fully transparent service logging. Every customer receives digital completion reports right after visits.",
+                badgeStat: "Quality & Safety Compliant",
+                testTitle: "Client Reviews",
+                testSub: "What our active AMC corporate & residential customers say.",
+                formTitle: "Request AMC Quote",
+                formSub: "Fill out the form below, and our property managers will design a tailored plan for you.",
+                secCustInfo: "Customer Information",
+                labelName: "Full Name *",
+                labelCompany: "Company Name (Optional)",
+                labelPhone: "Mobile Number *",
+                labelEmail: "Email Address *",
+                labelContactMethod: "Preferred Contact Method",
+                optPhone: "Phone",
+                optWA: "WhatsApp",
+                optEmail: "Email",
+                secPropInfo: "Property Information",
+                labelPropType: "Property Type *",
+                selPropType: "▼ Select Property Type",
+                optApart: "Apartment",
+                optVilla: "Villa",
+                optOffice: "Office",
+                optRetail: "Retail Shop",
+                optRest: "Restaurant",
+                optWare: "Warehouse",
+                optHotel: "Hotel",
+                optClinic: "Clinic",
+                optSchool: "School",
+                optOther: "Other",
+                labelPropSize: "Property Size",
+                optStudio: "Studio",
+                opt1B: "1 Bedroom",
+                opt2B: "2 Bedroom",
+                opt3B: "3 Bedroom",
+                optVillaSize: "Villa Size / Standard",
+                optOfficeSize: "Office Space",
+                optWareSize: "Warehouse Area",
+                optOtherSize: "Other Size",
+                secAmcType: "AMC Type",
+                labelAmcCat: "AMC Category *",
+                selAmcCat: "▼ Select",
+                optResAMC: "Residential AMC",
+                optCommAMC: "Commercial AMC",
+                labelPkg: "Package",
+                selPkg: "▼ Select Package",
+                secSrvReq: "Services Required",
+                srvMaint: "Building Maintenance",
+                srvAC: "Air Conditioning (HVAC)",
+                srvElec: "Electrical",
+                srvPlumb: "Plumbing",
+                srvCarp: "Carpentry",
+                srvPaint: "Painting",
+                srvTile: "Floor & Wall Tiling",
+                srvPool: "Swimming Pool",
+                srvSteel: "Steel Works",
+                srvElectro: "Electromechanical",
+                srvInsp: "Annual Inspection",
+                srvEmerg: "Emergency Support",
+                secLogistics: "Logistics",
+                labelEmirate: "Emirate *",
+                labelDate: "Preferred Visit Date",
+                btnSubmit: "REQUEST FREE AMC QUOTATION",
+                secUpload: "Upload Images",
+                uploadPhotos: "Upload Photos",
+                dragDrop: "Drag & Drop",
+                chooseFiles: "Choose Files",
+                maxImages: "(Max 10 Images)",
+                secRequirements: "Additional Requirements",
+                footerRights: "© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved."
+            },
+            ar: {
+                navHome: "العودة للرئيسية",
+                navLang: "English",
+                heroBadge: "رعاية عقارية خالية من المتاعب",
+                heroTitle: "عقود الصيانة السنوية (AMC)",
+                heroSub: "احمِ منزلك أو عملك مع خطط صيانة مخصصة. دعم موثوق وفحوصات دورية وراحة بال طوال العام.",
+                heroCta1: "طلب عرض سعر صيانة",
+                heroCta2: "عرض الباقات",
+                benefitsTitle: "فوائد الحصول على عقد صيانة سنوي",
+                benefitsSub: "لماذا تعتبر عقودنا خيارًا ذكيًا لأصحاب العقارات الأذكياء.",
+                benefit1Title: "توفير المال",
+                benefit1Desc: "الصيانة الوقائية تمنع الأعطال المكلفة. وفر حتى 40% من تكاليف الإصلاح على المدى الطويل.",
+                benefit2Title: "راحة البال",
+                benefit2Desc: "تأكد من أن الفنيين المحترفين على بعد مكالمة واحدة فقط. خدمة آمنة ومضمونة الجودة.",
+                benefit3Title: "دعم ذو أولوية",
+                benefit3Desc: "يحصل مشتركو الصيانة السنوية على الأولوية في الجدولة أثناء الطوارئ وبأوقات الذروة.",
+                baTag: "نتائج ملحوظة",
+                baTitle: "اختبر معايير وود جوينت الاحترافية",
+                baDesc: "شاهد الفرق بنفسك. تحافظ الصيانة الدورية الاحترافية على سلامة المواد وتمنع التسريبات والتلف والتغير اللوني ليبقى عقارك كأنه جديد.",
+                baPoint1: "منع تراكم الأتربة والعفن",
+                baPoint2: "يعيد القيمة الجمالية والوقائية للعقار",
+                pkgTitle: "باقات صيانة مرنة",
+                pkgSub: "اختر الباقة التي تناسب حجم عقارك واحتياجاتك الصيانة.",
+                tabRes: "عقود صيانة سكنية",
+                tabComm: "عقود صيانة تجارية",
+                pkgBasicTitle: "الباقة الأساسية",
+                pkgBasicDesc: "الرعاية الضرورية",
+                pkgBasicIntro: "مثالية للشقق والعقارات الصغيرة التي تتطلب فحوصات صيانة رئيسية أساسية.",
+                pkgBasicP1: "زيارتين صيانة دورية وقائية سنويًا",
+                pkgBasicP2: "تنظيف فلاتر مكيفات الهواء",
+                pkgBasicP3: "فحص السباكة الأساسية",
+                pkgBasicP4: "فحص التوصيلات الكهربائية الأساسية",
+                pkgBasicP5: "دعم الطوارئ (الاستجابة خلال 24 ساعة)",
+                pkgPopular: "الأكثر طلبًا",
+                pkgStandardTitle: "الباقة القياسية",
+                pkgStandardDesc: "الراحة الكاملة",
+                pkgStandardIntro: "مثالية للفيلات والشقق السكنية المعتادة.",
+                pkgStdP1: "4 زيارات صيانة وقائية سنويًا",
+                pkgStdP2: "غسيل وتنظيف شامل للكويل وفلاتر المكيف",
+                pkgStdP3: "فحص كامل للسباكة والأدوات الصحية",
+                pkgStdP4: "فحص أمان كامل للأنظمة الكهربائية",
+                pkgStdP5: "صيانة النجارة والأبواب والأقفال",
+                pkgStdP6: "دعم طوارئ 24/7 (الاستجابة خلال ساعتين)",
+                pkgPremiumTitle: "الباقة المميزة",
+                pkgPremiumDesc: "الرعاية النخبوية",
+                pkgPremiumIntro: "حماية قصوى تشمل صيانة المسبح، بلاط الجدران، مع إلغاء رسوم طلب الخدمة.",
+                pkgPreP1: "طلبات طوارئ غير محدودة مجانًا",
+                pkgPreP2: "6 زيارات صيانة دورية وقائية سنويًا",
+                pkgPreP3: "تغطية كاملة للمكيفات، السباكة، الكهرباء، والنجارة",
+                pkgPreP4: "فحص وتنظيف أحواض السباحة",
+                pkgPreP5: "رتوش دهانات وصيانة فواصل البلاط والأرضيات",
+                pkgPreP6: "خط طوارئ ساخن 24/7 (الاستجابة خلال ساعة واحدة)",
+                pkgSilverTitle: "الباقة الفضية",
+                pkgSilverDesc: "البداية التجارية",
+                pkgSilverIntro: "مثالية للمكاتب والمحلات التجارية الصغيرة التي تحتاج لفحص دوري.",
+                pkgSilP1: "فحص ربع سنوي مجدول للأنظمة والشبكات",
+                pkgSilP2: "فحص وصيانة فلاتر المكيفات",
+                pkgSilP3: "فحص لوحات التوزيع الكهربائية",
+                pkgSilP4: "أعمال صيانة السباكة وتوصيل المياه",
+                pkgGoldTitle: "الباقة الذهبية",
+                pkgGoldDesc: "باقة الشركات المميزة",
+                pkgGoldIntro: "مصممة للمكاتب الكبيرة، المستودعات، العيادات، والمطاعم.",
+                pkgGoldP1: "فحص تشخيصي وتقارير شهرية متكاملة",
+                pkgGoldP2: "صيانة شاملة للمكيفات والتهوية",
+                pkgGoldP3: "تصوير حراري للوحات الكهربائية الرئيسية",
+                pkgGoldP4: "اختبار ضغط السباكة وفحص الصمامات",
+                pkgGoldP5: "خط إرسال فني طارئ ذو أولوية 24/7",
+                pkgPlatinumTitle: "الباقة البلاتينية",
+                pkgPlatinumDesc: "صيانة المؤسسات الكبرى",
+                pkgPlatinumIntro: "تغطية شاملة للفنادق، المدارس، والمحلات الكبيرة مع فنيين مخصصين للموقع.",
+                pkgPlatP1: "مدير حساب رئيسي مخصص للمتابعة",
+                pkgPlatP2: "زيارات فحص نصف شهرية وتدقيق مخصص",
+                pkgPlatP3: "صيانة شاملة للمعدات الكهروميكانيكية",
+                pkgPlatP4: "صيانة وتحديث هيكل المبنى وأعمال النجارة",
+                pkgPlatP5: "استجابة مضمونة للطوارئ خلال أقل من ساعة",
+                selectPlan: "اختر الباقة",
+                incTitle: "ماذا تشمل عقودنا؟",
+                incSub: "منهجية واضحة تغطي كافة جوانب الحفاظ على العقار.",
+                "incA/C": "مكيفات الهواء HVAC",
+                "incA/CDesc": "تنظيف الفلاتر، فحص الغاز، معايرة الترموستات، غسيل الكويل",
+                incPlumbing: "السباكة",
+                incPlumbingDesc: "كشف التسريبات، اختبار الضغط، إصلاح الخلاطات، تسليك المجاري",
+                incElec: "الكهرباء",
+                incElecDesc: "فحص لوحات التوزيع، الإنارة، المفاتيح، توازن الجهد",
+                incCarp: "النجارة",
+                incCarpDesc: "موازنة الأبواب، مقابض الخزائن، المفصلات، إصلاح الأقفال",
+                whyTitle: "لماذا تختار وود جوينت؟",
+                whyDesc: "نحن نضع معايير المساءلة المهنية، ونستخدم أحدث أدوات التشخيص الفنية المرخصة في الإمارات.",
+                whyPoint1Title: "مرخص ومعتمد بالكامل",
+                whyPoint1Desc: "نعمل بامتثال كامل مع الجهات التنظيمية في كافة الإمارات.",
+                whyPoint2Title: "سرعة استجابة مضمونة",
+                whyPoint2Desc: "لا انتظار لساعات طويلة. نلتزم بمواعيدنا المحددة.",
+                badgeTitle: "ضمان وود جوينت",
+                badgeDesc: "تأتي عقودنا مع تقارير عمل رقمية شفافة. يتسلم العميل تقرير الإنجاز الرقمي فور انتهاء الزيارة.",
+                badgeStat: "مطابق لمعايير الجودة والسلامة",
+                testTitle: "آراء العملاء",
+                testSub: "ماذا يقول عملاء عقود الصيانة السنوية النشطين لدينا.",
+                formTitle: "طلب عرض سعر صيانة",
+                formSub: "يرجى تعبئة النموذج أدناه وسيقوم مدراء العقارات لدينا بتصميم باقة تناسب متطلباتكم.",
+                secCustInfo: "معلومات العميل",
+                labelName: "الاسم الكامل *",
+                labelCompany: "اسم الشركة (اختياري)",
+                labelPhone: "رقم الهاتف المحمول *",
+                labelEmail: "البريد الإلكتروني *",
+                labelContactMethod: "طريقة التواصل المفضلة",
+                optPhone: "الهاتف",
+                optWA: "واتساب",
+                optEmail: "البريد الإلكتروني",
+                secPropInfo: "معلومات العقار",
+                labelPropType: "نوع العقار *",
+                selPropType: "▼ اختر نوع العقار",
+                optApart: "شقة",
+                optVilla: "فيلا",
+                optOffice: "مكتب",
+                optRetail: "محل تجاري",
+                optRest: "مطعم",
+                optWare: "مستودع / مخزن",
+                optHotel: "فندق",
+                optClinic: "عيادة",
+                optSchool: "مدرسة",
+                optOther: "آخر",
+                labelPropSize: "حجم العقار",
+                optStudio: "استوديو",
+                opt1B: "غرفة وصالة",
+                opt2B: "غرفتين وصالة",
+                opt3B: "3 غرف وصالة",
+                optVillaSize: "حجم الفيلا / مساحة قياسية",
+                optOfficeSize: "مساحة المكتب",
+                optWareSize: "مساحة المستودع",
+                optOtherSize: "مساحات أخرى",
+                secAmcType: "نوع عقد الصيانة",
+                labelAmcCat: "فئة عقد الصيانة *",
+                selAmcCat: "▼ اختر الفئة",
+                optResAMC: "عقد صيانة سكني",
+                optCommAMC: "عقد صيانة تجاري",
+                labelPkg: "الباقة",
+                selPkg: "▼ اختر الباقة",
+                secSrvReq: "الخدمات المطلوبة",
+                srvMaint: "صيانة المباني",
+                srvAC: "مكيفات الهواء (HVAC)",
+                srvElec: "الكهرباء",
+                srvPlumb: "السباكة",
+                srvCarp: "النجارة",
+                srvPaint: "الدهان / الصبغ",
+                srvTile: "بلاط الأرضيات والجدران",
+                srvPool: "حمام السباحة",
+                srvSteel: "أعمال الحديد والمعادن",
+                srvElectro: "كهروميكانيكال",
+                srvInsp: "الفحص السنوي",
+                srvEmerg: "دعم الطوارئ",
+                secLogistics: "الدعم اللوجستي",
+                labelEmirate: "الإمارة *",
+                labelDate: "تاريخ الزيارة المفضل",
+                btnSubmit: "طلب تسعيرة عقد صيانة مجانية",
+                secUpload: "تحميل الصور",
+                uploadPhotos: "تحميل الصور",
+                dragDrop: "سحب وإفلات",
+                chooseFiles: "اختيار الملفات",
+                maxImages: "(الحد الأقصى 10 صور)",
+                secRequirements: "متطلبات إضافية",
+                footerRights: "© 2026 وود جوينت لأعمال صيانة المباني ذ.م.م. جميع الحقوق محفوظة."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.documentElement.dir = currentLang === 'en' ? 'ltr' : 'rtl';
+            document.documentElement.lang = currentLang;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+            
+            // Re-render select option menus if category changed
+            handleCategoryChange();
+        }
+
+        // Before & After Interactive Slider Control
+        const slider = document.getElementById('beforeAfterSlider');
+        const beforeImgDiv = slider.querySelector('.image-before');
+        const handle = slider.querySelector('.slider-handle');
+
+        let isDragging = false;
+
+        const setPosition = (clientX) => {
+            const rect = slider.getBoundingClientRect();
+            let x = clientX - rect.left;
+            if (x < 0) x = 0;
+            if (x > rect.width) x = rect.width;
+            
+            const pct = (x / rect.width) * 100;
+            beforeImgDiv.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
+            handle.style.left = `${pct}%`;
+        };
+
+        const startDragging = () => { isDragging = true; };
+        const stopDragging = () => { isDragging = false; };
+
+        // Desktop Events
+        handle.addEventListener('mousedown', startDragging);
+        window.addEventListener('mouseup', stopDragging);
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            setPosition(e.clientX);
+        });
+
+        // Touch Events
+        handle.addEventListener('touchstart', startDragging);
+        window.addEventListener('touchend', stopDragging);
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            setPosition(e.touches[0].clientX);
+        });
+
+        // Tab Switching for Packages
+        function switchTab(type) {
+            const resPkg = document.getElementById('residential-pkg');
+            const commPkg = document.getElementById('commercial-pkg');
+            const btnRes = document.getElementById('btn-res');
+            const btnComm = document.getElementById('btn-comm');
+
+            if (type === 'residential') {
+                resPkg.classList.remove('hidden');
+                commPkg.classList.add('hidden');
+                btnRes.className = "px-6 py-3 rounded-full font-bold transition-all bg-brand-900 text-white shadow-md";
+                btnComm.className = "px-6 py-3 rounded-full font-bold transition-all bg-gray-100 text-gray-600 hover:bg-gray-200";
+            } else {
+                commPkg.classList.remove('hidden');
+                resPkg.classList.add('hidden');
+                btnComm.className = "px-6 py-3 rounded-full font-bold transition-all bg-brand-900 text-white shadow-md";
+                btnRes.className = "px-6 py-3 rounded-full font-bold transition-all bg-gray-100 text-gray-600 hover:bg-gray-200";
+            }
+        }
+
+        // Conditional Packages in Form Dropdown
+        const packagesData = {
+            "Residential AMC": [
+                { value: "Basic", textEn: "Basic", textAr: "الباقة الأساسية" },
+                { value: "Standard", textEn: "Standard", textAr: "الباقة القياسية" },
+                { value: "Premium", textEn: "Premium", textAr: "الباقة المميزة" }
+            ],
+            "Commercial AMC": [
+                { value: "Silver", textEn: "Silver", textAr: "الباقة الفضية" },
+                { value: "Gold", textEn: "Gold", textAr: "الباقة الذهبية" },
+                { value: "Platinum", textEn: "Platinum", textAr: "الباقة البلاتينية" }
+            ]
+        };
+
+        function handleCategoryChange() {
+            const categorySelect = document.getElementById('amcCategory');
+            const packageSelect = document.getElementById('amcPackage');
+            const selectedCategory = categorySelect.value;
+            
+            // Clear current options
+            packageSelect.innerHTML = '';
+            
+            // Re-add placeholder
+            const placeholder = document.createElement('option');
+            placeholder.value = "";
+            placeholder.disabled = true;
+            placeholder.selected = true;
+            placeholder.textContent = currentLang === 'en' ? "▼ Select Package" : "▼ اختر الباقة";
+            packageSelect.appendChild(placeholder);
+
+            if (packagesData[selectedCategory]) {
+                packagesData[selectedCategory].forEach(pkg => {
+                    const opt = document.createElement('option');
+                    opt.value = pkg.value;
+                    opt.textContent = currentLang === 'en' ? pkg.textEn : pkg.textAr;
+                    packageSelect.appendChild(opt);
+                });
+            }
+        }
+
+        // Selecting package directly from plan buttons
+        function selectPackageFromPlans(category, pkgValue) {
+            const categorySelect = document.getElementById('amcCategory');
+            categorySelect.value = category;
+            handleCategoryChange();
+            
+            const packageSelect = document.getElementById('amcPackage');
+            packageSelect.value = pkgValue;
+        }
+
+        // File Upload State
+        let selectedFiles = [];
+        function handleFileSelect(e) {
+            const files = Array.from(e.target.files);
+            selectedFiles = [...selectedFiles, ...files].slice(0, 10);
+            
+            const fileListContainer = document.getElementById('fileList');
+            fileListContainer.innerHTML = '';
+            selectedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const div = document.createElement('div');
+                    div.className = "relative aspect-square rounded-lg overflow-hidden border border-gray-200 bg-white p-1";
+                    div.innerHTML = `<img src="${event.target.result}" class="w-full h-full object-cover rounded" />`;
+                    fileListContainer.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Drag & Drop Setup
+        document.addEventListener('DOMContentLoaded', () => {
+            const dragArea = document.getElementById('dragDropArea');
+            if (dragArea) {
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    dragArea.addEventListener(eventName, preventDefaults, false);
+                });
+                function preventDefaults(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    dragArea.addEventListener(eventName, () => dragArea.classList.add('border-brand-500', 'bg-brand-50/40'), false);
+                });
+                ['dragleave', 'drop'].forEach(eventName => {
+                    dragArea.addEventListener(eventName, () => dragArea.classList.remove('border-brand-500', 'bg-brand-50/40'), false);
+                });
+                dragArea.addEventListener('drop', (e) => {
+                    const dt = e.dataTransfer;
+                    const files = dt.files;
+                    handleFileSelect({ target: { files: files } });
+                }, false);
+            }
+        });
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const pkg = document.getElementById('amcPackage').value || 'None';
+            const property = document.getElementById('amcPropType').value || 'None';
+            const location = document.getElementById('amcEmirate').value || 'None';
+            const name = e.target.querySelector('input[type="text"]').value;
+            const phone = e.target.querySelector('input[type="tel"]').value;
+            const email = e.target.querySelector('input[type="email"]').value;
+            const requirements = document.getElementById('amcRequirements').value;
+
+            // Generate Custom Email Subject
+            const subject = `AMC Quote Request - Package: ${pkg} - Property: ${property} - Location: ${location}`;
+            
+            // Build Email Body
+            const body = `AMC QUOTE REQUEST DETAILS
+-----------------------------
+Customer Name: ${name}
+Mobile Number: ${phone}
+Email Address: ${email}
+Property Type: ${property}
+Location (Emirate): ${location}
+Selected Package: ${pkg}
+Additional Requirements: ${requirements || 'None'}
+`;
+
+            // Open default mail client with values populated
+            const mailtoUrl = `mailto:info@woodjoint.ae?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            alert(currentLang === 'en' 
+                ? "Opening your email client to send your quote request. Thank you!" 
+                : "جاري فتح بريدكم الإلكتروني لإرسال الطلب. شكراً لكم!");
+            
+            window.location.href = mailtoUrl;
+            
+            e.target.reset();
+            const fileListContainer = document.getElementById('fileList');
+            if (fileListContainer) fileListContainer.innerHTML = '';
+            selectedFiles = [];
+        }
+
+        // Initialize translations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations['en'][key]) {
+                    el.innerHTML = translations['en'][key];
+                }
+            });
+            handleCategoryChange();
+        });
+    </script>
+</body>
+</html>

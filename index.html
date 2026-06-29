@@ -17,16 +17,16 @@
                     },
                     colors: {
                         brand: {
-                            50: '#faf5f0',
-                            100: '#f6ebdc',
-                            200: '#ebd2bc',
-                            300: '#deba9b',
-                            400: '#c58f62',
-                            500: '#ab6d41',
-                            600: '#935227',
-                            700: '#7e411c',
-                            800: '#693212',
-                            900: '#0d233a',
+                            50: '#f2f7fc',
+                            100: '#e1eef7',
+                            200: '#e3d7c5',
+                            300: '#d2c2ad',
+                            400: '#a38f75',
+                            500: '#3288d0',
+                            600: '#1c75bc',
+                            700: '#165c94',
+                            800: '#0f4470',
+                            900: '#0d2c4e',
                         }
                     }
                 }
@@ -90,7 +90,7 @@ loadRrweb();
                 <img src="assets/images/logo.png" alt="WoodJoint" class="h-10 w-10 object-contain" />
                 <div class="flex flex-col items-center justify-center text-center">
                     <div class="text-xl font-extrabold tracking-wide uppercase leading-none font-sans">
-                        <span class="text-[#935227]">WOOD</span> <span class="text-[#0d233a]">JOINT</span>
+                        <span class="text-[#1c75bc]">WOOD</span> <span class="text-[#0d2c4e]">JOINT</span>
                     </div>
                     <span class="text-[8px] font-bold text-gray-500 uppercase tracking-[0.1em] mt-1 hidden xs:block">— CONSTRUCTION & MAINTENANCE —</span>
                 </div>
@@ -122,6 +122,7 @@ loadRrweb();
                     </div>
                 </div>
 
+                <a href="pages/amc.html" class="px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold" data-i18n="navAmc">Annual Contract (AMC)</a>
                 <a href="#contact" class="px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold" data-i18n="navContact">Contact</a>
                 
                 <button onclick="toggleLanguage()" class="flex items-center gap-2 px-5 py-2 rounded-full bg-brand-900 hover:bg-brand-800 text-white transition-colors font-bold shadow-md">
@@ -146,6 +147,7 @@ loadRrweb();
             <a href="#home" onclick="closeMobileMenu()" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-900 font-semibold text-sm" data-i18n="navHome">Home</a>
             <a href="#about" onclick="closeMobileMenu()" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-900 font-semibold text-sm" data-i18n="navAbout">About Us</a>
             <a href="#services" onclick="closeMobileMenu()" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-900 font-semibold text-sm" data-i18n="navServices">Services</a>
+            <a href="pages/amc.html" onclick="closeMobileMenu()" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-900 font-semibold text-sm" data-i18n="navAmc">Annual Contract (AMC)</a>
             <a href="#contact" onclick="closeMobileMenu()" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-900 font-semibold text-sm" data-i18n="navContact">Contact</a>
         </div>
     </nav>
@@ -701,7 +703,7 @@ loadRrweb();
                         <img src="assets/images/logo.png" alt="WoodJoint" class="h-10 w-10 object-contain" />
                         <div class="flex flex-col items-start justify-center">
                             <div class="text-xl font-extrabold tracking-wide uppercase leading-none font-sans">
-                                <span class="text-[#935227]">WOOD</span><span class="text-[#0d233a]">JOINT</span>
+                                <span class="text-[#1c75bc]">WOOD</span><span class="text-[#0d2c4e]">JOINT</span>
                             </div>
                             <span class="text-[9px] font-bold text-gray-500 uppercase tracking-[0.05em] mt-1">Building Maintenance L.L.C.</span>
                         </div>
@@ -758,6 +760,7 @@ loadRrweb();
             <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
                 <div data-i18n="footerRights">© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved.</div>
                 <div class="flex gap-4">
+                    <a href="pages/amc.html" class="hover:text-white transition-colors mr-2" data-i18n="navAmc">Annual Contract (AMC)</a>
                     <a href="pages/privacy-policy.html" class="hover:text-white transition-colors" data-i18n="privacyPolicy">Privacy Policy</a>
                     <a href="pages/terms-of-service.html" class="hover:text-white transition-colors" data-i18n="termsOfService">Terms of Service</a>
                 </div>
@@ -789,6 +792,7 @@ loadRrweb();
                 navServices: "Services",
                 navProjects: "Projects",
                 navContact: "Contact",
+                navAmc: "Annual Contract (AMC)",
                 navLang: "العربية",
                 dropComingSoon: "More services coming soon...",
                 heroTitle: "Excellence in Building Maintenance",
@@ -897,6 +901,7 @@ loadRrweb();
                 navServices: "خدماتنا",
                 navProjects: "مشاريعنا",
                 navContact: "اتصل بنا",
+                navAmc: "عقد صيانة سنوي (AMC)",
                 navLang: "English",
                 dropComingSoon: "المزيد من الخدمات قريباً...",
                 heroTitle: "التميز في صيانة المباني",
