@@ -4,32 +4,59 @@ A premium, modern, bilingual (English & Arabic) corporate website for **WOODJOIN
 
 ---
 
-## 📂 Project Folder Structure
+## 📂 Recommended Agency Structure
 
-The project follows a modular, organized web directory architecture:
+The project directory follows this recommended agency structure:
 
 ```text
 WOODJOINT/
 │
-├── index.html                   # Main entry point (Landing Page)
-├── README.md                    # Project documentation
-├── robots.txt                   # Search engine crawler instructions
-├── sitemap.xml                  # Website sitemap for SEO
-├── vercel.json                  # Hosting configuration
+├── index.html
+├── README.md
+├── robots.txt
+├── sitemap.xml
+├── favicon.ico
+├── .gitignore
 │
-├── assets/                      # Application assets
-│   ├── css/                     # Custom stylesheet assets (reserved)
-│   ├── js/                      # Custom Javascript scripts (reserved)
-│   ├── images/                  # Site images, icons, and logos
-│   ├── fonts/                   # Typography files (reserved)
-│   └── vendor/                  # Third-party vendor libraries (reserved)
+├── assets/
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── responsive.css
+│   │   ├── animations.css
+│   │   ├── rtl.css
+│   │   ├── variables.css
+│   │   ├── components.css
+│   │   ├── forms.css
+│   │   └── print.css
+│   │
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── navigation.js
+│   │   ├── language.js
+│   │   ├── gallery.js
+│   │   ├── slider.js
+│   │   ├── counter.js
+│   │   ├── forms.js
+│   │   ├── validation.js
+│   │   ├── whatsapp.js
+│   │   ├── search.js
+│   │   └── utils.js
+│   │
+│   ├── images/
+│   ├── icons/
+│   ├── fonts/
+│   └── vendor/
 │
-├── pages/                       # Secondary pages
-│   ├── privacy-policy.html      # Privacy Policy (English & Arabic)
-│   └── terms-of-service.html    # Terms of Service (English & Arabic)
-│
-├── data/                        # Static JSON data / assets (reserved)
-└── docs/                        # Project documentation resources
+├── pages/
+├── data/
+├── docs/
+├── downloads/
+├── uploads/
+├── includes/
+├── seo/
+├── languages/
+├── forms/
+└── backup/
 ```
 
 ---
