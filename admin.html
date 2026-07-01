@@ -525,33 +525,19 @@
             const subject = `FW: [WoodJoint Query] ${q.type} - ${q.name}`;
             const body = `Hi Team,
 
-Please review and handle the customer query below:
+Please review and handle the customer query in the admin dashboard:
 
---------------------------------------------------
-CLIENT INQUIRY DETAILS:
---------------------------------------------------
-Query ID: ${q.id}
-Type: ${q.type}
-Date Submitted: ${q.date}
-Client Name: ${q.name}
-Phone Number: ${q.phone}
-Email: ${q.email}
+- Query ID: ${q.id}
+- Client Name: ${q.name}
+- Phone Number: ${q.phone}
+- Email: ${q.email}
+- Services Requested: ${q.services}
 
-Property Type: ${q.propType}
-Location: ${q.emirate} ${q.area !== 'N/A' ? '(' + q.area + ')' : ''}
-Services: ${q.services}
-Budget: ${q.budget || 'N/A'}
-Timeline: ${q.timeline || 'N/A'}
-
-Project Details:
-${q.description}
-
-Preferred Visit: ${q.visit || 'N/A'}
---------------------------------------------------
+View all details, project descriptions, and uploaded files in the admin dashboard at:
+https://orionfxservis.github.io/woodjoint/admin.html
 
 Best regards,
-WoodJoint Administrator
-`;
+WoodJoint Administrator`;
 
             const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = mailtoUrl;
