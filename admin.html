@@ -135,7 +135,7 @@
                 <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col justify-between min-h-[300px]">
                     <div>
                         <h3 class="text-xs font-bold uppercase tracking-wider text-brand-400 mb-4">Notification Configurations</h3>
-                        <div class="space-y-4">
+                        <div class="space-y-3">
                             <div>
                                 <label class="block text-[10px] font-semibold text-gray-400 uppercase mb-1">WhatsApp Number</label>
                                 <input type="text" id="settingWhatsapp" placeholder="923330360487" class="w-full bg-gray-950 border border-gray-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-brand-500" />
@@ -143,6 +143,10 @@
                             <div>
                                 <label class="block text-[10px] font-semibold text-gray-400 uppercase mb-1">Recipient Email</label>
                                 <input type="email" id="settingEmail" placeholder="info@woodjoint.ae" class="w-full bg-gray-950 border border-gray-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-brand-500" />
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-semibold text-gray-400 uppercase mb-1">Web3Forms Access Key</label>
+                                <input type="text" id="settingWeb3Key" placeholder="Paste your Web3Forms Access Key" class="w-full bg-gray-950 border border-gray-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-brand-500" />
                             </div>
                         </div>
                     </div>
@@ -777,27 +781,31 @@ WoodJoint Administrator
 
         // Notification Settings Manager
         function loadNotificationSettings() {
-            let settings = { whatsapp: "923330360487", email: "info@woodjoint.ae" };
+            let settings = { whatsapp: "923330360487", email: "info@woodjoint.ae", web3Key: "" };
             try {
                 const storedSettings = JSON.parse(localStorage.getItem('woodjoint_settings'));
                 if (storedSettings) {
                     if (storedSettings.whatsapp) settings.whatsapp = storedSettings.whatsapp;
                     if (storedSettings.email) settings.email = storedSettings.email;
+                    if (storedSettings.web3Key) settings.web3Key = storedSettings.web3Key;
                 }
             } catch (err) {
                 console.error("Failed to load settings", err);
             }
             const waInput = document.getElementById('settingWhatsapp');
             const emInput = document.getElementById('settingEmail');
+            const keyInput = document.getElementById('settingWeb3Key');
             if (waInput) waInput.value = settings.whatsapp;
             if (emInput) emInput.value = settings.email;
+            if (keyInput) keyInput.value = settings.web3Key;
         }
 
         function saveNotificationSettings() {
             const whatsapp = document.getElementById('settingWhatsapp').value.trim();
             const email = document.getElementById('settingEmail').value.trim();
+            const web3Key = document.getElementById('settingWeb3Key').value.trim();
 
-            const settings = { whatsapp, email };
+            const settings = { whatsapp, email, web3Key };
             try {
                 localStorage.setItem('woodjoint_settings', JSON.stringify(settings));
                 alert("Configurations saved successfully! Submit pages will now use these endpoints.");
