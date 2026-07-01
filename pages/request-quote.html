@@ -648,15 +648,40 @@ Preferred Site Visit: ${visit}
             }
 
             // Retrieve dynamic contact settings from admin dashboard (localStorage)
-            let settings = { whatsapp: "923330360487", email: "info@woodjoint.ae" };
+            let settings = { whatsapp: "923330360487", email: "info@woodjoint.ae", web3Key: "" };
             try {
                 const storedSettings = JSON.parse(localStorage.getItem('woodjoint_settings'));
                 if (storedSettings) {
                     if (storedSettings.whatsapp) settings.whatsapp = storedSettings.whatsapp.replace(/\+/g, '').trim();
                     if (storedSettings.email) settings.email = storedSettings.email.trim();
+                    if (storedSettings.web3Key) settings.web3Key = storedSettings.web3Key.trim();
                 }
             } catch (err) {
                 console.error("Failed to load settings from localStorage", err);
+            }
+
+            // Web3Forms Email Background Dispatch
+            if (settings.web3Key && settings.web3Key !== "") {
+                fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json"
+                    },
+                    body: JSON.stringify({
+                        access_key: settings.web3Key,
+                        subject: subject,
+                        from_name: "WoodJoint Website",
+                        message: body
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Email sent successfully via Web3Forms:", data);
+                })
+                .catch(err => {
+                    console.error("Web3Forms email dispatch failed:", err);
+                });
             }
 
             // WhatsApp Notification Logic
@@ -669,8 +694,8 @@ Preferred Site Visit: ${visit}
             // Open WhatsApp in a new tab/window
             window.open(whatsappUrl, '_blank');
 
-            // Email Notification Logic
-            if (settings.email && settings.email !== "") {
+            // Email Fallback Notification (Only if Web3Forms key is not active)
+            if (!settings.web3Key && settings.email && settings.email !== "") {
                 const mailtoUrl = `mailto:${settings.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 setTimeout(() => {
                     window.location.href = mailtoUrl;

@@ -1266,24 +1266,53 @@ Additional Requirements: ${requirements || 'None'}
             }
 
             // Retrieve dynamic email setting from admin dashboard (localStorage)
-            let settings = { email: "info@woodjoint.ae" };
+            let settings = { email: "info@woodjoint.ae", web3Key: "" };
             try {
                 const storedSettings = JSON.parse(localStorage.getItem('woodjoint_settings'));
-                if (storedSettings && storedSettings.email) {
-                    settings.email = storedSettings.email.trim();
+                if (storedSettings) {
+                    if (storedSettings.email) settings.email = storedSettings.email.trim();
+                    if (storedSettings.web3Key) settings.web3Key = storedSettings.web3Key.trim();
                 }
             } catch (err) {
                 console.error("Failed to load settings from localStorage", err);
             }
 
-            // Open default mail client with values populated
-            const mailtoUrl = `mailto:${settings.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            alert(currentLang === 'en' 
-                ? "Opening your email client to send your quote request. Thank you!" 
-                : "جاري فتح بريدكم الإلكتروني لإرسال الطلب. شكراً لكم!");
-            
-            window.location.href = mailtoUrl;
+            // Web3Forms Email Background Dispatch
+            if (settings.web3Key && settings.web3Key !== "") {
+                fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json"
+                    },
+                    body: JSON.stringify({
+                        access_key: settings.web3Key,
+                        subject: subject,
+                        from_name: "WoodJoint Website",
+                        message: body
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Email sent successfully via Web3Forms:", data);
+                })
+                .catch(err => {
+                    console.error("Web3Forms email dispatch failed:", err);
+                });
+                
+                alert(currentLang === 'en' 
+                    ? "Your AMC quote request has been sent successfully. Thank you!" 
+                    : "تم إرسال طلب عرض سعر AMC بنجاح. شكراً لكم!");
+            } else {
+                // Open default mail client with values populated (Fallback)
+                const mailtoUrl = `mailto:${settings.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                alert(currentLang === 'en' 
+                    ? "Opening your email client to send your quote request. Thank you!" 
+                    : "جاري فتح بريدكم الإلكتروني لإرسال الطلب. شكراً لكم!");
+                
+                window.location.href = mailtoUrl;
+            }
             
             e.target.reset();
             const fileListContainer = document.getElementById('fileList');
