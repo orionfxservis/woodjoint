@@ -39,6 +39,9 @@
     <!-- Supabase client CDN and helper -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabase.js"></script>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen font-sans flex flex-col justify-between">
 
@@ -107,6 +110,45 @@
                 <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col justify-between">
                     <span class="text-xs font-bold uppercase tracking-wider text-green-500">Resolved</span>
                     <span class="text-3xl font-extrabold text-green-500 mt-2" id="statResolved">0</span>
+                </div>
+            </div>
+
+            <!-- Charts & Settings Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Doughnut Chart Card -->
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col items-center justify-center min-h-[300px]">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 self-start">Queries Status Distribution</h3>
+                    <div class="w-full max-w-[200px] aspect-square relative">
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Bar Chart Card -->
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col justify-center min-h-[300px]">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">Queries Categories</h3>
+                    <div class="w-full h-full relative" style="max-height: 220px;">
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Settings Card -->
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col justify-between min-h-[300px]">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-brand-400 mb-4">Notification Configurations</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-[10px] font-semibold text-gray-400 uppercase mb-1">WhatsApp Number</label>
+                                <input type="text" id="settingWhatsapp" placeholder="923330360487" class="w-full bg-gray-950 border border-gray-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-brand-500" />
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-semibold text-gray-400 uppercase mb-1">Recipient Email</label>
+                                <input type="email" id="settingEmail" placeholder="info@woodjoint.ae" class="w-full bg-gray-950 border border-gray-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-brand-500" />
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="saveNotificationSettings()" class="w-full mt-4 bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold py-2.5 rounded-lg transition-all shadow-md">
+                        Save Configurations
+                    </button>
                 </div>
             </div>
 
@@ -221,6 +263,7 @@
             document.getElementById('dashboardCard').classList.remove('hidden');
             document.getElementById('logoutBtn').classList.remove('hidden');
             loadQueries();
+            loadNotificationSettings();
         }
 
         function handleLogin(e) {
@@ -352,6 +395,11 @@
                 `;
                 tableBody.appendChild(tr);
             });
+            
+            // Render the metrics charts
+            if (typeof renderCharts === 'function') {
+                renderCharts();
+            }
         }
 
         async function updateQueryStatus(id, newStatus) {
@@ -572,6 +620,133 @@
                 loadQueries();
             }
             alert("Loaded sample UAE maintenance queries successfully.");
+        }
+
+        // --- VISUAL CHARTS & SETTINGS MODULE ---
+        let statusChartInstance = null;
+        let typeChartInstance = null;
+
+        function renderCharts() {
+            const queries = activeQueries;
+            
+            // Status calculations
+            let pending = 0, progress = 0, resolved = 0;
+            // Type calculations
+            let custom = 0, amc = 0;
+
+            queries.forEach(q => {
+                if (q.status === 'Pending') pending++;
+                else if (q.status === 'In Progress') progress++;
+                else if (q.status === 'Resolved') resolved++;
+
+                if (q.type === 'Custom Quote') custom++;
+                else if (q.type === 'AMC Quote') amc++;
+            });
+
+            // Doughnut status chart
+            const statusCanvas = document.getElementById('statusChart');
+            if (statusCanvas) {
+                const ctxStatus = statusCanvas.getContext('2d');
+                if (statusChartInstance) {
+                    statusChartInstance.destroy();
+                }
+                statusChartInstance = new Chart(ctxStatus, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Pending', 'In Progress', 'Resolved'],
+                        datasets: [{
+                            data: [pending, progress, resolved],
+                            backgroundColor: ['#eab308', '#60a5fa', '#22c55e'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#9ca3af',
+                                    boxWidth: 10,
+                                    font: { size: 9 }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Bar type chart
+            const typeCanvas = document.getElementById('typeChart');
+            if (typeCanvas) {
+                const ctxType = typeCanvas.getContext('2d');
+                if (typeChartInstance) {
+                    typeChartInstance.destroy();
+                }
+                typeChartInstance = new Chart(ctxType, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Custom Quote', 'AMC Quote'],
+                        datasets: [{
+                            label: 'Queries',
+                            data: [custom, amc],
+                            backgroundColor: ['#1c75bc', '#0d2c4e'],
+                            borderColor: ['#3288d0', '#165c94'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: '#1f2937' },
+                                ticks: { color: '#9ca3af', stepSize: 1 }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#9ca3af' }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Notification Settings Manager
+        function loadNotificationSettings() {
+            let settings = { whatsapp: "923330360487", email: "info@woodjoint.ae" };
+            try {
+                const storedSettings = JSON.parse(localStorage.getItem('woodjoint_settings'));
+                if (storedSettings) {
+                    if (storedSettings.whatsapp) settings.whatsapp = storedSettings.whatsapp;
+                    if (storedSettings.email) settings.email = storedSettings.email;
+                }
+            } catch (err) {
+                console.error("Failed to load settings", err);
+            }
+            const waInput = document.getElementById('settingWhatsapp');
+            const emInput = document.getElementById('settingEmail');
+            if (waInput) waInput.value = settings.whatsapp;
+            if (emInput) emInput.value = settings.email;
+        }
+
+        function saveNotificationSettings() {
+            const whatsapp = document.getElementById('settingWhatsapp').value.trim();
+            const email = document.getElementById('settingEmail').value.trim();
+
+            const settings = { whatsapp, email };
+            try {
+                localStorage.setItem('woodjoint_settings', JSON.stringify(settings));
+                alert("Configurations saved successfully! Submit pages will now use these endpoints.");
+            } catch (err) {
+                alert("Failed to save settings: " + err.message);
+            }
         }
     </script>
 </body>
