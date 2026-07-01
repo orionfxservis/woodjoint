@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Custom Quotation | WOODJOINT Building Maintenance L.L.C.</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f2f7fc',
+                            100: '#e1eef7',
+                            200: '#e3d7c5',
+                            300: '#d2c2ad',
+                            400: '#a38f75',
+                            500: '#3288d0',
+                            600: '#1c75bc',
+                            700: '#165c94',
+                            800: '#0f4470',
+                            900: '#0d2c4e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Supabase client CDN and helper -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../assets/js/supabase.js"></script>
+    
+    <style>
+        html[dir='ltr'] { font-family: 'Outfit', sans-serif; }
+        html[dir='rtl'] { font-family: 'Cairo', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4">
+                <img src="../assets/images/logo.png" alt="WoodJoint Logo" class="h-10 w-10 object-contain" />
+                <div class="flex flex-col items-center justify-center text-center">
+                    <div class="text-xl font-extrabold tracking-wide uppercase leading-none font-sans">
+                        <span class="text-[#1c75bc]">WOOD</span><span class="text-[#0d2c4e]">JOINT</span>
+                    </div>
+                    <span class="text-[8px] font-bold text-gray-500 uppercase tracking-[0.1em] mt-1 hidden xs:block">— CONSTRUCTION & MAINTENANCE —</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="../index.html" class="px-3 sm:px-4 py-2 rounded-full bg-brand-50/50 text-brand-900 hover:bg-brand-100 transition-colors font-semibold text-xs sm:text-sm">
+                    <span class="hidden sm:inline" data-i18n="navHome">Back to Home</span>
+                    <span class="inline sm:hidden">Home</span>
+                </a>
+                
+                <!-- Notification Bell -->
+                <div class="relative">
+                    <button onclick="toggleNotifications(event)" class="relative p-2 text-gray-700 hover:text-brand-600 rounded-full hover:bg-gray-100 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        <span class="absolute top-1 right-1 block h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white"></span>
+                    </button>
+                    <!-- Dropdown -->
+                    <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 p-4 z-50 text-left">
+                        <h4 class="font-bold text-gray-900 border-b border-gray-100 pb-2 mb-3">Notifications</h4>
+                        <div class="space-y-3">
+                            <div class="flex gap-3 text-sm hover:bg-gray-50 p-2 rounded-xl transition-colors">
+                                <span class="text-xl">🔔</span>
+                                <div>
+                                    <p class="text-gray-800 font-semibold">Special Offer</p>
+                                    <p class="text-xs text-gray-500">Sign up for an AMC today and save 10%! <a href="amc.html" class="text-brand-600 font-semibold underline">Learn more</a></p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 text-sm hover:bg-gray-50 p-2 rounded-xl transition-colors">
+                                <span class="text-xl">🛠️</span>
+                                <div>
+                                    <p class="text-gray-800 font-semibold">24/7 Support</p>
+                                    <p class="text-xs text-gray-500">WoodJoint now offers round-the-clock emergency support.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="toggleLanguage()" class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-brand-900 hover:bg-brand-800 text-white transition-colors font-bold text-xs sm:text-sm shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="hidden xs:inline" data-i18n="navLang">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-br from-brand-900 via-brand-800 to-brand-950 text-white pt-36 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-block px-4 py-1.5 bg-brand-600/30 text-brand-200 border border-brand-500/30 font-semibold rounded-full mb-6 text-sm" data-i18n="heroBadge">
+                Accurate Pricing, Fast Response
+            </span>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight max-w-4xl mx-auto" data-i18n="heroTitle">
+                Request a Custom Quotation
+            </h1>
+            <p class="text-brand-100 text-base md:text-lg font-medium max-w-2xl mx-auto mb-4" data-i18n="heroSub">
+                Get a free customized estimate for your residential or commercial maintenance project. Follow our 4-step wizard to tell us about your needs.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content: 4-Step Wizard Section -->
+    <section class="py-12 bg-white flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-10 relative">
+                
+                <!-- Progress Indicator -->
+                <div class="mb-10">
+                    <div class="flex items-center justify-between relative">
+                        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-gray-200 z-0">
+                            <div id="progress-bar" class="h-full bg-brand-600 w-0 transition-all duration-300"></div>
+                        </div>
+                        
+                        <!-- Step 1 Button -->
+                        <button type="button" onclick="goToStep(1)" class="w-10 h-10 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center relative z-10 step-btn transition-colors border-4 border-white animate-pulse" id="step-btn-1">
+                            1
+                        </button>
+                        <!-- Step 2 Button -->
+                        <button type="button" onclick="goToStep(2)" class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 font-bold flex items-center justify-center relative z-10 step-btn transition-colors border-4 border-white" id="step-btn-2" disabled>
+                            2
+                        </button>
+                        <!-- Step 3 Button -->
+                        <button type="button" onclick="goToStep(3)" class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 font-bold flex items-center justify-center relative z-10 step-btn transition-colors border-4 border-white" id="step-btn-3" disabled>
+                            3
+                        </button>
+                        <!-- Step 4 Button -->
+                        <button type="button" onclick="goToStep(4)" class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 font-bold flex items-center justify-center relative z-10 step-btn transition-colors border-4 border-white" id="step-btn-4" disabled>
+                            4
+                        </button>
+                    </div>
+                    
+                    <div class="flex justify-between text-xs font-semibold text-gray-500 mt-3 px-1">
+                        <span data-i18n="step1Label">Contact Info</span>
+                        <span data-i18n="step2Label">Property Details</span>
+                        <span data-i18n="step3Label">Services & Project</span>
+                        <span data-i18n="step4Label">Attachments & Submit</span>
+                    </div>
+                </div>
+
+                <!-- Form Start -->
+                <form id="wizardForm" onsubmit="handleFormSubmit(event)" class="space-y-8">
+                    
+                    <!-- STEP 1: Contact Information -->
+                    <div id="step-section-1" class="step-transition space-y-6">
+                        <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="step1Title">Step 1: Contact Information</h3>
+                        <div class="grid md:grid-cols-1 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelName">Full Name *</label>
+                                <input type="text" id="custName" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" />
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelPhone">Phone Number *</label>
+                                    <input type="tel" id="custPhone" required placeholder="+971 50 123 4567" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelEmail">Email Address *</label>
+                                    <input type="email" id="custEmail" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Property Details -->
+                    <div id="step-section-2" class="step-transition space-y-6 hidden">
+                        <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="step2Title">Step 2: Property Details</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelPropType">Property Type *</label>
+                                <select id="propType" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all">
+                                    <option value="" disabled selected data-i18n="selPropType">▼ Select Property Type</option>
+                                    <option value="Apartment" data-i18n="optApart">Apartment</option>
+                                    <option value="Villa" data-i18n="optVilla">Villa</option>
+                                    <option value="Office" data-i18n="optOffice">Office</option>
+                                    <option value="Retail" data-i18n="optRetail">Retail Shop</option>
+                                    <option value="Restaurant" data-i18n="optRest">Restaurant</option>
+                                    <option value="Warehouse" data-i18n="optWare">Warehouse</option>
+                                    <option value="Other" data-i18n="optOther">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelEmirate">Emirate *</label>
+                                <select id="propEmirate" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all">
+                                    <option value="" disabled selected data-i18n="selEmirate">▼ Select Emirate</option>
+                                    <option value="Dubai">Dubai</option>
+                                    <option value="Abu Dhabi">Abu Dhabi</option>
+                                    <option value="Sharjah">Sharjah</option>
+                                    <option value="Ajman">Ajman</option>
+                                    <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+                                    <option value="Umm Al Quwain">Umm Al Quwain</option>
+                                    <option value="Fujairah">Fujairah</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelArea">Area / Community *</label>
+                            <input type="text" id="propArea" required placeholder="e.g. Dubai Marina, Downtown, Al Barsha" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" />
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Services & Project Details -->
+                    <div id="step-section-3" class="step-transition space-y-6 hidden">
+                        <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="step3Title">Step 3: Services & Project Details</h3>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3" data-i18n="labelServices">Required Services * (Select all that apply)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-gray-50 hover:bg-brand-50 hover:border-brand-300 transition-all cursor-pointer">
+                                    <input type="checkbox" name="services" value="Tiling" class="rounded text-brand-600 focus:ring-brand-500" />
+                                    <span class="text-sm font-medium text-gray-700" data-i18n="srv1Title">Floor & Wall Tiling Works</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-gray-50 hover:bg-brand-50 hover:border-brand-300 transition-all cursor-pointer">
+                                    <input type="checkbox" name="services" value="Concrete" class="rounded text-brand-600 focus:ring-brand-500" />
+                                    <span class="text-sm font-medium text-gray-700" data-i18n="srv2Title">Concrete Works</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-gray-50 hover:bg-brand-50 hover:border-brand-300 transition-all cursor-pointer">
+                                    <input type="checkbox" name="services" value="Plumbing" class="rounded text-brand-600 focus:ring-brand-500" />
+                                    <span class="text-sm font-medium text-gray-700" data-i18n="srv3Title">Plumbing & Sanitary Installation</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-gray-50 hover:bg-brand-50 hover:border-brand-300 transition-all cursor-pointer">
+                                    <input type="checkbox" name="services" value="Plaster" class="rounded text-brand-600 focus:ring-brand-500" />
+                                    <span class="text-sm font-medium text-gray-700" data-i18n="srv4Title">Plaster Works</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-gray-50 hover:bg-brand-50 hover:border-brand-300 transition-all cursor-pointer">
+                                    <input type="checkbox" name="services" value="Steel" class="rounded text-brand-600 focus:ring-brand-500" />
+                                    <span class="text-sm font-medium text-gray-700" data-i18n="srv5Title">Steel Products Installation</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-gray-50 hover:bg-brand-50 hover:border-brand-300 transition-all cursor-pointer">
+                                    <input type="checkbox" name="services" value="Carpentry" class="rounded text-brand-600 focus:ring-brand-500" />
+                                    <span class="text-sm font-medium text-gray-700" data-i18n="srv6Title">Carpentry & Wood Flooring</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-gray-50 hover:bg-brand-50 hover:border-brand-300 transition-all cursor-pointer">
+                                    <input type="checkbox" name="services" value="Maintenance" class="rounded text-brand-600 focus:ring-brand-500" />
+                                    <span class="text-sm font-medium text-gray-700" data-i18n="srv7Title">Building Maintenance</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-gray-50 hover:bg-brand-50 hover:border-brand-300 transition-all cursor-pointer">
+                                    <input type="checkbox" name="services" value="HVAC" class="rounded text-brand-600 focus:ring-brand-500" />
+                                    <span class="text-sm font-medium text-gray-700" data-i18n="srv12Title">Air-Conditioning & HVAC</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-gray-50 hover:bg-brand-50 hover:border-brand-300 transition-all cursor-pointer">
+                                    <input type="checkbox" name="services" value="Pool" class="rounded text-brand-600 focus:ring-brand-500" />
+                                    <span class="text-sm font-medium text-gray-700" data-i18n="srv8Title">Swimming Pools</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelBudget">Estimated Budget *</label>
+                                <select id="projBudget" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all">
+                                    <option value="" disabled selected data-i18n="selBudget">▼ Select Budget Range (AED)</option>
+                                    <option value="Under 5,000" data-i18n="optB1">Under 5,000 AED</option>
+                                    <option value="5,000 - 15,000" data-i18n="optB2">5,000 - 15,000 AED</option>
+                                    <option value="15,000 - 50,000" data-i18n="optB3">15,000 - 50,000 AED</option>
+                                    <option value="50,000+" data-i18n="optB4">Above 50,000 AED</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelTimeline">Required Timeline *</label>
+                                <select id="projTimeline" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all">
+                                    <option value="" disabled selected data-i18n="selTimeline">▼ Select Project Urgency</option>
+                                    <option value="Immediate / Emergency" data-i18n="optT1">Immediate / Emergency</option>
+                                    <option value="Within 1-2 Weeks" data-i18n="optT2">Within 1-2 Weeks</option>
+                                    <option value="Within a Month" data-i18n="optT3">Within a Month</option>
+                                    <option value="Flexible / Planning Phase" data-i18n="optT4">Flexible / Planning Phase</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelDescription">Project Description *</label>
+                            <textarea id="projDescription" required rows="4" class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" placeholder="Describe your project, specify sizes, measurements, or special requirements..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Attachments & Submit -->
+                    <div id="step-section-4" class="step-transition space-y-6 hidden">
+                        <h3 class="text-xl font-bold text-brand-900 border-b border-gray-100 pb-3" data-i18n="step4Title">Step 4: Attachments & Submit</h3>
+                        
+                        <!-- Upload Images -->
+                        <div class="space-y-4">
+                            <label class="block text-sm font-semibold text-gray-700" data-i18n="secUpload">Upload Layouts / Photos (Optional)</label>
+                            <div class="border-2 border-dashed border-gray-200 rounded-3xl p-6 text-center bg-gray-50 hover:bg-brand-50/20 hover:border-brand-400 transition-all cursor-pointer relative" id="dragDropArea" onclick="document.getElementById('fileInput').click()">
+                                <input type="file" id="fileInput" multiple accept="image/*" class="hidden" onchange="handleFileSelect(event)" />
+                                <svg class="w-10 h-10 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <p class="font-bold text-gray-700 text-xs mb-1" data-i18n="uploadPhotos">Upload Photos</p>
+                                <p class="text-[10px] text-gray-400 mb-2" data-i18n="dragDrop">Drag & Drop or click to browse</p>
+                                <div id="fileList" class="mt-3 grid grid-cols-2 sm:grid-cols-5 gap-2 pointer-events-none"></div>
+                            </div>
+                        </div>
+
+                        <!-- Preferred Site Visit -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="labelVisit">Preferred Site Visit Date & Time *</label>
+                            <input type="datetime-local" id="visitDateTime" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition-all" />
+                        </div>
+
+                        <!-- Terms Acceptance -->
+                        <div class="p-4 rounded-xl border border-gray-100 bg-brand-50/30">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" id="termsAccept" required class="mt-1 rounded text-brand-600 focus:ring-brand-500" />
+                                <span class="text-xs text-gray-600 leading-relaxed" data-i18n="labelTerms">
+                                    I accept the terms of service and privacy policy. I agree to receive a contact back regarding this custom quotation request.
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Action Buttons -->
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <button type="button" id="prevBtn" onclick="prevStep()" class="px-6 py-3 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50 font-bold transition-all text-sm hidden">
+                            Back
+                        </button>
+                        <button type="button" id="nextBtn" onclick="nextStep()" class="px-8 py-3 rounded-full bg-brand-600 hover:bg-brand-500 text-white font-bold transition-all shadow-md text-sm ml-auto">
+                            Next Step
+                        </button>
+                        <button type="submit" id="submitBtn" class="px-8 py-3 rounded-full bg-brand-900 hover:bg-brand-800 text-white font-bold transition-all shadow-md text-sm ml-auto hidden" data-i18n="btnSubmit">
+                            Request Free Quotation
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800 text-center mt-auto">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col items-center gap-4 mb-6">
+                <div class="text-2xl font-extrabold tracking-wide uppercase leading-none font-sans text-white">
+                    <span class="text-[#1c75bc]">WOOD</span>JOINT
+                </div>
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="../index.html" class="hover:text-white transition-colors" data-i18n="navHome">Home</a>
+                    <a href="#" class="hover:text-white transition-colors text-white font-bold" data-i18n="navQuote">Request a Quote</a>
+                    <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+            <div class="text-xs text-gray-500" data-i18n="footerRights">© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 end-6 z-50 flex flex-row gap-3 items-center">
+        <!-- Go to Top Button -->
+        <button id="goToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-12 h-12 bg-brand-900 hover:bg-brand-800 text-white rounded-full shadow-lg flex items-center justify-center transition-all transform scale-0 opacity-0 origin-right">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+        </button>
+
+        <!-- Online Support Button -->
+        <button onclick="toggleSupportChat()" class="w-12 h-12 bg-brand-600 hover:bg-brand-500 text-white rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 relative group">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <span class="absolute bottom-full mb-3 right-1/2 translate-x-1/2 bg-gray-900 text-white text-[10px] font-bold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Online Support</span>
+        </button>
+        
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/971501234567" target="_blank" class="w-12 h-12 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-lg shadow-[#25D366]/30 flex items-center justify-center transition-transform hover:scale-110 group">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.347-.272.271-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Support Chat Overlay -->
+    <div id="supportChatBox" class="hidden fixed bottom-24 end-6 w-80 bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden z-50 flex flex-col">
+        <div class="bg-brand-900 text-white p-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="h-3 w-3 bg-green-400 rounded-full animate-pulse"></span>
+                <span class="font-bold text-sm">Online Support</span>
+            </div>
+            <button onclick="toggleSupportChat()" class="text-white/80 hover:text-white">✕</button>
+        </div>
+        <div class="p-4 h-64 overflow-y-auto bg-gray-50 flex flex-col gap-3 text-xs" id="chatMessages">
+            <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-gray-100 max-w-[85%] self-start shadow-sm">
+                Hello! Thanks for reaching out to WoodJoint. How can we help you request a custom quotation today?
+            </div>
+        </div>
+        <form class="p-3 bg-white border-t border-gray-100 flex gap-2" onsubmit="sendSupportMessage(event)">
+            <input type="text" id="chatInput" placeholder="Type a message..." class="flex-grow px-3 py-1.5 rounded-full border border-gray-200 text-xs focus:outline-none focus:ring-1 focus:ring-brand-500" />
+            <button type="submit" class="bg-brand-600 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:bg-brand-700">Send</button>
+        </form>
+    </div>
+
+    <script>
+        // STEP WIZARD CONTROL LOGIC
+        let currentStep = 1;
+        const totalSteps = 4;
+        
+        function updateProgress() {
+            const pct = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progress-bar').style.width = pct + '%';
+            
+            // Toggle step indicators
+            for (let i = 1; i <= totalSteps; i++) {
+                const btn = document.getElementById('step-btn-' + i);
+                if (i < currentStep) {
+                    btn.classList.remove('bg-gray-200', 'text-gray-500', 'bg-brand-600', 'animate-pulse');
+                    btn.classList.add('bg-brand-500', 'text-white');
+                    btn.removeAttribute('disabled');
+                } else if (i === currentStep) {
+                    btn.classList.remove('bg-gray-200', 'text-gray-500', 'bg-brand-500');
+                    btn.classList.add('bg-brand-600', 'text-white', 'animate-pulse');
+                    btn.removeAttribute('disabled');
+                } else {
+                    btn.classList.remove('bg-brand-600', 'text-white', 'bg-brand-500', 'animate-pulse');
+                    btn.classList.add('bg-gray-200', 'text-gray-500');
+                    btn.setAttribute('disabled', 'true');
+                }
+            }
+            
+            // Toggle sections
+            for (let i = 1; i <= totalSteps; i++) {
+                const sec = document.getElementById('step-section-' + i);
+                if (i === currentStep) {
+                    sec.classList.remove('hidden');
+                } else {
+                    sec.classList.add('hidden');
+                }
+            }
+
+            // Buttons control
+            if (currentStep === 1) {
+                document.getElementById('prevBtn').classList.add('hidden');
+                document.getElementById('nextBtn').classList.remove('hidden');
+                document.getElementById('submitBtn').classList.add('hidden');
+            } else if (currentStep === totalSteps) {
+                document.getElementById('prevBtn').classList.remove('hidden');
+                document.getElementById('nextBtn').classList.add('hidden');
+                document.getElementById('submitBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('prevBtn').classList.remove('hidden');
+                document.getElementById('nextBtn').classList.remove('hidden');
+                document.getElementById('submitBtn').classList.add('hidden');
+            }
+        }
+
+        function validateStep(step) {
+            if (step === 1) {
+                const name = document.getElementById('custName').value.trim();
+                const phone = document.getElementById('custPhone').value.trim();
+                const email = document.getElementById('custEmail').value.trim();
+                return name !== "" && phone !== "" && email !== "";
+            }
+            if (step === 2) {
+                const type = document.getElementById('propType').value;
+                const emirate = document.getElementById('propEmirate').value;
+                const area = document.getElementById('propArea').value.trim();
+                return type !== "" && emirate !== "" && area !== "";
+            }
+            if (step === 3) {
+                const checkboxes = document.querySelectorAll('input[name="services"]:checked');
+                const budget = document.getElementById('projBudget').value;
+                const timeline = document.getElementById('projTimeline').value;
+                const desc = document.getElementById('projDescription').value.trim();
+                return checkboxes.length > 0 && budget !== "" && timeline !== "" && desc !== "";
+            }
+            if (step === 4) {
+                const visit = document.getElementById('visitDateTime').value;
+                const terms = document.getElementById('termsAccept').checked;
+                return visit !== "" && terms;
+            }
+            return true;
+        }
+
+        function nextStep() {
+            if (!validateStep(currentStep)) {
+                alert(currentLang === 'en' ? 'Please fill in all required fields marked with *' : 'يرجى تعبئة كافة الحقول المطلوبة والمميزة بالنجمة *');
+                return;
+            }
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateProgress();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateProgress();
+            }
+        }
+
+        function goToStep(step) {
+            // Can only jump backwards or to validated steps
+            if (step < currentStep) {
+                currentStep = step;
+                updateProgress();
+            } else if (step > currentStep) {
+                // Validate all intermediate steps
+                for (let s = currentStep; s < step; s++) {
+                    if (!validateStep(s)) {
+                        alert(currentLang === 'en' ? 'Please fill in all required fields first' : 'يرجى تعبئة كافة الحقول المطلوبة أولاً');
+                        return;
+                    }
+                }
+                currentStep = step;
+                updateProgress();
+            }
+        }
+
+        // File Selection Logic
+        let selectedFiles = [];
+        function handleFileSelect(e) {
+            const files = Array.from(e.target.files);
+            selectedFiles = [...selectedFiles, ...files].slice(0, 10);
+            
+            const fileListContainer = document.getElementById('fileList');
+            fileListContainer.innerHTML = '';
+            selectedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const div = document.createElement('div');
+                    div.className = "relative aspect-square rounded-lg overflow-hidden border border-gray-200 bg-white p-1";
+                    div.innerHTML = `<img src="${event.target.result}" class="w-full h-full object-cover rounded" />`;
+                    fileListContainer.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Drag & Drop
+        document.addEventListener('DOMContentLoaded', () => {
+            const dragArea = document.getElementById('dragDropArea');
+            if (dragArea) {
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    dragArea.addEventListener(eventName, preventDefaults, false);
+                });
+                function preventDefaults(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    dragArea.addEventListener(eventName, () => dragArea.classList.add('border-brand-500', 'bg-brand-50/40'), false);
+                });
+                ['dragleave', 'drop'].forEach(eventName => {
+                    dragArea.addEventListener(eventName, () => dragArea.classList.remove('border-brand-500', 'bg-brand-50/40'), false);
+                });
+                dragArea.addEventListener('drop', (e) => {
+                    const dt = e.dataTransfer;
+                    const files = dt.files;
+                    handleFileSelect({ target: { files: files } });
+                }, false);
+            }
+        });
+
+        // Form Submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            if (!validateStep(4)) {
+                alert(currentLang === 'en' ? 'Please accept the terms and select visit date/time.' : 'يرجى قبول الشروط وتحديد تاريخ ووقت الزيارة.');
+                return;
+            }
+
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const email = document.getElementById('custEmail').value;
+            const propType = document.getElementById('propType').value;
+            const emirate = document.getElementById('propEmirate').value;
+            const area = document.getElementById('propArea').value;
+            
+            const services = [];
+            document.querySelectorAll('input[name="services"]:checked').forEach(c => {
+                services.push(c.value);
+            });
+
+            const budget = document.getElementById('projBudget').value;
+            const timeline = document.getElementById('projTimeline').value;
+            const description = document.getElementById('projDescription').value;
+            const visit = document.getElementById('visitDateTime').value;
+
+            const subject = `Custom Quotation Request - ${name} - ${emirate}`;
+            const body = `CUSTOM QUOTATION REQUEST
+-------------------------------
+Customer Name: ${name}
+Phone Number: ${phone}
+Email Address: ${email}
+
+Property Type: ${propType}
+Location: ${area}, ${emirate}
+
+Services Needed: ${services.join(', ')}
+Estimated Budget: ${budget}
+Timeline: ${timeline}
+Project Details:
+${description}
+
+Preferred Site Visit: ${visit}
+`;
+
+            const newQuery = {
+                id: 'Q-' + Date.now(),
+                type: 'Custom Quote',
+                date: new Date().toLocaleString(),
+                name: name,
+                phone: phone,
+                email: email,
+                propType: propType,
+                emirate: emirate,
+                area: area,
+                services: services.join(', '),
+                budget: budget,
+                timeline: timeline,
+                description: description,
+                visit: visit,
+                status: 'Pending'
+            };
+
+            // Save to Supabase
+            if (typeof saveQueryToSupabase === 'function') {
+                saveQueryToSupabase(newQuery);
+            }
+
+            // Save to localStorage for Admin (Fallback)
+            try {
+                const queries = JSON.parse(localStorage.getItem('woodjoint_queries')) || [];
+                queries.unshift(newQuery);
+                localStorage.setItem('woodjoint_queries', JSON.stringify(queries));
+            } catch (err) {
+                console.error("Failed to save query to localStorage", err);
+            }
+
+            // WhatsApp Notification Logic
+            const whatsappNumber = "923330360487";
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(body)}`;
+            
+            alert(currentLang === 'en' 
+                ? "Opening WhatsApp to send your custom quotation request. Thank you!" 
+                : "جاري فتح الواتساب لإرسال طلب عرض السعر المخصص. شكراً لكم!");
+            
+            // Open WhatsApp in a new tab/window
+            window.open(whatsappUrl, '_blank');
+
+            /*
+            // FUTURE EMAIL NOTIFICATION CONFIGURATION
+            // When you want to send an email as well, uncomment this block and update the recipient email address:
+            const recipientEmail = "info@woodjoint.ae"; // Update with your preferred email address
+            const mailtoUrl = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            setTimeout(() => {
+                window.location.href = mailtoUrl;
+            }, 1000);
+            */
+            
+            // Reset wizard
+            e.target.reset();
+            currentStep = 1;
+            selectedFiles = [];
+            const fileListContainer = document.getElementById('fileList');
+            if (fileListContainer) fileListContainer.innerHTML = '';
+            updateProgress();
+        }
+
+        // Translation Support
+        const translations = {
+            en: {
+                navHome: "Back to Home",
+                navLang: "العربية",
+                heroBadge: "Accurate Pricing, Fast Response",
+                heroTitle: "Request a Custom Quotation",
+                heroSub: "Get a free customized estimate for your residential or commercial maintenance project. Follow our 4-step wizard to tell us about your needs.",
+                
+                step1Label: "Contact Info",
+                step2Label: "Property Details",
+                step3Label: "Services & Project",
+                step4Label: "Attachments & Submit",
+                
+                step1Title: "Step 1: Contact Information",
+                labelName: "Full Name *",
+                labelPhone: "Phone Number *",
+                labelEmail: "Email Address *",
+
+                step2Title: "Step 2: Property Details",
+                labelPropType: "Property Type *",
+                selPropType: "▼ Select Property Type",
+                optApart: "Apartment",
+                optVilla: "Villa",
+                optOffice: "Office",
+                optRetail: "Retail Shop",
+                optRest: "Restaurant",
+                optWare: "Warehouse",
+                optOther: "Other",
+                
+                labelEmirate: "Emirate *",
+                selEmirate: "▼ Select Emirate",
+                labelArea: "Area / Community *",
+
+                step3Title: "Step 3: Services & Project Details",
+                labelServices: "Required Services * (Select all that apply)",
+                srv1Title: "Floor & Wall Tiling Works",
+                srv2Title: "Concrete Works",
+                srv3Title: "Plumbing & Sanitary Installation",
+                srv4Title: "Plaster Works",
+                srv5Title: "Steel Products Installation",
+                srv6Title: "Carpentry & Wood Flooring",
+                srv7Title: "Building Maintenance",
+                srv12Title: "Air-Conditioning & HVAC",
+                srv8Title: "Swimming Pools",
+                
+                labelBudget: "Estimated Budget *",
+                selBudget: "▼ Select Budget Range (AED)",
+                optB1: "Under 5,000 AED",
+                optB2: "5,000 - 15,000 AED",
+                optB3: "15,000 - 50,000 AED",
+                optB4: "Above 50,000 AED",
+                
+                labelTimeline: "Required Timeline *",
+                selTimeline: "▼ Select Project Urgency",
+                optT1: "Immediate / Emergency",
+                optT2: "Within 1-2 Weeks",
+                optT3: "Within a Month",
+                optT4: "Flexible / Planning Phase",
+                
+                labelDescription: "Project Description *",
+
+                step4Title: "Step 4: Attachments & Submit",
+                secUpload: "Upload Layouts / Photos (Optional)",
+                uploadPhotos: "Upload Photos",
+                dragDrop: "Drag & Drop or click to browse",
+                labelVisit: "Preferred Site Visit Date & Time *",
+                labelTerms: "I accept the terms of service and privacy policy. I agree to receive a contact back regarding this custom quotation request.",
+                btnSubmit: "Request Free Quotation",
+                footerRights: "© 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved."
+            },
+            ar: {
+                navHome: "العودة للرئيسية",
+                navLang: "English",
+                heroBadge: "أسعار دقيقة، استجابة سريعة",
+                heroTitle: "طلب تسعيرة مخصصة",
+                heroSub: "احصل على تسعير مخصص لمشروع الصيانة السكني أو التجاري الخاص بك. اتبع الخطوات الأربع لإعلامنا باحتياجاتك.",
+                
+                step1Label: "بيانات الاتصال",
+                step2Label: "تفاصيل العقار",
+                step3Label: "الخدمات والمشروع",
+                step4Label: "المرفقات والإرسال",
+                
+                step1Title: "الخطوة 1: معلومات الاتصال",
+                labelName: "الاسم الكامل *",
+                labelPhone: "رقم الهاتف *",
+                labelEmail: "البريد الإلكتروني *",
+
+                step2Title: "الخطوة 2: تفاصيل العقار",
+                labelPropType: "نوع العقار *",
+                selPropType: "▼ اختر نوع العقار",
+                optApart: "شقة",
+                optVilla: "فيلا",
+                optOffice: "مكتب",
+                optRetail: "محل تجاري",
+                optRest: "مطعم",
+                optWare: "مستودع / مخزن",
+                optOther: "آخر",
+                
+                labelEmirate: "الإمارة *",
+                selEmirate: "▼ اختر الإمارة",
+                labelArea: "المنطقة / المجتمع السكني *",
+
+                step3Title: "الخطوة 3: تفاصيل الخدمات والمشروع",
+                labelServices: "الخدمات المطلوبة * (اختر كل ما ينطبق)",
+                srv1Title: "أعمال تبليط الأرضيات والجدران",
+                srv2Title: "الاعمال الخرسانية",
+                srv3Title: "تركيب الأدوات والتمديدات الصحية",
+                srv4Title: "اعمال البلاستر",
+                srv5Title: "تركيب الأشغال الحديدية",
+                srv6Title: "أعمال النجارة والباركيه",
+                srv7Title: "صيانة المباني",
+                srv12Title: "أنظمة التكييف والتهوية HVAC",
+                srv8Title: "أحواض السباحة",
+                
+                labelBudget: "الميزانية المتوقعة *",
+                selBudget: "▼ اختر نطاق الميزانية (درهم)",
+                optB1: "أقل من 5,000 درهم",
+                optB2: "5,000 - 15,000 درهم",
+                optB3: "15,000 - 50,000 درهم",
+                optB4: "أكثر من 5,000 درهم",
+                
+                labelTimeline: "الجدول الزمني المطلوب *",
+                selTimeline: "▼ اختر مدى استعجال المشروع",
+                optT1: "عاجل / طوارئ",
+                optT2: "خلال 1-2 أسبوع",
+                optT3: "خلال شهر",
+                optT4: "مرن / مرحلة التخطيط",
+                
+                labelDescription: "وصف المشروع *",
+
+                step4Title: "الخطوة 4: المرفقات وتأكيد الطلب",
+                secUpload: "تحميل مخططات / صور (اختياري)",
+                uploadPhotos: "تحميل الصور",
+                dragDrop: "اسحب وأفلت أو انقر للتصفح",
+                labelVisit: "تاريخ ووقت زيارة الموقع المفضلة *",
+                labelTerms: "أوافق على شروط الخدمة وسياسة الخصوصية. وأوافق على التواصل معي بشأن طلب التسعيرة هذا.",
+                btnSubmit: "طلب تسعيرة مجانية",
+                footerRights: "© 2026 وود جوينت لأعمال صيانة المباني ذ.م.م. جميع الحقوق محفوظة."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.documentElement.dir = currentLang === 'en' ? 'ltr' : 'rtl';
+            document.documentElement.lang = currentLang;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+            
+            // Adjust buttons texts depending on language
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentLang === 'ar') {
+                prevBtn.textContent = 'السابق';
+                nextBtn.textContent = 'الخطوة التالية';
+            } else {
+                prevBtn.textContent = 'Back';
+                nextBtn.textContent = 'Next Step';
+            }
+        }
+
+        // Float Buttons Visibility
+        const goToTopBtn = document.getElementById('goToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                goToTopBtn.classList.remove('scale-0', 'opacity-0');
+                goToTopBtn.classList.add('scale-100', 'opacity-100');
+            } else {
+                goToTopBtn.classList.remove('scale-100', 'opacity-100');
+                goToTopBtn.classList.add('scale-0', 'opacity-0');
+            }
+        });
+
+        // Notifications & Chat Logic
+        function toggleNotifications(e) {
+            e.stopPropagation();
+            const dropdown = document.getElementById('notificationDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+        function toggleSupportChat() {
+            const chatBox = document.getElementById('supportChatBox');
+            chatBox.classList.toggle('hidden');
+        }
+        function sendSupportMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const msgText = input.value.trim();
+            if (!msgText) return;
+            
+            const messagesContainer = document.getElementById('chatMessages');
+            
+            const userDiv = document.createElement('div');
+            userDiv.className = "bg-brand-600 text-white p-3 rounded-2xl rounded-tr-none max-w-[85%] self-end shadow-sm";
+            userDiv.textContent = msgText;
+            messagesContainer.appendChild(userDiv);
+            
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            setTimeout(() => {
+                const agentDiv = document.createElement('div');
+                agentDiv.className = "bg-white p-3 rounded-2xl rounded-tl-none border border-gray-100 max-w-[85%] self-start shadow-sm";
+                agentDiv.textContent = "Thank you. An online support representative will connect with you shortly.";
+                messagesContainer.appendChild(agentDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1000);
+        }
+        
+        window.addEventListener('click', () => {
+            const dropdown = document.getElementById('notificationDropdown');
+            if (dropdown) dropdown.classList.add('hidden');
+        });
+
+        // Initial setup
+        updateProgress();
+    </script>
+</body>
+</html>

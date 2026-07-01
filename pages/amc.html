@@ -39,6 +39,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Supabase client CDN and helper -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../assets/js/supabase.js"></script>
+    
     <style>
         html[dir='ltr'] { font-family: 'Outfit', sans-serif; }
         html[dir='rtl'] { font-family: 'Cairo', sans-serif; }
@@ -1229,6 +1233,37 @@ Location (Emirate): ${location}
 Selected Package: ${pkg}
 Additional Requirements: ${requirements || 'None'}
 `;
+            const newQuery = {
+                id: 'Q-' + Date.now(),
+                type: 'AMC Quote',
+                date: new Date().toLocaleString(),
+                name: name,
+                phone: phone,
+                email: email,
+                propType: property,
+                emirate: location,
+                area: 'N/A',
+                services: 'Annual Maintenance Contract',
+                budget: pkg,
+                timeline: 'N/A',
+                description: requirements || 'None',
+                visit: 'N/A',
+                status: 'Pending'
+            };
+
+            // Save to Supabase
+            if (typeof saveQueryToSupabase === 'function') {
+                saveQueryToSupabase(newQuery);
+            }
+
+            // Save to localStorage for Admin (Fallback)
+            try {
+                const queries = JSON.parse(localStorage.getItem('woodjoint_queries')) || [];
+                queries.unshift(newQuery);
+                localStorage.setItem('woodjoint_queries', JSON.stringify(queries));
+            } catch (err) {
+                console.error("Failed to save query to localStorage", err);
+            }
 
             // Open default mail client with values populated
             const mailtoUrl = `mailto:info@woodjoint.ae?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
