@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | WOODJOINT Building Maintenance</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f2f7fc',
+                            100: '#e1eef7',
+                            200: '#e3d7c5',
+                            300: '#d2c2ad',
+                            400: '#a38f75',
+                            500: '#3288d0',
+                            600: '#1c75bc',
+                            700: '#165c94',
+                            800: '#0f4470',
+                            900: '#0d2c4e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Supabase client CDN and helper -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen font-sans flex flex-col justify-between">
+
+    <!-- Navbar (Static branding only) -->
+    <nav class="bg-gray-950 border-b border-gray-800 py-4 px-6 flex justify-between items-center shadow-lg">
+        <div class="flex items-center gap-3">
+            <div class="flex flex-col">
+                <div class="text-xl font-extrabold tracking-wide uppercase leading-none">
+                    <span class="text-brand-500">WOOD</span> <span class="text-white">JOINT</span>
+                </div>
+                <span class="text-[8px] font-bold text-gray-500 uppercase tracking-widest mt-1">— ADMIN DASHBOARD —</span>
+            </div>
+        </div>
+        <button id="logoutBtn" onclick="handleLogout()" class="hidden bg-red-600/80 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-full transition-all shadow-md">
+            Logout
+        </button>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="flex-grow flex items-center justify-center p-6">
+        
+        <!-- LOGIN PANEL -->
+        <div id="loginCard" class="w-full max-w-md bg-gray-950/80 border border-gray-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-600/10 via-transparent to-transparent pointer-events-none"></div>
+            
+            <div class="text-center mb-8 relative z-10">
+                <h2 class="text-2xl font-extrabold text-white mb-2">System Login</h2>
+                <p class="text-sm text-gray-400">Enter administrator credentials to manage requests</p>
+            </div>
+            
+            <form onsubmit="handleLogin(event)" class="space-y-6 relative z-10">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Username</label>
+                    <input type="text" id="username" required placeholder="admin" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-white transition-all" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Password</label>
+                    <input type="password" id="password" required placeholder="••••••••" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-white transition-all" />
+                </div>
+                <div id="loginError" class="text-xs text-red-500 font-bold hidden">Invalid username or password.</div>
+                
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg text-sm">
+                    Access Dashboard
+                </button>
+            </form>
+        </div>
+
+        <!-- DASHBOARD PANEL -->
+        <div id="dashboardCard" class="w-full max-w-7xl bg-gray-950 border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl hidden flex flex-col gap-8">
+            
+            <!-- Summary Stats -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Total Queries</span>
+                    <span class="text-3xl font-extrabold text-white mt-2" id="statTotal">0</span>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider text-yellow-500">Pending</span>
+                    <span class="text-3xl font-extrabold text-yellow-500 mt-2" id="statPending">0</span>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider text-blue-400">In Progress</span>
+                    <span class="text-3xl font-extrabold text-blue-400 mt-2" id="statProgress">0</span>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider text-green-500">Resolved</span>
+                    <span class="text-3xl font-extrabold text-green-500 mt-2" id="statResolved">0</span>
+                </div>
+            </div>
+
+            <!-- Filters & Controls -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-800 pb-6">
+                <div class="flex flex-wrap items-center gap-3">
+                    <input type="text" id="searchBar" oninput="renderQueries()" placeholder="Search client, phone, or email..." class="bg-gray-900 border border-gray-800 rounded-xl px-4 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-brand-500 focus:border-brand-500 text-white w-64 transition-all" />
+                    
+                    <select id="filterType" onchange="renderQueries()" class="bg-gray-900 border border-gray-800 rounded-xl px-3 py-2 text-xs focus:outline-none text-white transition-all">
+                        <option value="">All Types</option>
+                        <option value="Custom Quote">Custom Quote</option>
+                        <option value="AMC Quote">AMC Quote</option>
+                    </select>
+
+                    <select id="filterStatus" onchange="renderQueries()" class="bg-gray-900 border border-gray-800 rounded-xl px-3 py-2 text-xs focus:outline-none text-white transition-all">
+                        <option value="">All Statuses</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button onclick="exportToCSV()" class="bg-gray-800 hover:bg-gray-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition-all border border-gray-700">
+                        Export CSV
+                    </button>
+                    <button onclick="loadSampleData()" class="bg-brand-900/40 hover:bg-brand-900/60 text-brand-300 text-xs font-bold px-4 py-2 rounded-xl transition-all border border-brand-800">
+                        Load Sample Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Queries Data Table -->
+            <div class="overflow-x-auto bg-gray-900 rounded-2xl border border-gray-800">
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="border-b border-gray-800 text-gray-400 font-bold uppercase tracking-wider bg-gray-900/50">
+                            <th class="p-4">Date</th>
+                            <th class="p-4">Client</th>
+                            <th class="p-4">Type</th>
+                            <th class="p-4">Property / Location</th>
+                            <th class="p-4">Status</th>
+                            <th class="p-4 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="queriesTableBody" class="divide-y divide-gray-800/50">
+                        <!-- Filled by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- DETAIL MODAL -->
+    <div id="detailModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden p-4">
+        <div class="bg-gray-950 border border-gray-800 rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl">
+            <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-gray-900/50">
+                <h3 class="text-lg font-bold text-white">Query Details</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-xl font-bold">✕</button>
+            </div>
+            <div class="p-6 space-y-4 max-h-[70vh] overflow-y-auto text-xs" id="modalContent">
+                <!-- Filled dynamically -->
+            </div>
+            <div class="p-6 border-t border-gray-800 flex justify-end gap-3 bg-gray-900/30">
+                <button onclick="closeModal()" class="bg-gray-800 hover:bg-gray-700 text-white font-bold px-5 py-2 rounded-xl transition-all">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-6 text-center text-xs text-gray-500">
+        © 2026 WOODJOINT Building Maintenance L.L.C. All rights reserved.
+    </footer>
+
+    <!-- Core Admin JS Logic -->
+    <script>
+        // Check Login Session
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = sessionStorage.getItem('woodjoint_admin_logged');
+            if (isLoggedIn === 'true') {
+                showDashboard();
+            } else {
+                showLogin();
+            }
+        });
+
+        function showLogin() {
+            document.getElementById('loginCard').classList.remove('hidden');
+            document.getElementById('dashboardCard').classList.add('hidden');
+            document.getElementById('logoutBtn').classList.add('hidden');
+        }
+
+        function showDashboard() {
+            document.getElementById('loginCard').classList.add('hidden');
+            document.getElementById('dashboardCard').classList.remove('hidden');
+            document.getElementById('logoutBtn').classList.remove('hidden');
+            loadQueries();
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            // Hardcoded Credentials
+            if (user === 'admin' && pass === 'woodjoint2026') {
+                sessionStorage.setItem('woodjoint_admin_logged', 'true');
+                document.getElementById('loginError').classList.add('hidden');
+                showDashboard();
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('woodjoint_admin_logged');
+            showLogin();
+        }
+
+        // Queries Data Handling
+        let activeQueries = [];
+
+        function getQueries() {
+            return JSON.parse(localStorage.getItem('woodjoint_queries')) || [];
+        }
+
+        function saveQueries(queries) {
+            localStorage.setItem('woodjoint_queries', JSON.stringify(queries));
+        }
+
+        async function loadQueries() {
+            if (typeof fetchQueriesFromSupabase === 'function' && getSupabaseClient()) {
+                activeQueries = await fetchQueriesFromSupabase();
+                saveQueries(activeQueries);
+            } else {
+                activeQueries = getQueries();
+            }
+            renderQueries();
+        }
+
+        function renderQueries() {
+            const queries = activeQueries;
+            const tableBody = document.getElementById('queriesTableBody');
+            tableBody.innerHTML = '';
+            
+            // Filters values
+            const searchQuery = document.getElementById('searchBar').value.toLowerCase();
+            const filterType = document.getElementById('filterType').value;
+            const filterStatus = document.getElementById('filterStatus').value;
+
+            // Stat counters
+            let pendingCount = 0;
+            let progressCount = 0;
+            let resolvedCount = 0;
+
+            queries.forEach(q => {
+                if (q.status === 'Pending') pendingCount++;
+                else if (q.status === 'In Progress') progressCount++;
+                else if (q.status === 'Resolved') resolvedCount++;
+            });
+
+            document.getElementById('statTotal').textContent = queries.length;
+            document.getElementById('statPending').textContent = pendingCount;
+            document.getElementById('statProgress').textContent = progressCount;
+            document.getElementById('statResolved').textContent = resolvedCount;
+
+            // Filter logic
+            const filtered = queries.filter(q => {
+                const matchesSearch = q.name.toLowerCase().includes(searchQuery) || 
+                                      q.phone.toLowerCase().includes(searchQuery) || 
+                                      (q.email && q.email.toLowerCase().includes(searchQuery));
+                const matchesType = !filterType || q.type === filterType;
+                const matchesStatus = !filterStatus || q.status === filterStatus;
+                
+                return matchesSearch && matchesType && matchesStatus;
+            });
+
+            if (filtered.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="p-8 text-center text-gray-500 font-semibold">No queries found matching the active filters.</td>
+                    </tr>
+                `;
+                return;
+            }
+
+            filtered.forEach(q => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-900/30 transition-all border-b border-gray-950";
+                
+                let statusColor = "text-yellow-500 bg-yellow-500/10 border-yellow-500/20";
+                if (q.status === 'In Progress') statusColor = "text-blue-400 bg-blue-500/10 border-blue-500/20";
+                if (q.status === 'Resolved') statusColor = "text-green-500 bg-green-500/10 border-green-500/20";
+
+                tr.innerHTML = `
+                    <td class="p-4 text-gray-300 font-semibold">${q.date}</td>
+                    <td class="p-4">
+                        <div class="font-bold text-white">${q.name}</div>
+                        <div class="text-[10px] text-gray-400">${q.phone} | ${q.email}</div>
+                    </td>
+                    <td class="p-4">
+                        <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-brand-900/50 border border-brand-800 text-brand-200">
+                            ${q.type}
+                        </span>
+                    </td>
+                    <td class="p-4">
+                        <div class="text-gray-300">${q.propType}</div>
+                        <div class="text-[10px] text-gray-400">${q.area !== 'N/A' ? q.area + ', ' : ''}${q.emirate}</div>
+                    </td>
+                    <td class="p-4">
+                        <select onchange="updateQueryStatus('${q.id}', this.value)" class="bg-gray-900 border border-gray-800 rounded px-2 py-1 text-[10px] font-bold ${statusColor}">
+                            <option value="Pending" ${q.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                            <option value="In Progress" ${q.status === 'In Progress' ? 'selected' : ''}>In Progress</option>
+                            <option value="Resolved" ${q.status === 'Resolved' ? 'selected' : ''}>Resolved</option>
+                        </select>
+                    </td>
+                    <td class="p-4 text-center flex items-center justify-center gap-2">
+                        <button onclick="viewDetails('${q.id}')" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-3 py-1.5 rounded transition-all">View</button>
+                        <button onclick="deleteQuery('${q.id}')" class="bg-red-950/60 hover:bg-red-900 text-red-400 font-semibold px-3 py-1.5 rounded transition-all">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        async function updateQueryStatus(id, newStatus) {
+            const index = activeQueries.findIndex(q => q.id === id);
+            if (index !== -1) {
+                activeQueries[index].status = newStatus;
+                saveQueries(activeQueries);
+                renderQueries();
+            }
+
+            if (typeof updateQueryStatusInSupabase === 'function' && getSupabaseClient()) {
+                await updateQueryStatusInSupabase(id, newStatus);
+            }
+        }
+
+        async function deleteQuery(id) {
+            if (confirm("Are you sure you want to delete this query? This action cannot be undone.")) {
+                activeQueries = activeQueries.filter(q => q.id !== id);
+                saveQueries(activeQueries);
+                renderQueries();
+
+                if (typeof deleteQueryFromSupabase === 'function' && getSupabaseClient()) {
+                    await deleteQueryFromSupabase(id);
+                }
+            }
+        }
+
+        function viewDetails(id) {
+            const q = activeQueries.find(q => q.id === id);
+            if (!q) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="grid grid-cols-2 gap-4 border-b border-gray-800 pb-4">
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Client Name</span>
+                        <span class="text-sm font-semibold text-white">${q.name}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Query ID</span>
+                        <span class="text-sm font-semibold text-white">${q.id}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Phone Number</span>
+                        <span class="text-sm font-semibold text-white">${q.phone}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Email Address</span>
+                        <span class="text-sm font-semibold text-white">${q.email}</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 border-b border-gray-800 pb-4">
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Property Type</span>
+                        <span class="text-sm font-semibold text-white">${q.propType}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Location (Emirate)</span>
+                        <span class="text-sm font-semibold text-white">${q.emirate} ${q.area !== 'N/A' ? '(' + q.area + ')' : ''}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Query Type</span>
+                        <span class="text-sm font-semibold text-brand-400 font-bold">${q.type}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Preferred Site Visit</span>
+                        <span class="text-sm font-semibold text-white">${q.visit || 'N/A'}</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 border-b border-gray-800 pb-4">
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Budget Range</span>
+                        <span class="text-sm font-semibold text-white">${q.budget || 'N/A'}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px]">Timeline / Urgency</span>
+                        <span class="text-sm font-semibold text-white">${q.timeline || 'N/A'}</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px] mb-1">Required Services</span>
+                    <p class="text-white bg-gray-900 border border-gray-800 p-3 rounded-xl font-semibold leading-relaxed">${q.services}</p>
+                </div>
+                <div>
+                    <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px] mb-1">Project Details / Requirements</span>
+                    <p class="text-white bg-gray-900 border border-gray-800 p-3 rounded-xl whitespace-pre-wrap font-semibold leading-relaxed">${q.description}</p>
+                </div>
+            `;
+
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // CSV Export Feature
+        function exportToCSV() {
+            const queries = getQueries();
+            if (queries.length === 0) {
+                alert("No queries to export!");
+                return;
+            }
+            
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "ID,Type,Date,Name,Phone,Email,Property Type,Emirate,Area,Services,Budget,Timeline,Status\n";
+
+            queries.forEach(q => {
+                const row = [
+                    q.id,
+                    q.type,
+                    q.date,
+                    `"${q.name.replace(/"/g, '""')}"`,
+                    q.phone,
+                    q.email,
+                    q.propType,
+                    q.emirate,
+                    `"${(q.area || '').replace(/"/g, '""')}"`,
+                    `"${(q.services || '').replace(/"/g, '""')}"`,
+                    q.budget || 'N/A',
+                    q.timeline || 'N/A',
+                    q.status
+                ].join(",");
+                csvContent += row + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `woodjoint_queries_${Date.now()}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Load Mock UAE Data
+        function loadSampleData() {
+            const sampleQueries = [
+                {
+                    id: "Q-1001",
+                    type: "Custom Quote",
+                    date: "01/07/2026, 10:15:30 AM",
+                    name: "Fatima Al Maktoum",
+                    phone: "+971 50 111 2222",
+                    email: "fatima@domain.ae",
+                    propType: "Villa",
+                    emirate: "Dubai",
+                    area: "Palm Jumeirah",
+                    services: "Floor & Wall Tiling Works, Plumbing",
+                    budget: "15,000 - 50,000",
+                    timeline: "Within 1-2 Weeks",
+                    description: "Complete overhaul of master bathroom tiles and premium fixture installation.",
+                    visit: "2026-07-05T10:00",
+                    status: "Pending"
+                },
+                {
+                    id: "Q-1002",
+                    type: "AMC Quote",
+                    date: "01/07/2026, 11:20:15 AM",
+                    name: "Tariq Mahmood",
+                    phone: "+971 52 333 4444",
+                    email: "t.mahmood@corp.ae",
+                    propType: "Office",
+                    emirate: "Abu Dhabi",
+                    area: "N/A",
+                    services: "Annual Maintenance Contract",
+                    budget: "Gold",
+                    timeline: "N/A",
+                    description: "Seeking premium Gold corporate AMC plan for commercial offices.",
+                    visit: "N/A",
+                    status: "In Progress"
+                },
+                {
+                    id: "Q-1003",
+                    type: "Custom Quote",
+                    date: "30/06/2026, 4:45:00 PM",
+                    name: "John Smith",
+                    phone: "+971 55 999 8888",
+                    email: "johnsmith@gmail.com",
+                    propType: "Apartment",
+                    emirate: "Dubai",
+                    area: "Dubai Marina",
+                    services: "Air-Conditioning & HVAC",
+                    budget: "Under 5,000",
+                    timeline: "Immediate / Emergency",
+                    description: "AC unit compressor replacement required. Extremely hot.",
+                    visit: "2026-07-02T14:30",
+                    status: "Resolved"
+                },
+                {
+                    id: "Q-1004",
+                    type: "AMC Quote",
+                    date: "30/06/2026, 2:10:05 PM",
+                    name: "Rashid Salem",
+                    phone: "+971 56 777 5555",
+                    email: "rashids@estate.ae",
+                    propType: "Villa",
+                    emirate: "Sharjah",
+                    area: "N/A",
+                    services: "Annual Maintenance Contract",
+                    budget: "Standard",
+                    timeline: "N/A",
+                    description: "Standard residential contract package for a 4-bedroom villa.",
+                    visit: "N/A",
+                    status: "Pending"
+                }
+            ];
+
+            activeQueries = [...sampleQueries, ...activeQueries];
+            saveQueries(activeQueries);
+            renderQueries();
+
+            // Try saving sample data to Supabase
+            if (typeof saveQueryToSupabase === 'function' && getSupabaseClient()) {
+                for (const q of sampleQueries) {
+                    await saveQueryToSupabase(q);
+                }
+                loadQueries();
+            }
+            alert("Loaded sample UAE maintenance queries successfully.");
+        }
+    </script>
+</body>
+</html>
