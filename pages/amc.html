@@ -1265,8 +1265,19 @@ Additional Requirements: ${requirements || 'None'}
                 console.error("Failed to save query to localStorage", err);
             }
 
+            // Retrieve dynamic email setting from admin dashboard (localStorage)
+            let settings = { email: "info@woodjoint.ae" };
+            try {
+                const storedSettings = JSON.parse(localStorage.getItem('woodjoint_settings'));
+                if (storedSettings && storedSettings.email) {
+                    settings.email = storedSettings.email.trim();
+                }
+            } catch (err) {
+                console.error("Failed to load settings from localStorage", err);
+            }
+
             // Open default mail client with values populated
-            const mailtoUrl = `mailto:info@woodjoint.ae?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const mailtoUrl = `mailto:${settings.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             
             alert(currentLang === 'en' 
                 ? "Opening your email client to send your quote request. Thank you!" 

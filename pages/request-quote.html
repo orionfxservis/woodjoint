@@ -647,9 +647,20 @@ Preferred Site Visit: ${visit}
                 console.error("Failed to save query to localStorage", err);
             }
 
+            // Retrieve dynamic contact settings from admin dashboard (localStorage)
+            let settings = { whatsapp: "923330360487", email: "info@woodjoint.ae" };
+            try {
+                const storedSettings = JSON.parse(localStorage.getItem('woodjoint_settings'));
+                if (storedSettings) {
+                    if (storedSettings.whatsapp) settings.whatsapp = storedSettings.whatsapp.replace(/\+/g, '').trim();
+                    if (storedSettings.email) settings.email = storedSettings.email.trim();
+                }
+            } catch (err) {
+                console.error("Failed to load settings from localStorage", err);
+            }
+
             // WhatsApp Notification Logic
-            const whatsappNumber = "923330360487";
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(body)}`;
+            const whatsappUrl = `https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(body)}`;
             
             alert(currentLang === 'en' 
                 ? "Opening WhatsApp to send your custom quotation request. Thank you!" 
@@ -658,15 +669,13 @@ Preferred Site Visit: ${visit}
             // Open WhatsApp in a new tab/window
             window.open(whatsappUrl, '_blank');
 
-            /*
-            // FUTURE EMAIL NOTIFICATION CONFIGURATION
-            // When you want to send an email as well, uncomment this block and update the recipient email address:
-            const recipientEmail = "info@woodjoint.ae"; // Update with your preferred email address
-            const mailtoUrl = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            setTimeout(() => {
-                window.location.href = mailtoUrl;
-            }, 1000);
-            */
+            // Email Notification Logic
+            if (settings.email && settings.email !== "") {
+                const mailtoUrl = `mailto:${settings.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                setTimeout(() => {
+                    window.location.href = mailtoUrl;
+                }, 1200);
+            }
             
             // Reset wizard
             e.target.reset();
