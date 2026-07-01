@@ -185,6 +185,12 @@
 
     <!-- Core Admin JS Logic -->
     <script>
+        // Global Error Alert for Debugging
+        window.onerror = function(message, source, lineno, colno, error) {
+            alert("Error: " + message + " (Line " + lineno + ")");
+            return false;
+        };
+
         // Check Login Session
         document.addEventListener('DOMContentLoaded', () => {
             const diag = document.getElementById('diagnosticMessage');
@@ -482,7 +488,7 @@
         }
 
         // Load Mock UAE Data
-        function loadSampleData() {
+        async function loadSampleData() {
             const sampleQueries = [
                 {
                     id: "Q-1001",
