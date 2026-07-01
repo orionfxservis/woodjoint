@@ -239,10 +239,15 @@
         }
 
         async function loadQueries() {
-            if (typeof fetchQueriesFromSupabase === 'function' && getSupabaseClient()) {
-                activeQueries = await fetchQueriesFromSupabase();
-                saveQueries(activeQueries);
-            } else {
+            try {
+                if (typeof fetchQueriesFromSupabase === 'function' && getSupabaseClient()) {
+                    activeQueries = await fetchQueriesFromSupabase();
+                    saveQueries(activeQueries);
+                } else {
+                    activeQueries = getQueries();
+                }
+            } catch (err) {
+                console.error("Error loading queries from Supabase, falling back to localStorage:", err);
                 activeQueries = getQueries();
             }
             renderQueries();
