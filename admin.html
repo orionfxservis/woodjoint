@@ -487,6 +487,17 @@
                     <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px] mb-1">Project Details / Requirements</span>
                     <p class="text-white bg-gray-900 border border-gray-800 p-3 rounded-xl whitespace-pre-wrap font-semibold leading-relaxed">${q.description}</p>
                 </div>
+                
+                <!-- Forward Option -->
+                <div class="mt-6 border-t border-gray-800 pt-6">
+                    <span class="block text-gray-500 font-bold uppercase tracking-wider text-[10px] mb-2">Forward Query to Concern Person</span>
+                    <div class="flex gap-2">
+                        <input type="email" id="forwardEmail" placeholder="concern-person@woodjoint.ae" class="bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-brand-500 flex-grow" />
+                        <button onclick="forwardQuery('${q.id}')" class="bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-md">
+                            Forward via Email
+                        </button>
+                    </div>
+                </div>
             `;
 
             document.getElementById('detailModal').classList.remove('hidden');
@@ -494,6 +505,52 @@
 
         function closeModal() {
             document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        function forwardQuery(id) {
+            const q = activeQueries.find(q => q.id === id);
+            if (!q) return;
+            
+            const emailInput = document.getElementById('forwardEmail');
+            const targetEmail = emailInput.value.trim();
+            if (!targetEmail || !targetEmail.includes('@')) {
+                alert("Please enter a valid email address first.");
+                return;
+            }
+
+            const subject = `FW: [WoodJoint Query] ${q.type} - ${q.name}`;
+            const body = `Hi Team,
+
+Please review and handle the customer query below:
+
+--------------------------------------------------
+CLIENT INQUIRY DETAILS:
+--------------------------------------------------
+Query ID: ${q.id}
+Type: ${q.type}
+Date Submitted: ${q.date}
+Client Name: ${q.name}
+Phone Number: ${q.phone}
+Email: ${q.email}
+
+Property Type: ${q.propType}
+Location: ${q.emirate} ${q.area !== 'N/A' ? '(' + q.area + ')' : ''}
+Services: ${q.services}
+Budget: ${q.budget || 'N/A'}
+Timeline: ${q.timeline || 'N/A'}
+
+Project Details:
+${q.description}
+
+Preferred Visit: ${q.visit || 'N/A'}
+--------------------------------------------------
+
+Best regards,
+WoodJoint Administrator
+`;
+
+            const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoUrl;
         }
 
         // CSV Export Feature
