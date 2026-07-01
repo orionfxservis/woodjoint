@@ -12,10 +12,16 @@ function getSupabaseClient() {
             console.error("Supabase CDN library not loaded. Please ensure the CDN script is included in your HTML.");
             return null;
         }
-        if (SUPABASE_ANON_KEY === "YOUR_SUPABASE_ANON_KEY") {
+        if (SUPABASE_ANON_KEY === "YOUR_SUPABASE_ANON_KEY" || !SUPABASE_ANON_KEY) {
             console.warn("Please replace 'YOUR_SUPABASE_ANON_KEY' with your real Supabase Anon API key in assets/js/supabase.js");
+            return null;
         }
-        supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        try {
+            supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        } catch (e) {
+            console.error("Error creating Supabase client:", e);
+            supabaseClient = null;
+        }
     }
     return supabaseClient;
 }
